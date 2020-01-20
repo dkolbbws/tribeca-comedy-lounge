@@ -26533,3 +26533,6 @@ theme/dist/assets/template.index.js
 theme/dist/assets/template.gift_card.js
 theme/dist/assets/template.addresses.js
 theme/dist/assets/layout.theme.js
+
+## Github Security Alerts
+theme/yarn.lock
