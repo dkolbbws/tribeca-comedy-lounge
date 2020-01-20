@@ -1,0 +1,57 @@
+#shopify-section-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  // background: $color-dark;
+
+  header > .row {
+    padding: 33px 30px;
+  }
+}
+
+.navigation-menu {
+  list-style: none;
+
+  @include flexbox();
+
+  &.left-side-navigation {
+    @include justify-content(space-between);
+  }
+
+  &.right-side-navigation {
+    @include justify-content(space-between);
+  }
+}
+
+.bws-header a {
+  font-family: $fm;
+  text-transform: uppercase;
+  color: $color-white;
+  font-size: 0.75em;
+
+  &.icon-ticket svg {
+    position: relative;
+    top: 2px;;
+  }
+
+  &.highlited-menu-item {
+    color: $color-red;
+  }
+
+  &.cart {
+    position: relative;
+
+    .cart-count {
+      position: absolute;
+      padding: 30%;
+      border-radius: 10px;
+      background: $color-red;
+      right: -75%;
+      top: 10%;
+      font-size: 0.625em;
+    }
+  }
+}

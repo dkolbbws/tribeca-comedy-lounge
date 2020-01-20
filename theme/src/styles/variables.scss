@@ -58,3 +58,17 @@ $breakpoints: (
   $large-up '(min-width: #{$grid-large})',
   $widescreen '(min-width: #{$grid-widescreen})'
 );
+
+$cubic: cubic-bezier(0.255, 0.195, 0.135, 0.99);
+
+$color-red: #DB0D15;
+$color-white: #ffffff;
+$color-dark: #1E1E1E;
+$color-dark-2: #1B1B1B;
+$color-gray: #9D9D9D;
+
+$fm: 'Futura-Medium', sans-serif;
+$fl: 'Futura-Light', sans-serif;
+$fb: 'Futura-Bold', sans-serif;
+$hm: 'Helectiva-Neue-Cyr-Medium', sans-serif;
+$hr: 'Helectiva-Neue-Cyr-Roman', sans-serif;

@@ -1,1 +1,52 @@
-{{ content_for_index }}
+<section class="spacing-top-md" id="home-section-one">
+  <div class="row center-xs">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 image-circles-column">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-1.png?v=1579557371" alt="" class="image-circles one">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-2.png?v=1579557371" alt="" class="image-circles two">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-3.png?v=1579557371" alt="" class="image-circles three">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <h1>Eat. Drink. Laugh.</h1>
+      <div class="row center-xs">
+        <div class="col-lg-7 col-md-7 col-xs-7 col-xs-12">
+          <p class="small subtitle-gray">Classy, spacious comedy club with an upscale Italian menu, including pizza & cocktails.</p>
+          <div class="bws-button-wrapper">
+            <a href="/page/schedule" class="bws-button regular-button">
+              {% include 'icon-ticket-light' %}
+              <span class="text">buy tickets</span>
+            </a>
+          </div>
+          <p class="small">Have a ticket? <a href="/pages/reservations" class="inline-link-single red">Make a reservation</a></p>
+          <a href="#home-section-two" class="anchor-scroll">
+            {% include 'down-arrow-light' %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 image-circles-column">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-4.png?v=1579557371" alt="" class="image-circles four">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-5.png?v=1579557371" alt="" class="image-circles five">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-6.png?v=1579557371" alt="" class="image-circles six">
+    </div>
+  </div>
+</section>
+
+<section class="spacing-top-and-bottom-sm bg-darker" id="home-section-two">
+  <div class="row center-xs middl-xs">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      {% include 'icon-large-ticket-red' %}
+      <p>Buy a ticket</p>
+      <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+      {% include 'icon-table-and-chairs' %}
+      <p>Reserve a spot</p>
+      <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+      {% include 'icon-microphone' %}
+      <p>Enjoy the night</p>
+      <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
+    </div>
+  </div>
+</section>

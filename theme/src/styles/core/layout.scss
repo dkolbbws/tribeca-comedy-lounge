@@ -13,3 +13,113 @@ body,
 html {
   height: 100%;
 }
+
+body {
+  background: $color-dark;
+  color: $color-white;
+}
+
+main {
+  padding-top: 110px;
+}
+
+.bg-darker {
+  background: $color-dark-2;
+}
+
+header, ul,
+main ul {
+  padding-left: 0;
+}
+
+body a {
+  text-decoration: none;
+}
+
+.spacing-top-sm {
+  padding-top: 75px;
+}
+
+.spacing-bottom-sm {
+  padding-bottom: 75px;
+}
+
+.spacing-top-and-bottom-sm {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.spacing-top-md {
+  padding-top: 104px;
+}
+
+.spacing-bottom-md {
+  padding-bottom: 104px;
+}
+
+.spacing-top-and-bottom-md {
+  padding-top: 104px;
+  padding-bottom: 104px;
+}
+
+#home-section-one {
+  padding-bottom: 148px;
+
+  p.small {
+    margin-bottom: 40px;
+  }
+
+  .regular-button {
+    margin-bottom: 25px;
+  }
+
+  [class^=col-] {
+    position: relative;
+    min-height: 100%;
+
+    .image-circles {
+      position: absolute;
+    }
+  }
+
+  .image-circles.one {
+    top: -8vh;
+    left: 8.333vw;
+    z-index: 1;
+  }
+
+  .image-circles.two {
+    top: 17vh;
+    left: 4.333vw;
+    z-index: 1;
+  }
+
+  .image-circles.three {
+    top: 17vh;
+    z-index: 0;
+    left: 42.33%;
+  }
+
+  .image-circles.four {
+    top: -6.5vh;
+    left: 2.33vw;
+    z-index: 1;
+  }
+
+  .image-circles.five {
+    top: 17vh;
+    z-index: 0;
+    left: -28.33%;
+    z-index: 1;
+  }
+
+  .image-circles.six {
+    left: 23.33%;
+    z-index: 0;
+    top: 8vh;
+  }
+}
+
+// #home-sectiont-two {
+
+// }

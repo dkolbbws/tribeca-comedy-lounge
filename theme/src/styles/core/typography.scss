@@ -3,10 +3,37 @@ html {
 }
 
 body {
-  font-family: $font-body;
+  // font-family: $font-body;
+  font-family: $fm;
   font-weight: $font-body-weight;
   font-style: $font-body-style;
-  font-size: 1.6rem;
+  font-size: 16px;
+  color: $color-white;
+}
+
+@font-face {
+  font-family: 'Futura-Light', sans-serif;
+  src: url('~/fonts/FuturaLight.woff') format("opentype");
+}
+
+@font-face {
+  font-family: 'Futura-Medium', sans-serif;
+  src: url('~/fonts/Futura-Medium.woff');
+}
+
+@font-face {
+  font-family: 'Futura-Bold', sans-serif;
+  src: url('~/fonts/Futura_Bold.woff') format("opentype");
+}
+
+@font-face {
+  font-family: 'Helectiva-Neue-Cyr-Medium', sans-serif;
+  src: url('~/fonts/HelveticaNeueCyr-Medium.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'Helectiva-Neue-Cyr-Roman', sans-serif;
+  src: url('~/fonts/HelveticaNeueCyr-Roman.otf') format("opentype");
 }
 
 h1,
@@ -15,7 +42,62 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-heading;
+  // font-family: $font-heading;
+  font-family: $fm;
+}
+
+h1 {
+  // font-size: 5.625em; // 90
+  font-size: 4.8em;
+  line-height: 1.25em;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+
+h2 {
+  font-size: 3.125em; // 50
+}
+
+h3 {
+  font-size: 1.875em; // 30
+}
+
+h4 {
+  font-size: 1.625; // 26
+}
+
+h5 {
+  font-size: 1.375em; // 22
+}
+
+h6 {
+  font-size: 1.25em; // 20
+}
+
+.custom-60 {
+  font-size: 3.75em; // 60
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.25em;
+}
+
+p.small {
+  font-size: 0.875em; // 14
+  letter-spacing: 0.5px;
+  line-height: 1.6em;
+}
+
+p.xs-small {
+  font-size: 0.8125em;
+  letter-spacing: 0.5px;
+  line-height: 1.6em;
+}
+
+.subtitle-gray {
+  color: $color-gray;
 }
 
 body,

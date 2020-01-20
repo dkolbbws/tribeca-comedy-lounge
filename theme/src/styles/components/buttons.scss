@@ -9,3 +9,89 @@
   user-select: none;
   appearance: none;
 }
+
+.regular-button {
+  background: $color-red;
+  padding: 22.5px 71px;
+
+  @include inline-flex();
+
+  .text {
+    text-transform: uppercase;
+    color: $color-white;
+    font-size: 0.79em;
+    font-family: $fm;
+    padding-left: 12px;
+
+    @include transition(400ms all $cubic);
+  }
+
+  svg {
+    position: relative;
+    top: 0;
+  }
+}
+
+.inline-link-single {
+  position: relative;
+  font-weight: 400;
+  font-family: $fm;
+  overflow-x: hidden;
+
+  @include inline-flex();
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    height: 2px;
+    bottom: -1px;
+
+    @include transition(400ms all $cubic);
+    @include transform(translate(-101%, 0));
+  }
+
+  &:hover::before {
+    @include transform(translate(0, 0));
+  }
+
+  &.red {
+    color: $color-red;
+
+    &::before {
+      background: $color-red;
+    }
+  }
+}
+
+.anchor-scroll {
+  width: 12px;
+  height: 33px;
+  margin: 0 10px;
+  display: inline-block;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: anchorArrowDown 2.2s cubic-bezier(0.76, 0, 0.3, 1) forwards infinite;
+  }
+}
+
+@keyframes anchorArrowDown {
+  0% {
+    @include transform(translate(0, 0));
+  }
+
+  50% {
+    @include transform(translate(0, 34px));
+  }
+
+  100% {
+    @include transform(translate(0, 0));
+  }
+}
