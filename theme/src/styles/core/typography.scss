@@ -44,14 +44,14 @@ h5,
 h6 {
   // font-family: $font-heading;
   font-family: $fm;
+  font-weight: 400;
+  margin-top: 0;
 }
 
 h1 {
   // font-size: 5.625em; // 90
   font-size: 4.8em;
   line-height: 1.25em;
-  font-weight: 400;
-  margin-top: 0;
   margin-bottom: 36px;
 }
 
@@ -91,9 +91,15 @@ p.small {
 }
 
 p.xs-small {
-  font-size: 0.8125em;
+  font-size: 0.8125em; // 13
   letter-spacing: 0.5px;
   line-height: 1.6em;
+}
+
+p.xxs-small {
+  font-size: 0.6875em; // 11
+  line-height: 1.6em;
+  letter-spacing: 0.5px;
 }
 
 .subtitle-gray {

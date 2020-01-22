@@ -17,10 +17,15 @@ html {
 body {
   background: $color-dark;
   color: $color-white;
+  overflow-x: hidden;
 }
 
 main {
   padding-top: 110px;
+}
+
+:root {
+  --color-main-background: $color-dark;
 }
 
 .bg-darker {
@@ -36,17 +41,31 @@ body a {
   text-decoration: none;
 }
 
-.spacing-top-sm {
+// Spacings
+.spacing-top-xs {
   padding-top: 75px;
+}
+
+.spacing-bottom-xs {
+  padding-bottom: 75px;
+}
+
+.spacing-top-and-bottom-xs {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.spacing-top-sm {
+  padding-top: 90px;
 }
 
 .spacing-bottom-sm {
-  padding-bottom: 75px;
+  padding-bottom: 90px;
 }
 
 .spacing-top-and-bottom-sm {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 .spacing-top-md {
@@ -62,6 +81,7 @@ body a {
   padding-bottom: 104px;
 }
 
+// Home
 #home-section-one {
   padding-bottom: 148px;
 
@@ -120,6 +140,126 @@ body a {
   }
 }
 
-// #home-sectiont-two {
+.icon-set-one {
+  svg {
+    margin-bottom: 35px;
+    min-height: 47px;
+  }
 
-// }
+  p {
+    margin-bottom: 1.125em;
+  }
+
+  p.xs-small {
+    color: $color-gray;
+    max-width: 75%;
+    margin: 0 auto;
+  }
+}
+
+.schedule-list {
+  margin-bottom: 50px;
+
+  [class^=col-] {
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    border-top: 1px solid $color-gray-border;
+    border-bottom: 1px solid $color-gray-border;
+    border-left: 1px solid $color-gray-border;
+    position: relative;
+
+    @include transition(400ms all $cubic);
+
+    &:last-of-type {
+      border-right: 1px solid $color-gray-border;
+    }
+
+    &:hover .regular-button .inner-wrapper {
+      @include transform(translate(0, -100%));
+    }
+
+    &.non-active {
+      opacity: 0.4;
+    }
+
+    .top {
+      padding: 55px 50px;
+
+      svg {
+        margin-bottom: 30px;
+      }
+    }
+
+    h3 {
+      margin-bottom: 13px;
+    }
+
+    h5 {
+      margin-bottom: 20px;
+    }
+
+    .xxs-small {
+      margin-bottom: 0;
+    }
+
+    img {
+      margin-top: 55px;
+      margin-bottom: 20px;
+    }
+
+    .subtitle-gray {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .regular-button {
+    background: transparent;
+    padding: 0;
+
+    .inner-wrapper {
+      background: $color-red;
+      height: 62px;
+      width: 101%;
+      left: -1px;
+      top: 100%;
+      padding: 16px 25px;
+      position: relative;
+      bottom: 0;
+      
+      @include justify-content(center);
+      @include align-items(center);
+      @include flexbox();
+      @include transition(400ms all $cubic);
+      @include transform(translate(0, 11%));
+    }
+  }
+}
+
+.google-map {
+  padding: 30vh;
+}
+
+@media all and (min-width: 768px) {
+  .icon-set-one {
+    [class^=col-] {
+      position: relative;
+  
+      &:first-of-type::before,
+      &:nth-of-type(2)::before {
+        position: absolute;
+        content: "";
+        width: 37px;
+        height: 10px;
+        background: url('../assets/arrows/icon-arrow-right-red.svg') no-repeat center center;
+        background-size: contain;
+        top: 0;
+        bottom: 0;
+        display: block;
+        margin: auto;
+        right: -18.5px;
+      }
+    }
+  }
+} // End 768 Min 

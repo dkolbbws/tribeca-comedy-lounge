@@ -31,22 +31,124 @@
   </div>
 </section>
 
-<section class="spacing-top-and-bottom-sm bg-darker" id="home-section-two">
-  <div class="row center-xs middl-xs">
+<section class="spacing-top-and-bottom-xs bg-darker" id="home-section-two">
+  <div class="row center-xs middle-xs icon-set-one">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
       {% include 'icon-large-ticket-red' %}
       <p>Buy a ticket</p>
       <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
       {% include 'icon-table-and-chairs' %}
       <p>Reserve a spot</p>
       <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
       {% include 'icon-microphone' %}
       <p>Enjoy the night</p>
       <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
+    </div>
+  </div>
+</section>
+
+<section class="spacing-top-sm" id="home-section-three">
+  <div class="row center-xs">
+    <div class="col-xs-12">
+      <h2>Upcoming shows</h2>
+    </div>
+  </div>
+  <div class="row center-xs">
+    {%- comment -%}
+      Style holder for shows - can they be a blog type or product?
+    {%- endcomment -%}
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+      <div class="row schedule-list">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-1">
+          <div class="top">
+            {% include 'icon-calendar-red' %}
+            <h3>Jan 18</h3>
+            <p class="xxs-small">20:00 - 22:00</p>
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Carmen_Lynch.png?v=1579641678" alt="Carmen Lynch">
+            <h5>Carmen Lynch</h5>
+            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
+          </div>
+          <div class="bws-button-wrapper">
+            <a href="/page/schedule" class="bws-button regular-button absolute-link">
+              <div class="inner-wrapper">
+                {% include 'icon-ticket-light' %}
+                <span class="text">make a reservation</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-2">
+          <div class="top">
+            {% include 'icon-calendar-red' %}
+            <h3>Jan 22</h3>
+            <p class="xxs-small">20:00 - 22:00</p>
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Sara_Schaefer.png?v=1579641687" alt="Carmen Lynch">
+            <h5>Sara Schaefer</h5>
+            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
+          </div>
+          <div class="bws-button-wrapper">
+            <a href="/page/schedule" class="bws-button regular-button absolute-link">
+              <div class="inner-wrapper">
+                {% include 'icon-ticket-light' %}
+                <span class="text">make a reservation</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-3">
+          <div class="top">
+            {% include 'icon-calendar-red' %}
+            <h3>Feb 08</h3>
+            <p class="xxs-small">20:00 - 22:00</p>
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Jason_Scoop.png?v=1579641687" alt="Carmen Lynch">
+            <h5>Jason Scoop</h5>
+            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
+          </div>
+          <div class="bws-button-wrapper">
+            <a href="/page/schedule" class="bws-button regular-button absolute-link">
+              <div class="inner-wrapper">
+                {% include 'icon-ticket-light' %}
+                <span class="text">make a reservation</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-4">
+          <div class="top">
+            {% include 'icon-calendar-red' %}
+            <h3>Feb 12</h3>
+            <p class="xxs-small">20:00 - 22:00</p>
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Dan_Germain.png?v=1579641687" alt="Carmen Lynch">
+            <h5>Dan Germain</h5>
+            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
+          </div>
+          <div class="bws-button-wrapper">
+            <a href="/page/schedule" class="bws-button regular-button absolute-link">
+              <div class="inner-wrapper">
+                {% include 'icon-ticket-light' %}
+                <span class="text">make a reservation</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="bws-button-wrapper">
+      <a href="/pages/schedule" class="underline-button-double red">More Shows</a>
+    </div>
+  </div>
+</section>
+
+<section class="spacing-top-sm" id="home-section-four">
+  <div class="row">
+    <div class="col-lg-5 col-lg-offset- col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <div class="google-map" id="home-map"></div>
     </div>
   </div>
 </section>
