@@ -35,6 +35,7 @@ main {
 header, ul,
 main ul {
   padding-left: 0;
+  list-style: none;
 }
 
 body a {
@@ -239,6 +240,43 @@ body a {
 
 .google-map {
   padding: 30vh;
+}
+
+.icon-list {
+  li {
+    padding: 18px 36px;
+    border-bottom: 1px solid $color-gray-border;
+
+    @include flexbox();
+    @include flex-direction(row);
+    // @include justify-content(center);
+    // @include align-items(center);
+
+    &:last-of-type {
+      border: none;
+    }
+
+    p {
+      margin-bottom: 0;
+      padding-left: 36px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+#home-section-four .icon-list img {
+  width: auto;
+  max-height: 24px;
+}
+
+@media all and (min-width: 1024px) {
+  .remove-side-padding-desktop > [class^=col-] {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @media all and (min-width: 768px) {
