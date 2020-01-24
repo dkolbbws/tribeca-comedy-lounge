@@ -4,7 +4,8 @@ html {
 
 body {
   // font-family: $font-body;
-  font-family: $fm;
+  // font-family: $fm;
+  font-family: $fl;
   font-weight: $font-body-weight;
   font-style: $font-body-style;
   font-size: 16px;
@@ -81,7 +82,10 @@ h6 {
 
 p {
   margin-top: 0;
+  font-size: 1em;
+  line-height: 1.6em;
   margin-bottom: 1.25em;
+  font-family: $fl;
 }
 
 p.small {

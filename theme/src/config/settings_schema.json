@@ -156,5 +156,30 @@
         "info": "Will be scaled down to 32 x 32px"
       }
     ]
+  },
+  {
+    "name": "General Contact",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_location_address",
+        "label": "Address"
+      },
+      {
+        "type": "text",
+        "id": "contact_general_email",
+        "label": "General Email"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_display",
+        "label": "Disaply Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_tel",
+        "label": "Regular Phone (000) 000-0000"
+      }
+    ]
   }
 ]
