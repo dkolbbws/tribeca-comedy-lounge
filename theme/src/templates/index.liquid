@@ -148,37 +148,196 @@
 <section class="spacing-top-and-bottom-sm" id="home-section-four">
   <div class="row middle-xs remove-side-padding-desktop">
     <div class="col-lg-6 col-lg-offset- col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-      <div class="google-map" id="home-map"></div>
+      <div class="map-wrapper">
+        <div class="google-map" id="home-map" style="position: absolute;"></div>
+      </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
       <ul class="icon-list">
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/a-c-train.png?v=1579711393" alt="a and c trains"></span>
+          <span class="col-xs-3">
+            {% include 'icon-a-c-trains' %}
+          </span>
           <p class="small col-xs-9">A,C to Chambers Street</p>
         </li>
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/e-train.png?v=1579711393" alt="e train"></span>
+          <span class="col-xs-3">
+            {% include 'icon-e-train' %}
+          </span>
           <p class="small col-xs-9">E to World Trade</p>
         </li>
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/2-3-train.png?v=1579711393" alt="2 and 3 trains"></span>
+          <span class="col-xs-3">
+            {% include 'icon-2-3-trains' %}
+          </span>
           <p class="small col-xs-9">E to World Trade</p>
         </li>
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/4-5-6-train.png?v=1579711393" alt="4 5 and 6 trains"></span>
+          <span class="col-xs-3">
+            {% include 'icon-4-5-6-trains' %}
+          </span>
           <p class="small col-xs-9">4,5,6 to Brooklyn Bridge/City Hall</p>
         </li>
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/j-z-train.png?v=1579711394" alt="j and z trains"></span>
+          <span class="col-xs-3">
+            {% include 'icon-j-z-trains' %}
+          </span>
           <p class="small col-xs-9">J,Z to Chamber Street</p>
         </li>
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/r-train.png?v=1579711393" alt="r train"></span>
+          <span class="col-xs-3">
+            {% include 'icon-r-train' %}
+          </span>
           <p class="small col-xs-9">R to City Hall</p>
         </li>
         <li class="row middle-xs">
-          <span class="col-xs-3"><img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/path-train.png?v=1579711393" alt="path train"></span>
+          <span class="col-xs-3">
+            {% include 'path-train' %}
+          </span>
           <p class="small col-xs-9">Path to World Trade Center</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="spacing-top-and-bottom-sm" id="home-section-five">
+  <div class="row middle-xs">
+    <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <div class="row center-xs">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-2.png?v=1579729358" alt="pizza" class="col-xs-10">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-1.png?v=1579729358" alt="steak and greens" class="col-xs-5">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-3.png?v=1579729358" alt="potatoes" class="col-xs-4">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-4.png?v=1579729357" alt="garlic bread in sauce" class="col-xs-4">
+      </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-13 col-xs-offset-0">
+      <h2>Food & Drinks</h2>
+      <p class="small">It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience? At most comedy clubs, food is at best an afterthought (and often as laughable as anything you’ll hear from the stage).</p>
+      <div class="bws-button-wrapper">
+        <a href="/page/schedule" class="bws-button icon-button red">
+          {% include 'icon-pdf' %}
+          <span class="text">buy tickets</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spacing-top-and-bottom-sm" id="home-section-six">
+  <div class="row center-xs">
+    <div class="col-xs-12">
+      <h2>Commedians</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+      <ul class="row center-xs middle-xs comedian-list">
+        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <div class="inner-wrapper">
+            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/dan_st_germain.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <div class="content">
+              <a href="#" class="absolute-link"></a>
+              {% include 'icon-single-quote' %}
+              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
+              {% include 'icon-arrow-right-white' %}
+            </div>
+            <p class="large">Dan St. Germain</p>
+          </div>
+        </li>
+        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <div class="inner-wrapper">
+            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/jason_scoop.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <a href="#" class="absolute-link"></a>
+            <div class="content">
+              {% include 'icon-single-quote' %}
+              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
+              {% include 'icon-arrow-right-white' %}
+            </div>
+            <p class="large">Jason Scoop</p>
+          </div>
+        </li>
+        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <div class="inner-wrapper">
+            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/carmen_lynch.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <a href="#" class="absolute-link"></a>
+            <div class="content">
+              {% include 'icon-single-quote' %}
+              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
+              {% include 'icon-arrow-right-white' %}
+            </div>
+            <p class="large">Carmen Lynch</p>
+          </div>
+        </li>
+        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <div class="inner-wrapper">
+            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/shang_wong.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <a href="#" class="absolute-link"></a>
+            <div class="content">
+              {% include 'icon-single-quote' %}
+              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
+              {% include 'icon-arrow-right-white' %}
+            </div>
+            <p class="large">Shang Wong</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="bws-button-wrapper">
+      <a href="/pages/comedians" class="underline-button-double red">All commedians</a>
+    </div>
+  </div>
+</section>
+  
+<section class="spcing-top-and-bottom-sm" id="home-sections-seven">
+  <div class="row center-xs">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 image-cta-one" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/audience.jpg?v=1579735005') no-repeat center center; background-size: cover;">
+      <p class="custom-60">Enjoy a great night</p>
+      <div class="row center-xs">
+        <p class="col-lg-4 col-md-4 col-sm-4 col-xs-8">Classy, spacious comedy club with an upscale Italian menu, including pizza & cocktails.</p>
+      </div>
+      <div class="bws-button-wrapper">
+        <a href="/page/schedule" class="bws-button regular-button">
+          {% include 'icon-ticket-light' %}
+          <span class="text">buy tickets</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spacing-top-and-bottom-sm" id="home-section-eight">
+  <div class="row center-xs">
+    <h2>Testimonials</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+      <ul class="row center-xs top-xs testimonial-list">
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="inner-wrapper">
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/mary_s.png?v=1579795871" alt="Mary S">
+            <p class="large">Mary S.</p>
+            {% include 'icon-five-stars' %}
+            <p class="small subtitle-gray">Awesome time !! Comedians are hilarious !! And the pizza tastes amazing. Definitely a great experience !</p>
+          </div>
+        </li>
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="inner-wrapper">
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/edyrelis_v.png?v=1579795871" alt="Edyrelis V">
+            <p class="large">Edyrelis V.</p>
+            {% include 'icon-five-stars' %}
+            <p class="small subtitle-gray">Nice atmosphere and the food was delicious. I really enjoyed the standup as well!</p>
+          </div>
+        </li>
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="inner-wrapper">
+            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/mary_s.png?v=1579795871" alt="Mary S">
+            <p class="large">Mary S.</p>
+            {% include 'icon-five-stars' %}
+            <p class="small subtitle-gray">Tribeca Comedy Lounge was our first official NY comedy club experience and it did not disappoint. Adam Strauss and Vincent James made me die from laughter...I would definitely go back and recommend.</p>
+          </div>
         </li>
       </ul>
     </div>

@@ -63,6 +63,14 @@
       background: $color-red;
     }
   }
+
+  &.white {
+    color: $color-white;
+
+    &::before {
+      background: $color-white;
+    }
+  }
 }
 
 .anchor-scroll {
@@ -96,12 +104,16 @@
   }
 }
 
-.underline-button-double {
+.underline-button-double,
+.icon-button .text {
   position: relative;
-  overflow: hidden;
   text-transform: uppercase;
   font-size: 0.6875em;
   line-height: 1.85em;
+}
+
+.underline-button-double {
+  overflow: hidden;
 
   @include inline-flex();
 
@@ -148,6 +160,29 @@
     &::after {
       background: $color-red;
     }
+  }
+
+  &.white {
+    color: $color-white;
+
+    &::before,
+    &::after {
+      background: $color-white;
+    }
+  }
+}
+
+.icon-button {
+  padding: 5px 0;
+
+  @include inline-flex();
+
+  &.red .text {
+    color: $color-red;
+  }
+
+  .text {
+    margin-left: 14px;
   }
 }
 
