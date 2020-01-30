@@ -73,7 +73,7 @@ line-height: 58px;
 
 @font-face {
   font-family: 'Futura-Light', sans-serif;
-  src: url('~/fonts/FuturaLight.woff') format("opentype");
+  src: url('~/fonts/FuturaLight.woff') format("woff");
 }
 
 @font-face {
@@ -83,17 +83,13 @@ line-height: 58px;
 
 @font-face {
   font-family: 'Futura-Bold', sans-serif;
-  src: url('~/fonts/Futura_Bold.woff') format("opentype");
+  src: url('~/fonts/Futura_Bold.woff') format("woff");
 }
 
-@font-face {
-  font-family: 'Helectiva-Neue-Cyr-Medium', sans-serif;
-  src: url('~/fonts/HelveticaNeueCyr-Medium.otf') format("opentype");
-}
 
 @font-face {
-  font-family: 'Helectiva-Neue-Cyr-Roman', sans-serif;
-  src: url('~/fonts/HelveticaNeueCyr-Roman.otf') format("opentype");
+  font-family: 'Helio', sans-serif;
+  src: url('~/fonts/Helio.ttf') format("truetype");
 }
 
 // @font-face {
@@ -116,6 +112,7 @@ h5,
 h6 {
   // font-family: $font-heading;
   font-family: $fm;
+  //font-family: 'Helio';
   font-weight: 400;
   margin-top: 0;
 }

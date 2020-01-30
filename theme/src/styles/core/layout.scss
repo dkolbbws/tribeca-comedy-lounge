@@ -3,6 +3,11 @@ html {
   box-sizing: border-box;
 }
 
+//Hide preview bar
+#preview-bar-iframe {
+  display: none;
+}
+
 *,
 *::before,
 *::after {
