@@ -12,7 +12,10 @@ module.exports = {
       alias: {
         jquery: path.resolve('./node_modules/jquery'),
         'lodash-es': path.resolve('./node_modules/lodash-es'),
+        'fonts': path.resolve('./src/assets/fonts'),
+        'images': path.resolve('./src/assets/images'),
       },
     },
   },
 };
+

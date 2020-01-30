@@ -63,67 +63,32 @@
     {%- endcomment -%}
     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
       <div class="row schedule-list">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-1">
+        {% if product.metafields.custom_fields["comedians"] != blank %}
+
+          {% assign separator = "|###|" %}
+          {% assign name_array = product.metafields.custom_fields["name"] | split: separator %}
+          {% assign avatar_array = product.metafields.custom_fields["avatar"] | split: separator %}
+          {% assign fc_keys = product.metafields.custom_fields["comedians"] | split: "," %}
+          {% for i in fc_keys %}
+            {% assign index = i | plus: 0 %}
+            <div class="fc-item fc-item-- fc-index--{{ index }}">
+              <div class="fc-field field__name">
+                {{ name_array[index] }}
+              </div>
+              <div class="fc-field field__avatar">
+                {{ avatar_array[index] }}
+              </div>
+            </div>
+          {% endfor %}
+          
+        {% endif %}
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-1">
           <div class="top">
             {% include 'icon-calendar-red' %}
             <h3>Jan 18</h3>
             <p class="xxs-small">20:00 - 22:00</p>
             <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Carmen_Lynch.png?v=1579641678" alt="Carmen Lynch">
             <h5>Carmen Lynch</h5>
-            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
-          </div>
-          <div class="bws-button-wrapper">
-            <a href="/page/schedule" class="bws-button regular-button absolute-link">
-              <div class="inner-wrapper">
-                {% include 'icon-ticket-light' %}
-                <span class="text">make a reservation</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-2">
-          <div class="top">
-            {% include 'icon-calendar-red' %}
-            <h3>Jan 22</h3>
-            <p class="xxs-small">20:00 - 22:00</p>
-            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Sara_Schaefer.png?v=1579641687" alt="Carmen Lynch">
-            <h5>Sara Schaefer</h5>
-            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
-          </div>
-          <div class="bws-button-wrapper">
-            <a href="/page/schedule" class="bws-button regular-button absolute-link">
-              <div class="inner-wrapper">
-                {% include 'icon-ticket-light' %}
-                <span class="text">make a reservation</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-3">
-          <div class="top">
-            {% include 'icon-calendar-red' %}
-            <h3>Feb 08</h3>
-            <p class="xxs-small">20:00 - 22:00</p>
-            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Jason_Scoop.png?v=1579641687" alt="Carmen Lynch">
-            <h5>Jason Scoop</h5>
-            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
-          </div>
-          <div class="bws-button-wrapper">
-            <a href="/page/schedule" class="bws-button regular-button absolute-link">
-              <div class="inner-wrapper">
-                {% include 'icon-ticket-light' %}
-                <span class="text">make a reservation</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="schedule-item-4">
-          <div class="top">
-            {% include 'icon-calendar-red' %}
-            <h3>Feb 12</h3>
-            <p class="xxs-small">20:00 - 22:00</p>
-            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Dan_Germain.png?v=1579641687" alt="Carmen Lynch">
-            <h5>Dan Germain</h5>
             <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
           </div>
           <div class="bws-button-wrapper">
