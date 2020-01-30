@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,700&display=swap');
+
 html {
   font-size: 62.5%;
 }
@@ -11,6 +13,63 @@ body {
   font-size: 16px;
   color: $color-white;
 }
+
+/* 
+font-family: Proxima Nova;
+font-style: normal;
+font-weight: 500;
+
+h1 - Barlow
+font-size: 60px;
+line-height: 74px;
+  line-height: 72px;
+
+Barlow
+font-size: 110px;
+line-height: 132px;
+
+Barlow
+font-size: 24px;
+line-height: 34px;
+
+font-family: Barlow;
+font-size: 80px;
+line-height: 80px;
+
+Proxima Nova
+font-size: 14px;
+line-height: 14px;
+
+font-family: Proxima Nova;
+font-size: 12px;
+line-height: 12px;
+
+comedians Barlow;
+font-size: 40px;
+line-height: 26px;
+
+proxima nova
+font-size: 16px;
+line-height: 24px;
+
+font-family: Barlow;
+font-size: 110px;
+line-height: 132px;
+
+font-family: Proxima Nova;
+font-size: 14px;
+line-height: 30px;
+
+font-family: Proxima Nova;
+font-size: 14px;
+line-height: 21px;
+
+font-family: Proxima Nova;
+font-size: 14px;
+line-height: 58px;
+*/
+
+
 
 @font-face {
   font-family: 'Futura-Light', sans-serif;
@@ -37,6 +96,18 @@ body {
   src: url('~/fonts/HelveticaNeueCyr-Roman.otf') format("opentype");
 }
 
+// @font-face {
+//   font-family: 'Helio';
+//   src: url('~/fonts/Helio.eot?#iefix') format('embedded-opentype'), url('~/fonts/Helio.woff') format('woff'), url('~/fonts/Helio.ttf')  format('truetype'),  url('~/fonts/Helio.svg#Helio') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+@font-face {
+  font-family: 'Proxima Nova Regular', sans-serif;
+  src: url('~/fonts/Proxima_Nova_Regular.woff');
+}
+
 h1,
 h2,
 h3,
@@ -51,9 +122,14 @@ h6 {
 
 h1 {
   // font-size: 5.625em; // 90
-  font-size: 4.8em;
-  line-height: 1.25em;
+  // font-size: 4.8em;
+  font-size: 3.75em; // 60px
+  line-height: 1.233em; // 74px
+  // line-height: 1.25em;
   margin-bottom: 36px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -78,6 +154,11 @@ h6 {
 
 .custom-60 {
   font-size: 3.75em; // 60
+}
+
+.font-helio {
+  font-family: 'Helio', sans-serif;
+  font-weight: 400;
 }
 
 p {
