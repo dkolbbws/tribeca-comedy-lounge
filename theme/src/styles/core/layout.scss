@@ -87,6 +87,28 @@ body a {
   padding-bottom: 104px;
 }
 
+[class*=behind-red] {
+  position: relative;
+  z-index: 2;
+  
+  svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+}
+
+.behind-red-one svg {
+  bottom: 0;
+  z-index: -1;
+}
+
+.behind-red-two svg {
+  bottom: 40%;
+  z-index: 1;
+  left: -9px;
+}
+
 // Home
 #home-section-one {
   padding-bottom: 148px;
@@ -109,40 +131,48 @@ body a {
   }
 
   .image-circles.one {
-    top: -8vh;
-    left: 8.333vw;
+    top: -5.5vh;
+    left: 5.67vw;
     z-index: 1;
   }
 
   .image-circles.two {
-    top: 17vh;
+    top: 26vh;
     left: 4.333vw;
     z-index: 1;
   }
 
   .image-circles.three {
-    top: 17vh;
+    top: 28vh;
     z-index: 0;
-    left: 42.33%;
+    left: 12vw;
   }
 
   .image-circles.four {
-    top: -6.5vh;
-    left: 2.33vw;
+    top: -5.5vh;
+    left: -4.67vw;
     z-index: 1;
   }
 
   .image-circles.five {
-    top: 17vh;
     z-index: 0;
     left: -28.33%;
     z-index: 1;
+    top: 24vh;
   }
 
   .image-circles.six {
     left: 23.33%;
     z-index: 0;
-    top: 8vh;
+    top: 16vh;
+  }
+}
+
+#home-section-two {
+  .custom-110 {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
   }
 }
 
@@ -193,7 +223,17 @@ body a {
       padding: 55px 50px;
 
       svg {
-        margin-bottom: 30px;
+        // margin-bottom: 30px;
+      }
+    }
+
+    .date li {
+      &:first-of-type {
+        margin-right: 15px;
+      }
+
+      p {
+        margin-bottom: 0;
       }
     }
 
@@ -203,11 +243,13 @@ body a {
 
     h5 {
       margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    .xxs-small {
-      margin-bottom: 0;
-    }
+    // .xxs-small {
+    //   margin-bottom: 0;
+    // }
 
     img {
       margin-top: 55px;
@@ -517,25 +559,25 @@ footer {
   }
 }
 
-@media all and (min-width: 768px) {
-  .icon-set-one {
-    [class^=col-] {
-      position: relative;
+// @media all and (min-width: 768px) {
+//   .icon-set-one {
+//     [class^=col-] {
+//       position: relative;
   
-      &:first-of-type::before,
-      &:nth-of-type(2)::before {
-        position: absolute;
-        content: "";
-        width: 37px;
-        height: 10px;
-        background: url('../assets/arrows/icon-arrow-right-red.svg') no-repeat center center;
-        background-size: contain;
-        top: 0;
-        bottom: 0;
-        display: block;
-        margin: auto;
-        right: -18.5px;
-      }
-    }
-  }
-} // End 768 Min 
+//       &:first-of-type::before,
+//       &:nth-of-type(2)::before {
+//         position: absolute;
+//         content: "";
+//         width: 37px;
+//         height: 10px;
+//         background: url('../assets/arrows/icon-arrow-right-red.svg') no-repeat center center;
+//         background-size: contain;
+//         top: 0;
+//         bottom: 0;
+//         display: block;
+//         margin: auto;
+//         right: -18.5px;
+//       }
+//     }
+//   }
+// } // End 768 Min 

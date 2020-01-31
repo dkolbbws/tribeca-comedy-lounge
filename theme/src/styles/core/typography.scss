@@ -86,23 +86,73 @@ line-height: 58px;
   src: url('~/fonts/Futura_Bold.woff') format("woff");
 }
 
+// @font-face {
+//   font-family: 'Barlow-Regular', sans-serif;
+//   src: url('~/fonts/Barlow-Regular.ttf') format("ttf");
+// }
+
+// @font-face {
+//   font-family: 'Barlow-Medium', sans-serif;
+//   src: url('~/fonts/Barlow-Medium.ttf') format("ttf");
+// }
+
+// @font-face {
+//   font-family: 'Barlow-Bold', sans-serif;
+//   src: url('~/fonts/Barlow-Bold.ttf') format("ttf");
+// }
 
 @font-face {
   font-family: 'Helio', sans-serif;
   src: url('~/fonts/Helio.ttf') format("truetype");
 }
 
-// @font-face {
-//   font-family: 'Helio';
-//   src: url('~/fonts/Helio.eot?#iefix') format('embedded-opentype'), url('~/fonts/Helio.woff') format('woff'), url('~/fonts/Helio.ttf')  format('truetype'),  url('~/fonts/Helio.svg#Helio') format('svg');
-//   font-weight: normal;
-//   font-style: normal;
-// }
+@font-face {
+  font-family: 'Sign-Painter-Regular';
+  src: url('~/fonts/Sign_Painter_Regular.ttf');
+}
 
 @font-face {
-  font-family: 'Proxima Nova Regular', sans-serif;
-  src: url('~/fonts/Proxima_Nova_Regular.woff');
+  font-family: 'Cookie', cursive;
+  src: url('~/fonts/Cookie-Regular.ttf');
 }
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('~/fonts/Proxima Nova Alt Regular-webfont.eot');
+  src: url('~/fonts/Proxima Nova Alt Regular-webfont.eot?#iefix') format('embedded-opentype'),
+      //  url('~/fonts/Proxima Nova Alt Regular-webfont.woff2') format('woff2'),
+      //  url('~/fonts/Proxima Nova Alt Regular-webfont.woff') format('woff'),
+       url('~/fonts/Proxima Nova Alt Regular-webfont.ttf') format('truetype'),
+       url('~/fonts/Proxima Nova Alt Regular-webfont.svg#proxima_nova_altregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// @font-face {
+//   font-family: 'proxima_nova_semibold';
+//   src: url('~/fonts/Proxima Nova Semibold-webfont.eot');
+//   src: url('~/fonts/Proxima Nova Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+//        url('~/fonts/Proxima Nova Semibold-webfont.woff2') format('woff2'),
+//        url('~/fonts/Proxima Nova Semibold-webfont.woff') format('woff'),
+//        url('~/fonts/Proxima Nova Semibold-webfont.ttf') format('truetype'),
+//        url('~/fonts/Proxima Nova Semibold-webfont.svg#proxima_nova_ltsemibold') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+
+// }
+
+// @font-face {
+//   font-family: 'proxima_nova_altbold';
+//   src: url('~/fonts/Proxima Nova Alt Bold-webfont.eot');
+//   src: url('~/fonts/Proxima Nova Alt Bold-webfont.eot?#iefix') format('embedded-opentype'),
+//        url('~/fonts/Proxima Nova Alt Bold-webfont.woff2') format('woff2'),
+//        url('~/fonts/Proxima Nova Alt Bold-webfont.woff') format('woff'),
+//        url('~/fonts/Proxima Nova Alt Bold-webfont.ttf') format('truetype'),
+//        url('~/fonts/Proxima Nova Alt Bold-webfont.svg#proxima_nova_altbold') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+
+// }
 
 h1,
 h2,
@@ -130,7 +180,8 @@ h1 {
 }
 
 h2 {
-  font-size: 3.125em; // 50
+  // font-size: 3.125em; // 50
+  font-size: 3.75em; // 60
 }
 
 h3 {
@@ -142,7 +193,7 @@ h4 {
 }
 
 h5 {
-  font-size: 1.375em; // 22
+  font-size: 1.5em; // 24
 }
 
 h6 {
@@ -151,11 +202,24 @@ h6 {
 
 .custom-60 {
   font-size: 3.75em; // 60
+  margin-bottom: 10px;
+}
+
+.custom-110 {
+  // font-size: 6.875em; // 110px
+  // line-height: 8.25em; // 132px
+  font-size: 2.1em;
+  line-height: 1.1em;
 }
 
 .font-helio {
-  font-family: 'Helio', sans-serif;
+  font-family: $he;
   font-weight: 400;
+}
+
+.font-barlow {
+  font-family: $br;
+  font-weight: 700;
 }
 
 p {

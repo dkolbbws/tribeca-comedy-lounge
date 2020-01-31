@@ -19,9 +19,13 @@
   .text {
     text-transform: uppercase;
     color: $color-white;
-    font-size: 0.79em;
-    font-family: $fm;
+    // font-size: 0.79em;
+    font-family: $pnr;
     padding-left: 12px;
+    font-weight: 600;
+    font-size: 0.875em; // 14px
+    line-height: 1.875em; // 30px
+    letter-spacing: 0.06em;
 
     @include transition(400ms all $cubic);
   }
@@ -79,6 +83,7 @@
   margin: 0 10px;
   display: inline-block;
   position: relative;
+  margin-top: 50px;
 
   svg {
     position: absolute;

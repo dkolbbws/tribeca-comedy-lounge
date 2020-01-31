@@ -1,69 +1,49 @@
 <section class="spacing-top-md" id="home-section-one">
   <div class="row center-xs">
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 image-circles-column">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 image-circles-column">
       <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-1.png?v=1579557371" alt="" class="image-circles one">
       <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-2.png?v=1579557371" alt="" class="image-circles two">
-      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-3.png?v=1579557371" alt="" class="image-circles three">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/city-image-3.png?v=1580413752" alt="" class="image-circles three">
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
       <p class="custom-60 font-helio">Enjoy!</p>
-      <h1>The Only Comedy Club in Lower Manhattan</h1>
+      <h2>The <span class="behind-red-one">Only Comedy {% include 'behind-red-one.liquid' %} </span> Club in Lower Manhattan</h2>
       <div class="row center-xs">
         <div class="col-lg-7 col-md-7 col-xs-7 col-xs-12">
-          <p class="small subtitle-gray">Classy, spacious comedy club with an upscale Italian menu, including pizza & cocktails.</p>
           <div class="bws-button-wrapper">
             <a href="/page/schedule" class="bws-button regular-button">
-              {% include 'icon-ticket-light' %}
+              {% include 'icon-ticket-2' %}
               <span class="text">buy tickets</span>
             </a>
           </div>
-          <p class="small">Have a ticket? <a href="/pages/reservations" class="inline-link-single red">Make a reservation</a></p>
+          <!-- <p class="small">Have a ticket? <a href="/pages/reservations" class="inline-link-single red">Make a reservation</a></p> -->
           <a href="#home-section-two" class="anchor-scroll">
             {% include 'down-arrow-light' %}
           </a>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 image-circles-column">
-      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-4.png?v=1579557371" alt="" class="image-circles four">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 image-circles-column">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home-image-4.png?v=1580415201" alt="" class="image-circles four">
       <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-5.png?v=1579557371" alt="" class="image-circles five">
-      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-6.png?v=1579557371" alt="" class="image-circles six">
+      <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home-image-6.png?v=1580415201" alt="" class="image-circles six">
     </div>
   </div>
 </section>
 
-<section class="spacing-top-and-bottom-xs bg-darker" id="home-section-two">
-  <div class="row center-xs middle-xs icon-set-one">
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-      {% include 'icon-large-ticket-red' %}
-      <p>Buy a ticket</p>
-      <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-      {% include 'icon-table-and-chairs' %}
-      <p>Reserve a spot</p>
-      <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-      {% include 'icon-microphone' %}
-      <p>Enjoy the night</p>
-      <p class="xs-small">Classy, spacious comedy club with an upscale italian menu.</p>
+<section class="spacing-top-and-bottom-xs" id="home-section-two">
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <h2 class="font-barlow"><span class="custom-110">LAUGH</span> YOUR <span class="behind-red-two font-helio">ASS {% include 'behind-red-two' %}</span> OFF</h2>
     </div>
   </div>
-</section>
-
-<section class="spacing-top-sm" id="home-section-three">
-  <div class="row center-xs">
-    <div class="col-xs-12">
-      <h2>Upcoming shows</h2>
-    </div>
-  </div>
-  <div class="row center-xs">
+  <!-- {% include 'icon-large-ticket-red' %} {% include 'icon-table-and-chairs' %} {% include 'icon-microphone' %} -->
+  <div class="row">
     {%- comment -%}
       Style holder for shows - can they be a blog type or product?
     {%- endcomment -%}
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-      <div class="row schedule-list">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <ul class="row schedule-list">
         {% if product.metafields.custom_fields["comedians"] != blank %}
 
           {% assign separator = "|###|" %}
@@ -83,14 +63,14 @@
           {% endfor %}
           
         {% endif %}
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-1">
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-1">
           <div class="top">
-            {% include 'icon-calendar-red' %}
-            <h3>Jan 18</h3>
-            <p class="xxs-small">20:00 - 22:00</p>
-            <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/Carmen_Lynch.png?v=1579641678" alt="Carmen Lynch">
-            <h5>Carmen Lynch</h5>
-            <p class="xs-small subtitle-gray">Classy, spacious comedy club with an upscale italian menu.</p>
+            <ul class="date row start-xs middle-xs">
+              <li>{% include 'icon-calendar-red' %}</li>
+              <li><p class="small">February 08, 2029</p></li>
+            </ul>
+            <h5>{{ "Gary Vider, Adam Strauss, Sheba Mason, Vincent James" | truncate: 70, " & MORE" }}</h5>
+            <ul class="price-and-location"></ul>
           </div>
           <div class="bws-button-wrapper">
             <a href="/page/schedule" class="bws-button regular-button absolute-link">
@@ -100,8 +80,9 @@
               </div>
             </a>
           </div>
-        </div>
-      </div>
+        </li>
+
+      </ul>
     </div>
   </div>
   <div class="row center-xs">
@@ -110,6 +91,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="spacing-top-and-bottom-sm" id="home-section-four">
   <div class="row middle-xs remove-side-padding-desktop">
