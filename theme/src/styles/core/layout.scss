@@ -8,6 +8,14 @@ html {
   display: none;
 }
 
+.hidden {
+  display: none !important;
+}
+
+em {
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {

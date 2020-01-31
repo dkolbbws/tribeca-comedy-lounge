@@ -61,13 +61,17 @@
             <li>
               <a href="/cart" class="cart">
                 {% include 'icon-bag' %}
-                <span class="cart-count">({{ cart.item_count }})</span>
+                <span class="cart-count">{{ cart.item_count }}</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
   </header>
+
+  {% if template != 'cart' %}
+    {% include 'cart_dropdown' %}
+  {% endif %}
 </section>
 
 {% if section.settings.logo != blank %}

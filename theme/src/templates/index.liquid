@@ -80,14 +80,16 @@
             {% if product.metafields.custom_fields["location"] != blank %}
               {{ product.metafields.custom_fields["location"] }}
             {% endif %}
+
+            <a href="{{ product.url }}">VIEW DETAILS</a>
           </div>
           <div class="bws-button-wrapper">
-            <a href="{{ product.url }}" class="bws-button regular-button absolute-link">
+            <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1">
               <div class="inner-wrapper">
                 {% include 'icon-ticket-light' %}
-                <span class="text">make a reservation</span>
+                <span class="text">ADD TO CART</span>
               </div>
-            </a>
+            </button>
           </div>
         </div>
         {% endfor %}
