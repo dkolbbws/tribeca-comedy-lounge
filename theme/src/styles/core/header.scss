@@ -7,8 +7,26 @@
   z-index: 10;
   // background: $color-dark;
 
+  @include transition(400ms all $cubic);
+
   header > .row {
-    padding: 33px 30px;
+    // padding: 33px 30px;
+    padding: 33px 30px 0;
+  }
+
+  .bws-header {
+    @include transition(400ms all $cubic);
+
+    &.sticky {
+      background: $color-dark;
+      box-shdaow: 0 -16px 27px rgba(255, 255, 255, 0.1);
+
+      @include transform(translate(0, -35px));
+
+      .bws-logo {
+        @include transform(scale(0.6));
+      }
+    }
   }
 }
 
@@ -24,6 +42,12 @@
   &.right-side-navigation {
     @include justify-content(space-between);
   }
+}
+
+.bws-logo {
+  display: inline-block;
+
+  @include transition(400ms all $cubic);
 }
 
 .bws-header a {

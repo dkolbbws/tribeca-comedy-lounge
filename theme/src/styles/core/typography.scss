@@ -111,9 +111,14 @@ line-height: 58px;
   src: url('~/fonts/Sign_Painter_Regular.ttf');
 }
 
+// @font-face {
+//   font-family: 'Cookie', cursive;
+//   src: url('~/fonts/Cookie-Regular.ttf');
+// }
+
 @font-face {
-  font-family: 'Cookie', cursive;
-  src: url('~/fonts/Cookie-Regular.ttf');
+  font-family: 'Helio', cursive;
+  src: url('~/fonts/Helio_free.woff');
 }
 
 @font-face {
@@ -161,7 +166,8 @@ h4,
 h5,
 h6 {
   // font-family: $font-heading;
-  font-family: $fm;
+  // font-family: $fm;
+  font-family: $br;
   //font-family: 'Helio';
   font-weight: 400;
   margin-top: 0;
@@ -182,10 +188,14 @@ h1 {
 h2 {
   // font-size: 3.125em; // 50
   font-size: 3.75em; // 60
+  text-transform: uppercase;
+  font-family: $br;
+  font-weight: 700;
 }
 
 h3 {
-  font-size: 1.875em; // 30
+  // font-size: 1.875em; // 30
+  font-size: 2.5em; // 40
 }
 
 h4 {
@@ -194,6 +204,8 @@ h4 {
 
 h5 {
   font-size: 1.5em; // 24
+  line-height: 1.325em; // 34
+  font-family: $br;
 }
 
 h6 {
@@ -212,6 +224,16 @@ h6 {
   line-height: 1.1em;
 }
 
+.custom-80 {
+  font-size: 5em;
+  line-height: 1em;
+  margin-bottom: 0;
+}
+
+.color-red {
+  color: $color-red;
+}
+
 .font-helio {
   font-family: $he;
   font-weight: 400;
@@ -227,7 +249,12 @@ p {
   font-size: 1em;
   line-height: 1.6em;
   margin-bottom: 1.25em;
-  font-family: $fl;
+  // font-family: $fl;
+  font-family: $pnr;
+}
+
+p.large {
+  font-size: 1.125em;
 }
 
 p.small {

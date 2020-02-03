@@ -1,3 +1,5 @@
+{% assign background_red = '#DB0D15' %}
+
 <section class="spacing-top-md" id="home-section-one">
   <div class="row center-xs">
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 image-circles-column">
@@ -39,63 +41,39 @@
   </div>
   <!-- {% include 'icon-large-ticket-red' %} {% include 'icon-table-and-chairs' %} {% include 'icon-microphone' %} -->
   <div class="row">
-    {%- comment -%}
-      Style holder for shows - can they be a blog type or product?
-    {%- endcomment -%}
-
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
       <ul class="row schedule-list">
-        {% if product.metafields.custom_fields["comedians"] != blank %}
-
-          {% assign separator = "|###|" %}
-          {% assign name_array = product.metafields.custom_fields["name"] | split: separator %}
-          {% assign avatar_array = product.metafields.custom_fields["avatar"] | split: separator %}
-          {% assign fc_keys = product.metafields.custom_fields["comedians"] | split: "," %}
-          {% for i in fc_keys %}
-            {% assign index = i | plus: 0 %}
-            <div class="fc-item fc-item-- fc-index--{{ index }}">
-              <div class="fc-field field__name">
-                {{ name_array[index] }}
-              </div>
-              <div class="fc-field field__avatar">
-                {{ avatar_array[index] }}
-              </div>
-            </div>
-          {% endfor %}
-          
-        {% endif %}
-        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-1">
-          <div class="top">
-            <ul class="date row start-xs middle-xs">
-              <li>{% include 'icon-calendar-red' %}</li>
-              <li><p class="small">February 08, 2029</p></li>
-            </ul>
-            <h5>{{ "Gary Vider, Adam Strauss, Sheba Mason, Vincent James" | truncate: 70, " & MORE" }}</h5>
-            <ul class="price-and-location"></ul>
-
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-      <div class="row schedule-list">
         {% for product in collections.home-featured.products %}
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
+        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
+          <a href="{{ product.url }}" class="absolute-link"></a>
           <div class="top">
-            {% include 'icon-calendar-red' %}    
-
-            {% if product.metafields.custom_fields["date"] != blank %} 
-              <h6>{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</h6>
-            {% endif %}
+            <ul class="date row middle-xs">
+              <li>{% include 'icon-calendar-red' %}</li>
+              <li>
+                {% if product.metafields.custom_fields["date"] != blank %} 
+                  <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                {% endif %}
+              </li>
+            </ul>
 
             <h5>{{ product.title }}</h5>
 
-            {{ product.price | money_without_trailing_zeros }}
+            <ul class="price-and-location row middle-xs">
+              <li>
+                <p>{{ product.price | money_without_trailing_zeros }}</p>
+              </li>
+              <li>
+                {% include 'icon-small-red-pin' %}
+                {% if product.metafields.custom_fields["location"] != blank %}
+                  {{ product.metafields.custom_fields["location"] }}
+                {% endif %}
+              </li>
+            </ul>
 
-            {% if product.metafields.custom_fields["location"] != blank %}
-              {{ product.metafields.custom_fields["location"] }}
-            {% endif %}
-
-            <a href="{{ product.url }}">VIEW DETAILS</a>
+            <a href="{{ product.url }}" class="underline-button-double red">View details</a>
           </div>
           <div class="bws-button-wrapper">
-            <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1">
+            <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button">
               <div class="inner-wrapper">
                 {% include 'icon-ticket-light' %}
                 <span class="text">ADD TO CART</span>
@@ -114,59 +92,62 @@
   </div>
 </section>
 
-
 <section class="spacing-top-and-bottom-sm" id="home-section-four">
+  <div class="row center-xs">
+    <div class="col-xs-12">
+      <h2>Take a subway</h2>
+    </div>
+  </div>
+  
+  <div class="row center-xs middle-xs">
+    <ul class="col-xs-12 subway-list">
+      <li>
+        <p>
+          <a href="#" class="subway-item  active" id="subway-0" data-text="Use E Subway. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">E</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#" class="subway-item" id="subway-1" data-text="Use A, C Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">A C</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#" class="subway-item" id="subway-2" data-text="Use 2 3 Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">2 3</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#" class="subway-item" id="subway-3" data-text="Use 4 5 6 Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">4 5 6</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#" class="subway-item" id="subway-4" data-text="Use J Z Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">J Z</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#" class="subway-item" id="subway-5" data-text="Use R Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">R</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#" class="subway-item" id="subway-6" data-text="Use the Path. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.">Path</a>
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="row center-xs" id="subway-copy">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
+      <p id="subway-station-copy">Use A, C Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
   <div class="row middle-xs remove-side-padding-desktop">
-    <div class="col-lg-6 col-lg-offset- col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+    <div class="col-xs-12">
       <div class="map-wrapper">
         <div class="google-map" id="home-map" style="position: absolute;"></div>
       </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-      <ul class="icon-list">
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'icon-a-c-trains' %}
-          </span>
-          <p class="small col-xs-9">A,C to Chambers Street</p>
-        </li>
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'icon-e-train' %}
-          </span>
-          <p class="small col-xs-9">E to World Trade</p>
-        </li>
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'icon-2-3-trains' %}
-          </span>
-          <p class="small col-xs-9">E to World Trade</p>
-        </li>
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'icon-4-5-6-trains' %}
-          </span>
-          <p class="small col-xs-9">4,5,6 to Brooklyn Bridge/City Hall</p>
-        </li>
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'icon-j-z-trains' %}
-          </span>
-          <p class="small col-xs-9">J,Z to Chamber Street</p>
-        </li>
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'icon-r-train' %}
-          </span>
-          <p class="small col-xs-9">R to City Hall</p>
-        </li>
-        <li class="row middle-xs">
-          <span class="col-xs-3">
-            {% include 'path-train' %}
-          </span>
-          <p class="small col-xs-9">Path to World Trade Center</p>
-        </li>
-      </ul>
     </div>
   </div>
 </section>
@@ -177,17 +158,20 @@
       <div class="row center-xs">
         <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-2.png?v=1579729358" alt="pizza" class="col-xs-10">
         <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-1.png?v=1579729358" alt="steak and greens" class="col-xs-5">
-        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-3.png?v=1579729358" alt="potatoes" class="col-xs-4">
-        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-4.png?v=1579729357" alt="garlic bread in sauce" class="col-xs-4">
+        <!-- <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-3.png?v=1579729358" alt="potatoes" class="col-xs-4"> -->
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home_drinks_3.png?v=1580755478" alt="whiskey drink" class="col-xs-4">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home_drinks_2.png?v=1580755478" alt="fruity drink" class="col-xs-4">
       </div>
     </div>
     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-13 col-xs-offset-0">
-      <h2>Food & Drinks</h2>
-      <p class="small">It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience? At most comedy clubs, food is at best an afterthought (and often as laughable as anything you’ll hear from the stage).</p>
+      <p class="custom-80">Eat<span class="color-red">.</span></p>
+      <p class="custom-80">Drink<span class="color-red">.</span></p>
+      <p class="custom-80 behind-red-two">Drugs<span class="color-red">.</span> {% include 'behind-red-three' %}</p>
+      <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience? At most comedy clubs, food is at best an afterthought (and often as laughable as anything you’ll hear from the stage).</p>
       <div class="bws-button-wrapper">
         <a href="/page/schedule" class="bws-button icon-button red">
           {% include 'icon-pdf' %}
-          <span class="text">buy tickets</span>
+          <span class="text">discover our menu</span>
         </a>
       </div>
     </div>
@@ -197,7 +181,7 @@
 <section class="spacing-top-and-bottom-sm" id="home-section-six">
   <div class="row center-xs">
     <div class="col-xs-12">
-      <h2>Commedians</h2>
+      <h2>The <span class="behind-red-one">fun {% include 'behind-red-four' %}</span> staff</h2>
     </div>
   </div>
   <div class="row">
@@ -205,50 +189,62 @@
       <ul class="row center-xs middle-xs comedian-list">
         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <div class="inner-wrapper">
-            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/dan_st_germain.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <div class="inner-image" style="background: {{ background_red }} url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/dan_st_germain.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <a href="#" class="absolute-link"></a>
             <div class="content">
-              <a href="#" class="absolute-link"></a>
-              {% include 'icon-single-quote' %}
-              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
-              {% include 'icon-arrow-right-white' %}
+              {% include 'icon-comedian-x-white' %}
+              <p class="large">“Praesent quis faucibus diam mauris in leo nibh.”</p>
+              {% include 'icon-arrow-right-red-comeidans' %}
             </div>
-            <p class="large">Dan St. Germain</p>
+            <div class="name">
+              <h3>Dan</h3>
+              <p class="large color-red">St. Germain</p>
+            </div>
           </div>
         </li>
         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <div class="inner-wrapper">
-            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/jason_scoop.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <div class="inner-image" style="background: {{ background_red }} url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/jason_scoop.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
             <a href="#" class="absolute-link"></a>
             <div class="content">
-              {% include 'icon-single-quote' %}
-              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
-              {% include 'icon-arrow-right-white' %}
+              {% include 'icon-comedian-x-white' %}
+              <p class="large">“Praesent quis faucibus diam mauris in leo nibh.”</p>
+              {% include 'icon-arrow-right-red-comeidans' %}
             </div>
-            <p class="large">Jason Scoop</p>
+            <div class="name">
+              <h3>Jason</h3>
+              <p class="large color-red">Scoop</p>
+            </div>
           </div>
         </li>
         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <div class="inner-wrapper">
-            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/carmen_lynch.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <div class="inner-image" style="background: {{ background_red }} url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/carmen_lynch.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
             <a href="#" class="absolute-link"></a>
             <div class="content">
-              {% include 'icon-single-quote' %}
-              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
-              {% include 'icon-arrow-right-white' %}
+              {% include 'icon-comedian-x-white' %}
+              <p class="large">“Praesent quis faucibus diam mauris in leo nibh.”</p>
+              {% include 'icon-arrow-right-red-comeidans' %}
             </div>
-            <p class="large">Carmen Lynch</p>
+            <div class="name">
+              <h3>Carmen</h3>
+              <p class="large color-red">Lynch</p>
+            </div>
           </div>
         </li>
         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <div class="inner-wrapper">
-            <div class="inner-image" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/shang_wong.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
+            <div class="inner-image" style="background: {{ background_red }} url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/shang_wong.jpg?v=1579730903') no-repeat center center; background-size: cover;"></div>
             <a href="#" class="absolute-link"></a>
             <div class="content">
-              {% include 'icon-single-quote' %}
-              <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience?</p>
-              {% include 'icon-arrow-right-white' %}
+              {% include 'icon-comedian-x-white' %}
+              <p class="large">“Praesent quis faucibus diam mauris in leo nibh.”</p>
+              {% include 'icon-arrow-right-red-comeidans' %}
             </div>
-            <p class="large">Shang Wong</p>
+            <div class="name">
+              <h3>Shang</h3>
+              <p class="large color-red">Wong</p>
+            </div>
           </div>
         </li>
       </ul>
@@ -263,14 +259,15 @@
   
 <section class="spcing-top-and-bottom-sm" id="home-sections-seven">
   <div class="row center-xs">
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 image-cta-one" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/audience.jpg?v=1579735005') no-repeat center center; background-size: cover;">
-      <p class="custom-60">Enjoy a great night</p>
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 image-cta-one" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/cta-bg.jpg?v=1580762520') no-repeat center center; background-size: cover;">
+      
+      <h2><span class="custom-110">Enjoy</span><br/> a great night</h2>
       <div class="row center-xs">
         <p class="col-lg-4 col-md-4 col-sm-4 col-xs-8">Classy, spacious comedy club with an upscale Italian menu, including pizza & cocktails.</p>
       </div>
       <div class="bws-button-wrapper">
         <a href="/page/schedule" class="bws-button regular-button">
-          {% include 'icon-ticket-light' %}
+          {% include 'icon-ticket-2' %}
           <span class="text">buy tickets</span>
         </a>
       </div>
@@ -280,7 +277,7 @@
 
 <section class="spacing-top-and-bottom-sm" id="home-section-eight">
   <div class="row center-xs">
-    <h2>Testimonials</h2>
+    <h2>You <span class="behind-red-three">love {% include 'behind-red-five' %}</span> us!</h2>
   </div>
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
@@ -290,7 +287,7 @@
             <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/mary_s.png?v=1579795871" alt="Mary S">
             <p class="large">Mary S.</p>
             {% include 'icon-five-stars' %}
-            <p class="small subtitle-gray">Awesome time !! Comedians are hilarious !! And the pizza tastes amazing. Definitely a great experience !</p>
+            <p class="small">Awesome time !! Comedians are hilarious !! And the pizza tastes amazing. Definitely a great experience !</p>
           </div>
         </li>
         <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -298,7 +295,7 @@
             <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/edyrelis_v.png?v=1579795871" alt="Edyrelis V">
             <p class="large">Edyrelis V.</p>
             {% include 'icon-five-stars' %}
-            <p class="small subtitle-gray">Nice atmosphere and the food was delicious. I really enjoyed the standup as well!</p>
+            <p class="small">Nice atmosphere and the food was delicious. I really enjoyed the standup as well!</p>
           </div>
         </li>
         <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -306,7 +303,7 @@
             <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/mary_s.png?v=1579795871" alt="Mary S">
             <p class="large">Mary S.</p>
             {% include 'icon-five-stars' %}
-            <p class="small subtitle-gray">Tribeca Comedy Lounge was our first official NY comedy club experience and it did not disappoint. Adam Strauss and Vincent James made me die from laughter...I would definitely go back and recommend.</p>
+            <p class="small">Tribeca Comedy Lounge was our first official NY comedy club experience and it did not disappoint. Adam Strauss and Vincent James made me die from laughter...I would definitely go back and recommend.</p>
           </div>
         </li>
       </ul>
