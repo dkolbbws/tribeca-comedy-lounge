@@ -54,3 +54,62 @@ option {
   background-color: $color-error-bg;
   color: $color-body-text;
 }
+
+.control {
+  .plus,
+  .minus {
+    border-left: 1px $color-gray-border solid;
+    border-right: 1px $color-gray-border solid;
+  }
+
+  p {
+    margin-bottom: 1.215em;
+  }
+
+  .plus,
+  .minus,
+  .plus a,
+  .minus a {
+    min-width: 50px;
+
+    svg {
+      pointer-events: none;
+      position: relative;
+    }
+  }
+
+  .minus svg {
+    top: -2px;
+  }
+
+  .qty,
+  .qty a {
+    min-width: 20px;
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+
+  .plus,
+  .minus,
+  .qty {
+    background: $color-dark-2;
+    border-top: 1px $color-gray-border solid;
+    border-bottom: 1px $color-gray-border solid;
+  }
+
+  .plus,
+  .minus,
+  .qty {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+
+    a {
+      color: $color-white;
+      font-family: $pnr;
+      text-align: center;
+      font-size: 0.875em;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,8 +1,165 @@
-<section data-section-id="{{ section.id }}" data-section-type="product">
+<section data-section-id="{{ section.id }}" data-section-type="product" id="product-hero-row" style="background: url('{{ product | img_url: 'x1200' }}') no-repeat center center; background-size: cover;">
 
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
+  <div class="row middle-xs center-xs">
+    <div class="col-xs-12">
+      {% include 'breadcrumbs' %}
+      <ul class="row center-xs middle-xs event-information">
+          {% if product.metafields.custom_fields["date"] != blank %}
+            <li>
+              <ul class="row middle-xs center-xs">
+                <li>{% include 'icon-calendar-red' %}</li>
+                <li>
+                  <p>{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                </li>
+              </ul>
+            </li>
+          {% endif %}
+
+          {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
+            <li>
+              <ul class="row middle-xs center-xs">
+                <li>{% include 'icon-clock' %}</li>
+                <li>
+                  <p>{{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}</p>
+                </li>
+              </ul>
+            </li>
+          {% endif %}
+
+          {% if product.metafields.custom_fields["location"] != blank %}
+            <li>
+              <ul class="row middle-xs center-xs">
+                <li>{% include 'icon-small-red-pin' %}</li>
+                <li>
+                  <p>{{ product.metafields.custom_fields["location"] }}</p>
+                </li>
+              </ul>
+            </li>
+          {% endif %}
+      </ul>
+    </div>
+
+  </div>
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <h1 class="product-title">{{ product.title }}</h1>
+      <div class="bws-button-wrapper">
+        <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="bws-button regular-button red">
+          <div class="inner-wrapper">
+            {% include 'icon-ticket-light' %}
+            <span class="text">ADD TO CART ({{ product.price | money_without_trailing_zeros }})</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="product-details">
+  <div class="row">
+    <div class="col-lg-5 col-lg-offest-2 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+      <h4>Description</h4>
+      {{ product.description }}
+      
+      <h4>Comedians list A</h4>
+      <ul class="event-comedian-list row start-xs middle-xs">
+        
+          {% if product.metafields.custom_fields["comedians"] != blank %}
+            {% assign separator = "|###|" %}
+            {% assign name_array = product.metafields.custom_fields["name"] | split: separator %}
+            {% assign avatar_array = product.metafields.custom_fields["avatar"] | split: separator %}
+            {% assign fc_keys = product.metafields.custom_fields["comedians"] | split: "," %}
+            {% for i in fc_keys %}
+            {% assign index = i | plus: 0 %}
+              <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12 start-xs middle-xs">
+                <img src="{{ avatar_array[index] }}" alt="">
+                <p>{{ name_array[index] }}</p>
+              </li>
+            {% endfor %}
+          {% endif %}
+
+      </ul>
+  
+    </div>
+    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12 col-xs-offset-0" id="product-sidebar">
+      <sidebar>
+        <ul class="sidebar-list">
+          <li>
+            <p class="large">{{ product.title }}</p>
+          </li>
+          <li>
+            <p class="small subtitle-gray">{{ product.price | money_without_trailing_zeros }}</p>
+          </li>
+          <li class="separator"></li>
+          <li class="section">
+
+              {% if product.metafields.custom_fields["date"] != blank %}
+                  <ul class="row middle-xs start-xs">
+                    <li>{% include 'icon-calendar-red' %}</li>
+                    <li>
+                      <p>{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                    </li>
+                  </ul>
+
+              {% endif %}
+    
+              {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
+                  <ul class="row middle-xs start-xs">
+                    <li>{% include 'icon-clock' %}</li>
+                    <li>
+                      <p>{{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}</p>
+                    </li>
+                  </ul>
+              {% endif %}
+    
+              {% if product.metafields.custom_fields["location"] != blank %}
+                  <ul class="row middle-xs start-xs">
+                    <li>{% include 'icon-small-red-pin' %}</li>
+                    <li>
+                      <p>{{ product.metafields.custom_fields["location"] }}</p>
+                    </li>
+                  </ul>
+              {% endif %}
+
+          </li>
+          <li class="separator">
+          <li class="section">
+            <p class="small"><label for="control">Quantity:</label></p>
+            <div class="control row start-xs middle-xs">
+              <div class="minus">
+                <a  href="#" data-control="-1" class="js-operator">{% include 'icon-minus-white' %}</a>
+              </div>
+              <div class="qty cart__qty-input">
+                <span class="medium-up--hide js-current">1</span>
+              </div>
+              <div class="plus">
+                <a  href="#" data-control="+1" class="js-operator">{% include 'icon-plus-white' %}</a>
+              </div>
+            </div>
+          </li>
+        </ul> 
+        <div class="bws-button-wrapper">
+          <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button js-button"
+            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+            {% include 'icon-ticket-light' %}
+              <span data-submit-button-text class="text">
+                {% if current_variant.available %}
+                  {{ 'products.product.add_to_cart' | t }}
+                {% else %}
+                  {{ 'products.product.sold_out' | t }}
+                {% endif %}
+              </span>
+          </button>
+        </div>
+      </sidebar>
+    </div>
+  </div>
+</section>
+
+  {% comment %} 
   {% for image in product.images %}
     {% capture wrapper_class %}
       {%- unless featured_image == image -%}
@@ -18,7 +175,10 @@
       wrapper_class: wrapper_class,
       wrapper_attributes: "data-product-image-wrapper",
     %}
-  {% endfor %}
+  {% endfor %} 
+  {% endcomment %}
+
+  
 
   {% if product.images.size > 1 %}
     <ul>
@@ -32,69 +192,20 @@
     </ul>
   {% endif %}
 
-
-    {% include 'breadcrumbs' %}
-    <p>{{ product.vendor }}</p>
-
-
-
-  {% if product.metafields.custom_fields["date"] != blank %}
-      <h3 class="custom-field--title">Date</h3>
-        {{ product.metafields.custom_fields["date"] | date: "%m/%d/%Y" }}
-  {% endif %}
-
-  {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
-    {{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}
-  </div>
-  {% endif %}
-
-  {% if product.metafields.custom_fields["location"] != blank %}
-      <h3 class="custom-field--title">Location</h3>
-      {{ product.metafields.custom_fields["location"] }}
-  {% endif %}
-
-  <h1>{{ product.title }}</h1>
-
-  <div class="rte">
-    {{ product.description }}
-  </div>
-
-  <h2>Comedians list</h2>
-  {% if product.metafields.custom_fields["comedians"] != blank %}
-    <div class="custom-field custom-field__comedians custom-field__type--field-collection">
-      <div class="custom-field--value">
-        {% assign separator = "|###|" %}
-        {% assign name_array = product.metafields.custom_fields["name"] | split: separator %}
-        {% assign avatar_array = product.metafields.custom_fields["avatar"] | split: separator %}
-        {% assign fc_keys = product.metafields.custom_fields["comedians"] | split: "," %}
-        {% for i in fc_keys %}
-          {% assign index = i | plus: 0 %}
-          <div class="fc-item fc-item-- fc-index--{{ index }}">
-            <div class="fc-field field__name">
-              {{ name_array[index] }}
-            </div>
-            <div class="fc-field field__avatar">
-              {{ avatar_array[index] }}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  {% endif %}
+  
 
 </section>
 
-<section class="spacing-top-and-bottom-xs" id="product-collection">
+<section class="spacing-top-xs spacing-bottom-sm" id="product-collection">
   <div class="row center-xs">
     <div class="col-xs-10">
-      <h2 class="font-barlow"><span class="custom-110">More Events</h2>
+      <h2>More Events</h2>
     </div>
   </div>
-  <!-- {% include 'icon-large-ticket-red' %} {% include 'icon-table-and-chairs' %} {% include 'icon-microphone' %} -->
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
       <ul class="row schedule-list">
-        {% for product in collections.home-featured.products %}
+        {% for product in collections.home-featured.products limit: 3 %}
           <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
             <a href="{{ product.url }}" class="absolute-link"></a>
             <div class="top">
@@ -143,50 +254,6 @@
   </div>
 </section>
 
-<sidebar>
-
-  <h4>{{ product.title }}</h4>
-
-  <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
-
-  {% if product.metafields.custom_fields["date"] != blank %}
-      <h3 class="custom-field--title">Date</h3>
-        {{ product.metafields.custom_fields["date"] | date: "%m/%d/%Y" }}
-  {% endif %}
-
-  {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
-    {{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}
-  </div>
-  {% endif %}
-
-  {% if product.metafields.custom_fields["location"] != blank %}
-      <h3 class="custom-field--title">Location</h3>
-      {{ product.metafields.custom_fields["location"] }}
-  {% endif %}
-
-  <div class="control">
-    <div class="minus">
-      <a  href="#" data-control="-1" class="js-operator">-</a>
-    </div>
-    <div class="qty cart__qty-input">
-      <span class="medium-up--hide js-current">1</span>
-    </div>
-    <div class="plus">
-      <a  href="#" data-control="+1" class="js-operator">+</a>
-    </div>
-  </div>
-
-  <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button js-button"
-    {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-      <span data-submit-button-text>
-        {% if current_variant.available %}
-          {{ 'products.product.add_to_cart' | t }}
-        {% else %}
-          {{ 'products.product.sold_out' | t }}
-        {% endif %}
-      </span>
-  </button>
-</sidebar>
 
 {% schema %}
   {

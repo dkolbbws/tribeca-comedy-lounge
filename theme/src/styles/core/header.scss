@@ -42,6 +42,33 @@
   &.right-side-navigation {
     @include justify-content(space-between);
   }
+
+  a {
+    position: relative;
+
+    @include inline-flex();
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      left: 0;
+      right: 0;
+      background: $color-white;
+      transform-origin: right;
+      bottom: -1px;
+
+      @include transition(transform 0.4s $cubic);
+      @include transform(scaleX(0));
+    }
+
+    &:hover::before {
+      transform-origin: left;
+
+      @include transform(scaleX(1));
+    }
+  }
 }
 
 .bws-logo {
