@@ -32,100 +32,161 @@
     </ul>
   {% endif %}
 
+
+    {% include 'breadcrumbs' %}
+    <p>{{ product.vendor }}</p>
+
+
+
+  {% if product.metafields.custom_fields["date"] != blank %}
+      <h3 class="custom-field--title">Date</h3>
+        {{ product.metafields.custom_fields["date"] | date: "%m/%d/%Y" }}
+  {% endif %}
+
+  {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
+    {{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}
+  </div>
+  {% endif %}
+
+  {% if product.metafields.custom_fields["location"] != blank %}
+      <h3 class="custom-field--title">Location</h3>
+      {{ product.metafields.custom_fields["location"] }}
+  {% endif %}
+
   <h1>{{ product.title }}</h1>
-  {% include 'breadcrumbs' %}
-  <p>{{ product.vendor }}</p>
-
-
-  {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
-    {% unless product.has_only_default_variant %}
-      {% for option in product.options_with_values %}
-        <div class="js">
-
-          {% if forloop.index0 > 0 %}
-
-            {% for value in option.values %}
-              <input type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
-              <label for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
-            {% endfor %}
-
-          {% else %}
-
-            <label for="Option{{ option.position }}">
-              {{ option.name }}
-            </label>
-
-            <select
-              id="Option{{ option.position }}"
-              name="options[{{ option.name | escape }}]">
-              {% for value in option.values %}
-                <option
-                  value="{{ value | escape }}"
-                  {% if option.selected_value == value %}selected="selected"{% endif %}>
-                    {{ value }}
-                </option>
-              {% endfor %}
-            </select>
-
-          {% endif %}
-        </div>
-      {% endfor %}
-    {% endunless %}
-
-    <noscript>
-      <select name="id">
-        {% for variant in product.variants %}
-          <option
-            {% if variant == current_variant %}selected="selected"{% endif %}
-            {% unless variant.available %}disabled="disabled"{% endunless %}
-            value="{{ variant.id }}">
-              {{ variant.title }}
-          </option>
-        {% endfor %}
-      </select>
-    </noscript>
-
-    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-    <input type="number" id="Quantity" name="quantity" value="1" min="1">
-
-    <div data-price-wrapper>
-      <span data-product-price>
-        {{ current_variant.price | money }}
-      </span>
-
-      {% if product.compare_at_price_max > product.price %}
-        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-        <s data-compare-price>
-          {% if current_variant.compare_at_price > current_variant.price %}
-            {{ current_variant.compare_at_price | money }}
-          {% endif %}
-        </s>
-      {% endif %}
-    </div>
-
-    <button
-      type="submit"
-      name="add"
-      data-submit-button
-      {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-        <span data-submit-button-text>
-          {% if current_variant.available %}
-            {{ 'products.product.add_to_cart' | t }}
-          {% else %}
-            {{ 'products.product.sold_out' | t }}
-          {% endif %}
-        </span>
-    </button>
-  {% endform %}
 
   <div class="rte">
     {{ product.description }}
   </div>
 
-  {% if section.settings.show_share_buttons %}
-    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+  <h2>Comedians list</h2>
+  {% if product.metafields.custom_fields["comedians"] != blank %}
+    <div class="custom-field custom-field__comedians custom-field__type--field-collection">
+      <div class="custom-field--value">
+        {% assign separator = "|###|" %}
+        {% assign name_array = product.metafields.custom_fields["name"] | split: separator %}
+        {% assign avatar_array = product.metafields.custom_fields["avatar"] | split: separator %}
+        {% assign fc_keys = product.metafields.custom_fields["comedians"] | split: "," %}
+        {% for i in fc_keys %}
+          {% assign index = i | plus: 0 %}
+          <div class="fc-item fc-item-- fc-index--{{ index }}">
+            <div class="fc-field field__name">
+              {{ name_array[index] }}
+            </div>
+            <div class="fc-field field__avatar">
+              {{ avatar_array[index] }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   {% endif %}
+
 </section>
+
+<section class="spacing-top-and-bottom-xs" id="product-collection">
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <h2 class="font-barlow"><span class="custom-110">More Events</h2>
+    </div>
+  </div>
+  <!-- {% include 'icon-large-ticket-red' %} {% include 'icon-table-and-chairs' %} {% include 'icon-microphone' %} -->
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <ul class="row schedule-list">
+        {% for product in collections.home-featured.products %}
+          <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
+            <a href="{{ product.url }}" class="absolute-link"></a>
+            <div class="top">
+              <ul class="date row middle-xs">
+                <li>{% include 'icon-calendar-red' %}</li>
+                <li>
+                  {% if product.metafields.custom_fields["date"] != blank %} 
+                    <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                  {% endif %}
+                </li>
+              </ul>
+
+              <h5>{{ product.title }}</h5>
+
+              <ul class="price-and-location row middle-xs">
+                <li>
+                  <p>{{ product.price | money_without_trailing_zeros }}</p>
+                </li>
+                <li>
+                  {% include 'icon-small-red-pin' %}
+                  {% if product.metafields.custom_fields["location"] != blank %}
+                    {{ product.metafields.custom_fields["location"] }}
+                  {% endif %}
+                </li>
+              </ul>
+
+              <a href="{{ product.url }}" class="underline-button-double red">View details</a>
+            </div>
+            <div class="bws-button-wrapper">
+              <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button">
+                <div class="inner-wrapper">
+                  {% include 'icon-ticket-light' %}
+                  <span class="text">ADD TO CART</span>
+                </div>
+              </button>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="bws-button-wrapper">
+      <a href="/pages/schedule" class="underline-button-double red">More Shows</a>
+    </div>
+  </div>
+</section>
+
+<sidebar>
+
+  <h4>{{ product.title }}</h4>
+
+  <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+
+  {% if product.metafields.custom_fields["date"] != blank %}
+      <h3 class="custom-field--title">Date</h3>
+        {{ product.metafields.custom_fields["date"] | date: "%m/%d/%Y" }}
+  {% endif %}
+
+  {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
+    {{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}
+  </div>
+  {% endif %}
+
+  {% if product.metafields.custom_fields["location"] != blank %}
+      <h3 class="custom-field--title">Location</h3>
+      {{ product.metafields.custom_fields["location"] }}
+  {% endif %}
+
+  <div class="control">
+    <div class="minus">
+      <a  href="#" data-control="-1" class="js-operator">-</a>
+    </div>
+    <div class="qty cart__qty-input">
+      <span class="medium-up--hide js-current">1</span>
+    </div>
+    <div class="plus">
+      <a  href="#" data-control="+1" class="js-operator">+</a>
+    </div>
+  </div>
+
+  <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button js-button"
+    {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+      <span data-submit-button-text>
+        {% if current_variant.available %}
+          {{ 'products.product.add_to_cart' | t }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+  </button>
+</sidebar>
 
 {% schema %}
   {
