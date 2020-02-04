@@ -275,7 +275,11 @@ body a {
       margin-top: 39px;
       margin-bottom: 115px;
 
+      @include flex-wrap(nowrap);
+
       li {
+        @include flexbox();
+
         &:first-of-type {
           margin-right: 15.39px;
           position: relative;
@@ -787,6 +791,8 @@ body .gm-style .gm-style-iw-d {
 
 // footer
 footer {
+  background: $color-black;
+
   p.large {
     margin-bottom: 35px;
     color: $color-white;
