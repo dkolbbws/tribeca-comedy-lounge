@@ -5,7 +5,6 @@
 let header = document.getElementById('bws-header');
 window.addEventListener('scroll', () => {
   let scroll = window.pageYOffset;
-  console.log(scroll);
 
   if (scroll > 100) {
     header.classList.add('sticky');
@@ -20,6 +19,7 @@ schedule_items.forEach(items => {
   items.addEventListener('mouseenter', siblings_fade_out);
   items.addEventListener('mouseleave', siblings_fade_in);
 })
+console.log(schedule_items);
 
 /* 
   siblings_fade_out
@@ -487,26 +487,28 @@ function init_google_map(mapId, pinlat, pinlong) {
   };
 }
 
-setTimeout( () => {
-  let home_map_promise = new Promise((resolve,reject) => {
-    init_google_map('home-map', 40.7143614,-74.00774990000001)
-    if (home_map_bool) {
-      resolve();
-    }
-  });
-  
-  home_map_promise
-    .then( () => {
-        set_map_pin_styles('home-map');
-    })
-    .then( () => {
-      setTimeout( () => {
-        // Shop the map
-        home_map_object.__gm.Ma.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
-        home_map_object.__gm.Ma.style.opacity = 1;
-      }, 400);
-    })
-}, 400);
+if (document.body.classList.contains('template-index')) {
+  setTimeout( () => {
+    let home_map_promise = new Promise((resolve,reject) => {
+      init_google_map('home-map', 40.7143614,-74.00774990000001)
+      if (home_map_bool) {
+        resolve();
+      }
+    });
+    
+    home_map_promise
+      .then( () => {
+          set_map_pin_styles('home-map');
+      })
+      .then( () => {
+        setTimeout( () => {
+          // Shop the map
+          home_map_object.__gm.Ma.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
+          home_map_object.__gm.Ma.style.opacity = 1;
+        }, 400);
+      })
+  }, 400);
+}
 
 /* 
   set_map_pin_styles

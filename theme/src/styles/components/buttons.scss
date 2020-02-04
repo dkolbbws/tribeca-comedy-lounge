@@ -39,7 +39,8 @@
 .inline-link-single {
   position: relative;
   font-weight: 400;
-  font-family: $fm;
+  // font-family: $fm;
+  font-family: $pnr;
   overflow-x: hidden;
 
   @include inline-flex();
@@ -180,11 +181,19 @@
 
 .icon-button {
   padding: 5px 0;
+  position: relative;
+  overflow: hidden;
 
   @include inline-flex();
 
-  &.red .text {
-    color: $color-red;
+  &.red {
+    .text {
+      color: $color-red;
+    }
+
+    &::before {
+      background: $color-red;
+    }
   }
 
   .text {
@@ -194,6 +203,23 @@
   svg {
     position: relative;
     top: 2px;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+
+    @include transition(400ms all $cubic);
+    @include transform(translate(-101%, 0));
+  }
+
+  &:hover::before {
+    @include transform(translate(0, 0));
   }
 }
 

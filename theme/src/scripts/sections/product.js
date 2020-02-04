@@ -214,3 +214,4 @@ register('product', {
     window.history.replaceState({path: url}, '', url);
   },
 });
+

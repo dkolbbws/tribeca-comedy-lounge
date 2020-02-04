@@ -44,43 +44,43 @@
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
       <ul class="row schedule-list">
         {% for product in collections.home-featured.products %}
-        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
-          <a href="{{ product.url }}" class="absolute-link"></a>
-          <div class="top">
-            <ul class="date row middle-xs">
-              <li>{% include 'icon-calendar-red' %}</li>
-              <li>
-                {% if product.metafields.custom_fields["date"] != blank %} 
-                  <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
-                {% endif %}
-              </li>
-            </ul>
+          <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
+            <a href="{{ product.url }}" class="absolute-link"></a>
+            <div class="top">
+              <ul class="date row middle-xs">
+                <li>{% include 'icon-calendar-red' %}</li>
+                <li>
+                  {% if product.metafields.custom_fields["date"] != blank %} 
+                    <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                  {% endif %}
+                </li>
+              </ul>
 
-            <h5>{{ product.title }}</h5>
+              <h5>{{ product.title }}</h5>
 
-            <ul class="price-and-location row middle-xs">
-              <li>
-                <p>{{ product.price | money_without_trailing_zeros }}</p>
-              </li>
-              <li>
-                {% include 'icon-small-red-pin' %}
-                {% if product.metafields.custom_fields["location"] != blank %}
-                  {{ product.metafields.custom_fields["location"] }}
-                {% endif %}
-              </li>
-            </ul>
+              <ul class="price-and-location row middle-xs">
+                <li>
+                  <p>{{ product.price | money_without_trailing_zeros }}</p>
+                </li>
+                <li>
+                  {% include 'icon-small-red-pin' %}
+                  {% if product.metafields.custom_fields["location"] != blank %}
+                    {{ product.metafields.custom_fields["location"] }}
+                  {% endif %}
+                </li>
+              </ul>
 
-            <a href="{{ product.url }}" class="underline-button-double red">View details</a>
-          </div>
-          <div class="bws-button-wrapper">
-            <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button">
-              <div class="inner-wrapper">
-                {% include 'icon-ticket-light' %}
-                <span class="text">ADD TO CART</span>
-              </div>
-            </button>
-          </div>
-        </li>
+              <a href="{{ product.url }}" class="underline-button-double red">View details</a>
+            </div>
+            <div class="bws-button-wrapper">
+              <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button">
+                <div class="inner-wrapper">
+                  {% include 'icon-ticket-light' %}
+                  <span class="text">ADD TO CART</span>
+                </div>
+              </button>
+            </div>
+          </li>
         {% endfor %}
       </ul>
     </div>
