@@ -13,7 +13,7 @@
       <div class="row center-xs">
         <div class="col-lg-7 col-md-7 col-xs-7 col-xs-12">
           <div class="bws-button-wrapper">
-            <a href="/page/schedule" class="bws-button regular-button">
+            <a href="/page/schedule" class="bws-button regular-button large-icon">
               {% include 'icon-ticket-2' %}
               <span class="text">buy tickets</span>
             </a>
@@ -59,10 +59,10 @@
               <h5>{{ product.title }}</h5>
 
               <ul class="price-and-location row middle-xs">
-                <li>
+                <li class="start-xs middle-xs">
                   <p>{{ product.price | money_without_trailing_zeros }}</p>
                 </li>
-                <li>
+                <li class="start-xs middle-xs">
                   {% include 'icon-small-red-pin' %}
                   {% if product.metafields.custom_fields["location"] != blank %}
                     {{ product.metafields.custom_fields["location"] }}
@@ -266,7 +266,7 @@
         <p class="col-lg-4 col-md-4 col-sm-4 col-xs-8">Classy, spacious comedy club with an upscale Italian menu, including pizza & cocktails.</p>
       </div>
       <div class="bws-button-wrapper">
-        <a href="/page/schedule" class="bws-button regular-button">
+        <a href="/page/schedule" class="bws-button regular-button large-icon">
           {% include 'icon-ticket-2' %}
           <span class="text">buy tickets</span>
         </a>
