@@ -864,6 +864,8 @@ footer {
 // Breadcrumbs
 .breadcrumbs {
   padding-top: 90px;
+  margin-top: 0;
+  margin-bottom: 0;
 
   .seperator {
     margin-left: 10px;
@@ -874,8 +876,13 @@ footer {
     margin-bottom: 0;
   }
 
-  li:not(:first-of-type) a,
-  li:not(:first-of-type) p {
+  li:not(:last-of-type) a,
+  li:not(:last-of-type) p {
+    // color: $color-footer-text;
+    color: $color-white;
+  }
+
+  li:last-of-type p {
     color: $color-footer-text;
   }
 

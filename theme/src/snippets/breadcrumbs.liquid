@@ -23,7 +23,16 @@
           <p class="small seperator">/</p>
         </li>
         <li>
-          <p class="small">{{ collection.title }}</a></p>
+          {% assign collection_title_downcase = collection.title | downcase %}
+          {% if collection_title_downcase contains "home feat" %}
+            <p class="small">
+              <a href="{{ collection.url }}" target="_self" class="inline-link-single white">Events</a>
+            </p>
+          {% else %}
+            <p class="small">
+              <a href="{{ collection.url }}" target="_self" class="inline-link-single white">{{ collection.title }}</a>
+            </p>
+          {% endif %}
         </li>
       {% endif %}
 
@@ -31,7 +40,7 @@
         <p class="small seperator">/</p>
       </li>
       <li>
-        <p class="small">{{ product.title }}</a></p>
+        <p class="small">{{ product.title | truncatewords: 4 }}</a></p>
       </li>
 
     {% elsif template contains 'collection' and collection.handle %}
@@ -53,7 +62,16 @@
           <p class="small seperator">/</p>
         </li>
         <li>
-          <p class="small">{{ collection.title  }}</a></p>
+          {% assign collection_title_downcase = collection.title | downcase %}
+          {% if collection_title_downcase contains "home feat" %}
+            <p class="small">
+              <a href="{{ collection.url }}" target="_self" class="inline-link-single white">Events</a>
+            </p>
+          {% else %}
+            <p class="small">
+              <a href="{{ collection.url }}" target="_self" class="inline-link-single white">{{ collection.title }}</a>
+            </p>
+          {% endif %}
         </li>
 
       {% endif %}
