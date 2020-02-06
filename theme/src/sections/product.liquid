@@ -176,16 +176,31 @@
     </div>
   </div>
 
-  <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button js-button"
-    {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+  <form action="/cart/add" method="post" data-cart-submit>
+
+  <button class="regular-button bws-button js-button" type="submit" 
+    {% if product.available == false %} disabled="disabled"{% endif %}>
       <span data-submit-button-text>
-        {% if current_variant.available %}
+        {% if product.available %}
           {{ 'products.product.add_to_cart' | t }}
         {% else %}
           {{ 'products.product.sold_out' | t }}
         {% endif %}
       </span>
+
+      <select class="hidden" name="id">
+          <option value="{{ product.variants.first.id }}"></option>
+      </select>
   </button>
+
+  <input type="hidden" name="properties[Date]" value="{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}"/>
+
+  <select name="quantity" class="hidden js-quantity">
+      <option>1</option>
+  </select>
+
+  </form>
+
 </sidebar>
 
 {% schema %}
