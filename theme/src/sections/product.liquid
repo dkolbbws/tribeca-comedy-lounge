@@ -288,28 +288,35 @@
   </div>
 
   <form action="/cart/add" method="post" data-cart-submit>
+    <div class="bws-button-wrapper">
+      <button class="regular-button bws-button js-button" type="submit" {% if product.available == false %}
+        disabled="disabled" {% endif %}>
+        <span data-submit-button-text>
+          {% if product.available %}
+          <div class="inner-wrapper">
+            {% include 'icon-ticket-light' %}
+            <span class="text">ADD TO CART</span>
+          </div>
+          {% else %}
+          <div class="inner-wrapper">
+            {% include 'icon-ticket-light' %}
+            <span class="text">{{ 'products.product.sold_out' | t }}</span>
+          </div>
+          {% endif %}
+        </span>
+      </button>
+    </div>
 
-  <button class="regular-button bws-button js-button" type="submit" 
-    {% if product.available == false %} disabled="disabled"{% endif %}>
-      <span data-submit-button-text>
-        {% if product.available %}
-          {{ 'products.product.add_to_cart' | t }}
-        {% else %}
-          {{ 'products.product.sold_out' | t }}
-        {% endif %}
-      </span>
+    <select class="hidden" name="id">
+      <option value="{{ product.variants.first.id }}"></option>
+    </select>
 
-      <select class="hidden" name="id">
-          <option value="{{ product.variants.first.id }}"></option>
-      </select>
-  </button>
+    <input type="hidden" name="properties[Date]"
+      value="{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}" />
 
-  <input type="hidden" name="properties[Date]" value="{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}"/>
-
-  <select name="quantity" class="hidden js-quantity">
+    <select name="quantity" class="hidden js-quantity">
       <option>1</option>
-  </select>
-
+    </select>
   </form>
 
 </sidebar>
