@@ -1,25 +1,168 @@
-
-{% include 'breadcrumbs' %}
+<section id="chedule-section-one">
+  {% include 'breadcrumbs' %}
+    <div class="row center-xs">
+      <div class="col-xs-10">
+        <h2>Upcoming Shows</h2>
+      </div>
+    </div>
+</section>
 
 
 {% assign collection = collections.all %}
-
 {% paginate collection.products by 8 %}
-<div class="products__collection">
-  <ul class="product collection__grid">
-    {% for product in collection.products | limit: 8 %}
-      <li class="item">{{ product.title }}</li>
-    {% endfor %}
 
-    
+<section id="collection-section-one">
+  <div class="row middle-xs">
+    <div class="col-xs-10 col-xs-offset-1 products__collection">
+      <ul class="product collection__grid row schedule-list events-collection-list">
+        {% for product in collection.products | limit: 8 %}
+        <li class="col-xs-12" id="event-{{ forloop.index }}">
+                
+                <a href="{{ product.url | within: collection }}" class="absolute-link"></a>
+                <div class="top">
+                  <ul class="date row middle-xs">
+                    <li>{% include 'icon-calendar-red' %}</li>
+                    <li>
+                      {% if product.metafields.custom_fields["date"] != blank %} 
+                        <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                      {% endif %}
+                    </li>
+                  </ul>
+                
+
+                {% if forloop.index == 5 and product.featured_image != blank %} 
+                  <div class="background-image" style="background: url('{{ product | img_url: 'x600' }}') no-repeat center center; background-size: cover;"></div>
+                {% endif %}
+
+                <h5>{{ product.title }}</h5>
+
+                <ul class="price-and-location row middle-xs">
+                  <li  class="start-xs middle-xs">
+                    {% if product.compare_at_price > product.price %}
+
+                    {% if product.price_varies %}
+                      {%- assign sale_price = product.price | money -%}
+                      {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                    {% else %}
+                      {{ 'products.product.on_sale' | t }}
+                      {{ product.price | money }}
+                    {% endif %}
+
+                  {% else %}
+
+                    {% if product.price_varies %}
+                      {%- assign price = product.price | money -%}
+                      {{ 'products.product.from_text_html' | t: price: price }}
+                    {% else %}
+                      {{ product.price | money }}
+                    {% endif %}
+
+                  {% endif %}
+
+                  {% if product.compare_at_price > product.price %}
+                    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                    <s>{{ product.compare_at_price | money }}</s>
+                  {% endif %}
+
+                  {% unless product.available %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% endunless %}
+                  </li>
+                  <li class="start-xs middle-xs">
+                    <span class="icon-wrap">{% include 'icon-small-red-pin' %}</span>
+                    {% if product.metafields.custom_fields["location"] != blank %}
+                      {{ product.metafields.custom_fields["location"] }}
+                    {% endif %}
+                  </li>
+                </ul>
+
+                {% if forloop.index == 5 %} 
+                  </div>
+                  <div class="bws-button-wrapper">
+                    <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="bws-button icon-button red">
+                      <div class="inner-wrapper">
+                        {% include 'icon-ticket-light' %}
+                        <span class="text">ADD TO CART</span>
+                      </div>
+                    </button>
+                  </div>
+                  
+                {% else %}
+                  <a href="{{ product.url | within: collection }}" class="underline-button-double red">View details</a>
+                {% endif %}
+
+                {% if forloop.index != 5 %}
+                  </div>
+                  <div class="bws-button-wrapper">
+                    <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button">
+                      <div class="inner-wrapper">
+                        {% include 'icon-ticket-light' %}
+                        <span class="text">ADD TO CART</span>
+                      </div>
+                    </button>
+                  </div>
+                {% comment %} {% else %} </div> end top {% endcomment %}
+                {% endif %}
+
+              {% else %}
+                {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+                  {% for i in (1..8) %}
+                    <a href="#">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                    </a>
+
+                    <p>
+                      <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+                    </p>
+
+                    <p>
+                      {{ 1999 | money }}
+                    </p>
+                  {% endfor %}
+                {% else %}
+                  <p>{{ 'collections.general.no_matches' | t }}</p>
+                {% endif %}
+              </li>
+        {% endfor %}
+
+        </ul>  
+      </div>
+    </div>
+
     {% if paginate.next %}
-      <li class="js-load-more"><a href="{{ paginate.next.url }}">More Shows</a></li>
+      <div class="row center-xs">
+      <div class="col-xs-12">
+        <a href="{{ paginate.next.url }}" class="underline-button-double red js-load-more">more shows</a>
+      </div>
+    </div>
     {% endif %}
-  </ul>
+  
 
-  <div id="product-list-foot"></div>
-</div>
+    <div id="product-list-foot"></div>
+    
+    </div>
+  </div>
+</section>
 {% endpaginate %}
+
+<section class="spacing-top-and-bottom-sm" id="home-sections-seven">
+  <div class="row center-xs">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 image-cta-two" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/cta-bg.jpg?v=1580762520') no-repeat center center; background-size: cover;">
+      
+      <h2>Enjoy a great night</h2>
+      <div class="row center-xs">
+        <p class="col-lg-4 col-md-4 col-sm-4 col-xs-8">Classy, spacious comedy club with an upscale Italian menu, including pizza & cocktails.</p>
+      </div>
+      <div class="bws-button-wrapper">
+        <a href="/page/schedule" class="bws-button regular-button large-icon">
+          {% include 'icon-ticket-2' %}
+          <span class="text">buy tickets</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <script>
@@ -39,7 +182,10 @@ function loadMore() {
   })
   .done(function(data) {
     // Append data
-    $('.product').append($(data).find('.product').html());
+
+    // For some reason removing the logs dosen t allow the pagination to happen properly
+    console.log( $(data))[0].childElementCount, ' li count' );
+    console.log($('.product').append($(data).find('.product').html()), ' data');
 
     // On success, reset shortcircuit
     triggered = false
