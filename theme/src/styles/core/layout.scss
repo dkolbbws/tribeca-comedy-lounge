@@ -580,12 +580,14 @@ body .gm-style .gm-style-iw-d {
 //   max-height: 24px;
 // }
 
+#about-section-four,
 #home-section-five {
   [class^=col-] {
     position: relative;
   }
 }
 
+#about-section-four,
 #home-section-five {
   img {
     &:first-of-type {
@@ -633,6 +635,7 @@ body .gm-style .gm-style-iw-d {
   }
 }
 
+#about-section-four,
 #home-section-five h2 + p:last-of-type {
   margin-bottom: 45px;
 }
@@ -1057,6 +1060,7 @@ footer {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: 8px;
+  // grid-template-columns: repeat(auto-fill, minmax(33.333%, 1fr));
 }
 
 .side-margin-xs {
