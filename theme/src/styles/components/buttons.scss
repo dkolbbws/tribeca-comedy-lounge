@@ -30,6 +30,10 @@
     @include transition(400ms all $cubic);
   }
 
+  &.no-icon .text {
+    padding-left: 0;
+  }
+
   &.large-icon svg {
     position: relative;
     top: 0;
@@ -189,6 +193,16 @@ button.regular-button {
       background: $color-white;
     }
   }
+}
+
+p.small .underline-button-double {
+  // line-height: 1.6em;
+  display: inline-block;
+  font-family: inherit;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 17px;
+  top: 5px;
 }
 
 .icon-button {

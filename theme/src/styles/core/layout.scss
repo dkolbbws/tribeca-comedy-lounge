@@ -832,8 +832,13 @@ body .gm-style .gm-style-iw-d {
   }
 }
 
+.text-cta-one h3,
 .text-cta-one h2 {
   margin-bottom: 26px;
+}
+
+.text-cta-one h3 {
+  font-family: $pnr;
 }
 
 #home-section-seven {}.custom-110 {
@@ -1134,17 +1139,149 @@ footer {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: 8px;
-  // grid-template-columns: repeat(auto-fill, minmax(33.333%, 1fr));
 }
 
 .side-margin-xs {
-  // margin-left: 8px;
-  margin-left: 16px;
+  margin-left: 8px;
+  // margin-left: 16px;
   margin-right: 8px;
 
   .row {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+#about-section-four {
+  #left-image {
+    position: absolute;
+    left: -50%;
+    bottom: 30px;
+  }
+}
+
+.dash-red-below {
+  margin-bottom: 92px;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    bottom: -50px;
+    left: 0;
+    width: 29px;
+    height: 2px;
+    background: $color-red;
+  }
+}
+
+.faq-list {
+  counter-reset: li-item;
+  margin-bottom: 0;
+
+  li {
+    border: 1px solid $color-gray-border;
+    position: relative;
+    margin-bottom: 24px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .line {
+      position: absolute;
+      content: '';
+      height: 100%;
+      top: 0;
+      left: 0;
+      width: 1px;
+      background: $color-red;
+      left: -1px;
+      transform-origin: top;
+
+      @include transform(scaleY(0));
+    }
+
+    a.faq-top {
+      padding: 40px 37px 40px 50px;
+      position: relative;
+
+      @include flexbox();
+
+      .text,
+      &:before {
+        font-family: $pnr;
+        color: $color-white;
+        position: relative;
+      }
+
+      .text {
+        pointer-events: none;
+
+        &::before {
+          content: counter(li-item)". ";
+          counter-increment: li-item;
+          font-size: 1em;
+          margin-right: 5px;
+            
+          @include inline-flex();
+        }
+      }
+
+      &:hover {
+        .icon {
+          @include transform(rotate(90deg));
+        }
+      }
+
+      &.active {
+        .icon {
+          background: transparent;
+  
+          svg {
+            @include transform(rotate(180deg));
+
+            path:first-of-type {
+              fill: transparent;
+            }
+          }
+        }
+
+        &:hover .icon {
+          @include transform(rotate(0deg));
+        }
+      }
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: $color-red;
+      border: 1px solid $color-red;
+
+      @include flexbox();
+      @include transition(400ms all $cubic);
+
+      svg {
+        transform-origin: center;
+        pointer-events: none;
+      }
+
+      svg,
+      svg path {
+        @include transition(400ms all $cubic);
+      }
+    }
+
+    .faq-content {
+      height: 0;
+      overflow: hidden;
+
+      .inner-faq-content {
+        padding: 0 37px 20px 50px;
+      }
+    }
   }
 }
 
@@ -1177,3 +1314,4 @@ footer {
 //     }
 //   }
 // } // End 768 Min 
+

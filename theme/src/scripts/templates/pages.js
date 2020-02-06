@@ -567,6 +567,34 @@ for (let a =0; a < subway_links.length; a++) {
   })
 }
 
+let faq_item = document.querySelectorAll('.faq-list a');
+faq_item.forEach(item => {
+  item.addEventListener('click', open_accordion);
+});
+
+function open_accordion(event) {
+  event.preventDefault();
+
+  let height = event.target.nextElementSibling.querySelector('.inner-faq-content').clientHeight;
+  let wrapper = event.target.nextElementSibling;
+  let line = event.target.parentElement.querySelector('.line');
+
+  if (! event.target.classList.contains('active')) {  
+    event.target.parentElement.classList.add('active');
+    event.target.classList.add('active');
+    gsap.to(wrapper, {duration: 0.7, ease: "Quint.easeInOut", height: height, onComplete: () => { wrapper.style.height = 'auto'; }});
+    gsap.to(line, {duration: 0.4, delay: 0.2, ease: "Quint.easeInOut", scaleY: 1,});
+  } else {
+    event.target.parentElement.classList.remove('active');
+    event.target.classList.remove('active');
+    
+    gsap.to(wrapper, {duration: 0.7, ease: "Quint.easeInOut", height: 0,});
+    gsap.to(line, {duration: 0.5, ease: "Quint.easeInOut", scaleY: 0, onComplete: () => { wrapper.setAttribute('style', ''); }});
+    
+  }
+}
+
+
 // let xhr = new XMLHttpRequest();
 // xhr.open('GET', 'https://tcl-stage-b.myshopify.com/admin/products/4510852907148/metafields.json');
 // xhr.onreadystatechange = () => {
