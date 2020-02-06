@@ -55,7 +55,7 @@
   <script type="text/javascript">
     jQuery(function() {
       CartJS.init({{ cart | json }}, {
-        "debug": false,
+        "debug": true,
         "requestBodyClass": "loading",
         "moneyFormat": "{{ shop.money_format }}",
         "weightUnit": "oz"
@@ -80,13 +80,6 @@
           $('.cart-dd').addClass('empty');
         }
       });
-      
-      // jQuery('.add_to_cart').click(function(e){
-      //   e.preventDefault();
-      //   e.stopPropagation();
-      //   var dataId = jQuery(this).data('product-id'); // your stuff
-      //   CartJS.addItem(dataId);
-      // });
 
       jQuery('.navigation-menu .cart').click(function(e){
         //console.log('woooork');
@@ -125,7 +118,6 @@
     {{ content_for_layout }}
   </main>
 
-  {% section 'temp_footer' %}
   {% section 'footer' %}
 
 </body>

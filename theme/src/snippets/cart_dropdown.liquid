@@ -25,7 +25,16 @@
                   </ul>
 
                 <div class="top">
-                  <p class="name large" rv-text="item.title"></p>
+
+                   <ul rv-hide="item.propertyArray | empty">
+                      <li rv-each-property="item.propertyArray < properties">
+                          <small class="date">{property.value}</small>
+                      </li>
+                  </ul>
+
+                  <div rv-show="item.variant_title"></div>
+
+                  <div class="name" rv-text="item.title"></div>
 
                   <div class="price"><em class="price" rv-html="item.price | money"></em></div>
                 </div>

@@ -61,7 +61,7 @@ register('product', {
       //console.log(nextValue);
       if (nextValue > 0) {
         $('.js-current').text(nextValue);
-        $('.js-button').attr('data-cart-quantity', nextValue);
+        $('.js-quantity option').text(nextValue);
       }
     })
   },
