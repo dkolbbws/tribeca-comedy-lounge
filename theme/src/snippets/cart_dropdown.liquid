@@ -1,4 +1,4 @@
-<div id="cart-dd" class="cart-dd active {% if cart.item_count == 0 %}empty{% endif %}">
+<div id="cart-dd" class="cart-dd {% if cart.item_count == 0 %}empty{% endif %}">
   
   <div class="row-wrapper">
     <div class="row">
@@ -57,12 +57,11 @@
             
           </div>
           <div class="total">
-            <div>Order Total</div>
-            <div><span class="cart__subtotal" rv-html="cart.total_price | money"></span></div>
+            <p>Total: <span class="cart__subtotal" rv-html="cart.total_price | money"></p>
           </div>
 
           <div class="flex2">
-            <div class="button-wrapper center"><a class="regular-button dark" data-text="Checkout" href="/checkout"><span class="text">Checkout</span></a></div>	
+            <div class="button-wrapper center"><a class="regular-button dark" data-text="Checkout" href="/checkout"><span class="text">Proceed to Checkout</span></a></div>	
           </div>
 
         </form>
@@ -70,7 +69,17 @@
 
       <div class="col-lg-12 col-empty {% if cart.item_count != 0 %}hidden{% endif %}">
         <div class="empty_cart">
-          <p>YOUR CART IS EMPTY</p>
+          <ul class="title row between-xs">
+            <li>
+              <h4>Your Cart</h4>
+            </li>
+            </li>
+              <span class="cart-close">{% include 'icon-close' %}</span>
+            </li>
+          </ul>
+          <div class="sad-icon">{% include 'icon-sad-face-red' %}</div>
+          <h4>Your cart is empty.</h4>
+          <p class="xs-small">Have a look at the schedule to discover our upcoming shows.</p>
         </div>
       </div>
     </div>
