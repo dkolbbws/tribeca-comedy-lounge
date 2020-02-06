@@ -6,8 +6,8 @@
     {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
   {% endif %}
 
+  
   <h1>{{ blog_title }}</h1>
-  {% comment %} <p>Just BLog</p> {% endcomment %}
 
   {% if blog.all_tags.size > 0 %}
     <h2>{{ 'blogs.general.categories' | t }}</h2>
@@ -31,6 +31,8 @@
   Article Previews
   ====================
   {% endcomment %}
+
+  {% comment %} <p> Just comedians </p> {% endcomment %}
 
   {% for article in blog.articles %}
     <h3>

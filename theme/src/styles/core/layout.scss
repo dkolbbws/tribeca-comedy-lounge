@@ -56,6 +56,19 @@ body a {
 }
 
 // Spacings
+.spacing-top-xxs {
+  padding-top: 45px;
+}
+
+.spacing-bottom-xxs {
+  padding-bottom: 45px;
+}
+
+.spacing-top-and-bottom-xxs {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
 .spacing-top-xs {
   padding-top: 75px;
 }
@@ -93,6 +106,32 @@ body a {
 .spacing-top-and-bottom-md {
   padding-top: 104px;
   padding-bottom: 104px;
+}
+
+.spacing-top-lg {
+  padding-top: 120px;
+}
+
+.spacing-bottom-lg {
+  padding-bottom: 120px;
+}
+
+.spacing-top-and-bottom-lg {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.spacing-top-xl {
+  padding-top: 170px;
+}
+
+.spacing-bottom-xl {
+  padding-bottom: 170px;
+}
+
+.spacing-top-and-bottom-xl {
+  padding-top: 170px;
+  padding-bottom: 170px;
 }
 
 [class*=behind-red] {
@@ -325,13 +364,28 @@ body a {
     }
   }
 
+  // .bws-button-wrapper {
+  //   position: relative;
+  //   z-index: 2;
+  //   bottom: -65px;
+  // }
+
+  .bws-button-wrapper {
+    @include flexbox();
+
+    position: absolute;
+    min-height: 62px;
+    width: 100%;
+  }
+
   .regular-button {
     // padding: 0;
+    top: 0;
     border: none;
     width: 101%;
     left: -1px;
     height: 62px;
-    top: 100%;
+    // top: 100%;
     padding: 16px 25px;
     position: absolute;
     bottom: 0;
@@ -340,7 +394,7 @@ body a {
     @include align-items(center);
     @include flexbox();
     @include transition(400ms all $cubic);
-    @include transform(translate(0, 100%));
+    // @include transform(translate(0, 100%));
     .text {
       font-size: 0.6875em;
     }
@@ -678,7 +732,8 @@ body .gm-style .gm-style-iw-d {
 
     .inner-image {
       z-index: 0;
-      height: calc(100% - 7px);
+      // height: calc(100% - 7px);
+      height: 100%;
       top: 0;
     }
 
@@ -707,7 +762,8 @@ body .gm-style .gm-style-iw-d {
 
     .absolute-link {
       width: calc(100% - 6px);
-      height: calc(100% - 6px);
+      // height: calc(100% - 6px);
+      height: 100%;
     }
 
     &:hover {
@@ -761,6 +817,10 @@ body .gm-style .gm-style-iw-d {
   .bws-button-wrapper {
     margin-top: 40px;
   }
+}
+
+.text-cta-one h2 {
+  margin-bottom: 26px;
 }
 
 #home-section-seven {}.custom-110 {
@@ -893,6 +953,120 @@ footer {
 
   li:not(:first-of-type) a:hover {
     color: $color-white;
+  }
+}
+
+.template-collection,
+.template-page {
+  .breadcrumbs {
+    margin-bottom: 20px;
+  }
+}
+
+// Comedians List Page
+.main-comedian-list {
+  .inner-wrapper {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  li {
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    .content {
+      overflow: hidden;
+    }
+
+    .name p.large {
+      font-family: $pnr;
+      font-weight: 600;
+      position: relative;
+      z-index: 2;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        background: linear-gradient(20deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+        left: 0;
+        z-index: -1;
+        bottom: 0;
+        height: 180px;
+
+        @include transform(translate(0, 44px));
+      }
+    }
+  }
+}
+
+#comedians #comeidans-section-one h2 {
+  margin-bottom: 0;
+}
+
+#about-section-one h2 {
+  margin-bottom: 54px;
+}
+
+#about-section-one {
+  [class^=col-] {
+    position: relative;
+  }
+
+  .about-images-one img:first-of-type {
+    position: relative;
+    left: 56%;
+    margin-bottom: 20px;
+  }
+
+  .image-right {
+    position: absolute;
+    right: 0;
+  }
+
+  .about-image-text {
+    max-height: 43%;
+    position: absolute;
+    left: 58.333%;
+    bottom: -10%;
+  }
+
+  .about-bottom-images {
+    position: absolute;
+    right: 16.333%;
+    bottom: 8%;
+
+    img {
+      position: relative;
+      top: -10%;
+
+      &:last-of-type {
+        position: absolute;
+        max-width: 55.333%;
+        top: -5%;
+        right: -35%;
+      }
+    }
+  }
+}
+
+.gallery-grid {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 8px;
+}
+
+.side-margin-xs {
+  // margin-left: 8px;
+  margin-left: 16px;
+  margin-right: 8px;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 

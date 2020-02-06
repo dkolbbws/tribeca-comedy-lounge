@@ -57,7 +57,7 @@
       right: 0;
       background: $color-white;
       transform-origin: right;
-      bottom: -1px;
+      bottom: -3px;
 
       @include transition(transform 0.4s $cubic);
       @include transform(scaleX(0));
