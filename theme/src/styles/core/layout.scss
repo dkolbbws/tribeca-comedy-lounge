@@ -803,7 +803,7 @@ footer {
   .xxs-small,
   .xs-small a {
     font-family: $pnr;
-    font-weight: 300;
+    font-weight: normal;
   }
 
   .social-list {
@@ -821,10 +821,13 @@ footer {
   }
 
   p,
-  a.inline-link-single.white,
+  a.inline-link-single.white {
+    color: $color-footer-text;
+  }
+
   a.inline-link-single.white::after,
   a.inline-link-single.white::before {
-    color: $color-footer-text;
+    background: $color-footer-text;
   }
 
   .menu {
@@ -864,6 +867,10 @@ footer {
 // Breadcrumbs
 .breadcrumbs {
   padding-top: 90px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include flexbox();
 
   .seperator {
     margin-left: 10px;
@@ -874,8 +881,13 @@ footer {
     margin-bottom: 0;
   }
 
-  li:not(:first-of-type) a,
-  li:not(:first-of-type) p {
+  li:not(:last-of-type) a,
+  li:not(:last-of-type) p {
+    // color: $color-footer-text;
+    color: $color-white;
+  }
+
+  li:last-of-type p {
     color: $color-footer-text;
   }
 

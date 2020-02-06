@@ -566,3 +566,26 @@ for (let a =0; a < subway_links.length; a++) {
     }
   })
 }
+
+// let xhr = new XMLHttpRequest();
+// xhr.open('GET', 'https://tcl-stage-b.myshopify.com/admin/products/4510852907148/metafields.json');
+// xhr.onreadystatechange = () => {
+// 	if (xhr.readyState == 3) {
+// 		setTimeout( () => {
+// 			let p = document.createElement('p');
+// 			p.innerHTML = 'Loading';
+// 			p.classList.add('loading-message');
+// 			document.body.append(p);
+// 		}, 1000);
+// 	} else if (xhr.readyState == 4) {
+// 		setTimeout( () => {
+// 		let loading = document.querySelector('.loading-message');
+// 		loading.remove();
+
+// 		let data = JSON.parse(xhr.responseText);
+// 		console.log(data);
+// 		add_to_page(data);
+// 		}, 2000);
+// 	}
+// }
+// xhr.send();

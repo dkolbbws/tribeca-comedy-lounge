@@ -1,103 +1,124 @@
 {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
-  <ul class="row center-xs middle-xs breadcrumbs">
-    <li>
-       <p class="small">
-        <a href="/" target="_self" class="home inline-link-single white">Home</a>
-      </p>
-    </li>
-    
-    {% if template contains 'page' %}
-
-      <li>
-        <p class="small seperator">/</p>
-      </li>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="breadcrumbs center-xs middle-xs">
       <li>
         <p class="small">
-          <a href="{{ page.url }}" target="_self" class="inline-link-single white">{{ page.title }}</a>
+          <a href="/" target="_self" class="home inline-link-single white">Home</a>
         </p>
       </li>
-
-    {% elsif template contains 'product' %}
-      {% if collection.url %}
-        <li>
-          <p class="small seperator">/</p>
-        </li>
-        <li>
-          <p class="small">{{ collection.title }}</a></p>
-        </li>
-      {% endif %}
-
-      <li>
-        <p class="small seperator">/</p>
-      </li>
-      <li>
-        <p class="small">{{ product.title }}</a></p>
-      </li>
-
-    {% elsif template contains 'collection' and collection.handle %}
-
-      {% if current_tags %}
-        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-        {{ collection.title | link_to: url }}
-
-        <li>
-          <p class="small seperator">/</p>
-        </li>
-        <li>
-          <p class="small">{{ current_tags | join: " + " }}</a></p>
-        </li>
-
-      {% else %}
-
-        <li>
-          <p class="small seperator">/</p>
-        </li>
-        <li>
-          <p class="small">{{ collection.title  }}</a></p>
-        </li>
-
-      {% endif %}
-    {% elsif template == 'blog' %}
-
-      {% if current_tags %}
-        {{ blog.title | link_to: blog.url }}
-        <li>
-          <p class="small seperator">/</p>
-        </li>
-        <li>
-          <p class="small">{{ current_tags | join: " + " }}</a></p>
-        </li>
-
-      {% else %}
-
-        <li>
-          <p class="small seperator">/</p>
-        </li>
-        <li>
-          <p class="small">{{ blog.title }}</a></p>
-        </li>
-
-      {% endif %}
-    {% elsif template == 'article' %}
       
-      {{ blog.title | link_to: blog.url }}
+      {% if template contains 'page' %}
+
+        <li>
+          <p class="small seperator">/</p>
+        </li>
+        <li>
+          <p class="small">
+            <a href="{{ page.url }}" target="_self" class="inline-link-single white">{{ page.title }}</a>
+          </p>
+        </li>
+
+      {% elsif template contains 'product' %}
+        {% if collection.url %}
+          <li>
+            <p class="small seperator">/</p>
+          </li>
+          <li>
+            {% assign collection_title_downcase = collection.title | downcase %}
+            {% if collection_title_downcase contains "home feat" %}
+              <p class="small">
+                <a href="{{ collection.url }}" target="_self" class="inline-link-single white">Events</a>
+              </p>
+            {% else %}
+              <p class="small">
+                <a href="{{ collection.url }}" target="_self" class="inline-link-single white">{{ collection.title }}</a>
+              </p>
+            {% endif %}
+          </li>
+        {% endif %}
+
+        <li>
+          <p class="small seperator">/</p>
+        </li>
+        <li>
+          <p class="small">{{ product.title | truncatewords: 4 }}</a></p>
+        </li>
+
+      {% elsif template contains 'collection' and collection.handle %}
+
+        {% if current_tags %}
+          {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+          {{ collection.title | link_to: url }}
+
+          <li>
+            <p class="small seperator">/</p>
+          </li>
+          <li>
+            <p class="small">{{ current_tags | join: " + " }}</a></p>
+          </li>
+
+        {% else %}
+
+          <li>
+            <p class="small seperator">/</p>
+          </li>
+          <li>
+            {% assign collection_title_downcase = collection.title | downcase %}
+            {% if collection_title_downcase contains "home feat" %}
+              <p class="small">
+                <a href="{{ collection.url }}" target="_self" class="inline-link-single white">Events</a>
+              </p>
+            {% else %}
+              <p class="small">
+                <a href="{{ collection.url }}" target="_self" class="inline-link-single white">{{ collection.title }}</a>
+              </p>
+            {% endif %}
+          </li>
+
+        {% endif %}
+      {% elsif template == 'blog' %}
+
+        {% if current_tags %}
+          {{ blog.title | link_to: blog.url }}
+          <li>
+            <p class="small seperator">/</p>
+          </li>
+          <li>
+            <p class="small">{{ current_tags | join: " + " }}</a></p>
+          </li>
+
+        {% else %}
+
+          <li>
+            <p class="small seperator">/</p>
+          </li>
+          <li>
+            <p class="small">{{ blog.title }}</a></p>
+          </li>
+
+        {% endif %}
+      {% elsif template == 'article' %}
+        
+        {{ blog.title | link_to: blog.url }}
+
+        <li>
+          <p class="small seperator">/</p>
+        </li>
+        <li>
+          <p class="small">{{ article.title }}</a></p>
+        </li>
+
+      {% else %}
 
       <li>
-        <p class="small seperator">/</p>
-      </li>
-      <li>
-        <p class="small">{{ article.title }}</a></p>
-      </li>
-
-    {% else %}
-
-    <li>
-        <p class="small seperator">/</p>
-      </li>
-      <li>
-        <p class="small">{{ page_title }}</a></p>
-      </li>
-    {% endif %}
-  </ul>
+          <p class="small seperator">/</p>
+        </li>
+        <li>
+          <p class="small">{{ page_title }}</a></p>
+        </li>
+      {% endif %}
+    </ul>
+</div>
 </div>
 {% endunless %}

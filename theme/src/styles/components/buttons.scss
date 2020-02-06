@@ -41,6 +41,10 @@
   }
 }
 
+button.regular-button {
+  border: none;
+}
+
 .inline-link-single {
   position: relative;
   font-weight: 400;
@@ -57,13 +61,16 @@
     left: 0;
     height: 2px;
     bottom: -1px;
+    transform-origin: right;
 
-    @include transition(400ms all $cubic);
-    @include transform(translate(-101%, 0));
+    @include transform(scaleX(0));
+    @include transition(400ms transform $cubic);
   }
 
   &:hover::before {
-    @include transform(translate(0, 0));
+    transform-origin: left;
+
+    @include transform(scaleX(1));
   }
 
   &.red {
