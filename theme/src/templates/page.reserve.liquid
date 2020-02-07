@@ -14,11 +14,21 @@
 
   {{ form.errors | default_errors }}
 
-  <label for="ContactFormName">Name *</label>
+  Your Informations
+
+  <label for="ContactFormFirstName">First Name *</label>
   <input type="text"
-    name="contact[name]"
-    id="ContactFormName"
-    placeholder="Name *">
+    name="contact[firstname]"
+    id="ContactFormFirstName"
+    placeholder="First Name *"
+    required>
+
+  <label for="ContactFormLastName">Last Name *</label>
+  <input type="text"
+    name="contact[lastname]"
+    id="ContactFormLastName"
+    placeholder="Last Name *"
+    required>
 
   <label for="ContactFormEmail">Email *</label>
   <input type="email"
@@ -27,15 +37,47 @@
     placeholder="{{Email *}}" 
     spellcheck="false"
     autocomplete="off"
-    autocapitalize="off">
+    autocapitalize="off"
+    required>
 
-  <label for="ContactFormSubject">Subject</label>
+  <label for="ContactFormPhone">Phone Number</label>
+  <input type="tel"
+    name="contact[phone]"
+    id="ContactFormPhone"
+    placeholder="Phone Number"
+    pattern="[0-9\-]*">
+
+
+  Ticket Details
+
+  <label for="ContactFormDate">Show date *</label>
+  <input type="date"
+    name="contact[date]"
+    id="ContactFormDate"
+    placeholder="Date *"
+    required>
+
+  <label for="ContactFormNumberparty">Number in party *</label>
+  <select id="ContactFormNumberparty" name="contact[Numberparty]" required>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+
+  <label for="ContactFormTickettype">Ticket Type *</label>
+  <select id="ContactFormTickettype" name="contact[tickettype]" required>
+    <option>Type 1</option>
+    <option>Type 2</option>
+    <option>Type 3</option>
+  </select>
+
+  <label for="ContactFormVoucher">Voucher number</label>
   <input type="text"
-    name="contact[subject]"
-    id="ContactFormSubject"
-    placeholder="Subject">
+    name="contact[voucher]"
+    id="ContactFormVoucher"
+    placeholder="Voucher">
 
-  <label for="ContactFormMessage">Your Message</label>
+  <label for="ContactFormMessage">Special requests</label>
   <textarea rows="10"
     name="contact[body]"
     id="ContactFormMessage"
