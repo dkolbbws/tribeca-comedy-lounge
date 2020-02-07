@@ -55,7 +55,7 @@
   <script type="text/javascript">
     jQuery(function() {
       CartJS.init({{ cart | json }}, {
-        "debug": true,
+        "debug": false,
         "requestBodyClass": "loading",
         "moneyFormat": "{{ shop.money_format }}",
         "weightUnit": "oz"
@@ -71,6 +71,7 @@
         setTimeout(removeClass, 1000);
         $('.icon-cart .numItem').attr('data-count', cart.item_count);
         if (cart['item_count'] > 0) {
+          $('.cart-dd').addClass('active');
           $('.col-form').removeClass('hidden');
           $('.col-empty').addClass('hidden');
           $('.cart-dd').removeClass('empty');
