@@ -51,19 +51,7 @@ register('product', {
 
     // this.container.addEventListener('click', this.onThumbnailClick);
     // this.container.addEventListener('keyup', this.onThumbnailKeyup);
-    jQuery('.js-operator').click(function(e){
-      e.preventDefault();
-      var operator = $(this).data('control');
-      var operatorValue = parseInt(operator);
-      var current = $('.js-current').text();
-      var currentValue = parseInt(current);
-      var nextValue = currentValue + operatorValue;
-      //console.log(nextValue);
-      if (nextValue > 0) {
-        $('.js-current').text(nextValue);
-        $('.js-quantity option').text(nextValue);
-      }
-    })
+    
   },
 
   onUnload() {

@@ -141,19 +141,38 @@
             </div>
           </li>
         </ul> 
-        <div class="bws-button-wrapper">
-          <button data-cart-add="{{ product.variants.first.id }}" data-cart-quantity="1" class="regular-button bws-button js-button"
-            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-            {% include 'icon-ticket-light' %}
-              <span data-submit-button-text class="text">
-                {% if current_variant.available %}
-                  {{ 'products.product.add_to_cart' | t }}
+        
+        <form action="/cart/add" method="post" data-cart-submit>
+          <div class="bws-button-wrapper">
+            <button class="regular-button bws-button js-button" type="submit" {% if product.available == false %}
+              disabled="disabled" {% endif %}>
+              <span data-submit-button-text>
+                {% if product.available %}
+                <div class="inner-wrapper">
+                  {% include 'icon-ticket-light' %}
+                  <span class="text">ADD TO CART</span>
+                </div>
                 {% else %}
-                  {{ 'products.product.sold_out' | t }}
+                <div class="inner-wrapper">
+                  {% include 'icon-ticket-light' %}
+                  <span class="text">{{ 'products.product.sold_out' | t }}</span>
+                </div>
                 {% endif %}
               </span>
-          </button>
-        </div>
+            </button>
+          </div>
+
+          <select class="hidden" name="id">
+            <option value="{{ product.variants.first.id }}"></option>
+          </select>
+
+          <input type="hidden" name="properties[Date]"
+            value="{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}" />
+
+          <select name="quantity" class="hidden js-quantity">
+            <option>1</option>
+          </select>
+        </form>
       </sidebar>
     </div>
   </div>
@@ -257,72 +276,24 @@
   </div>
 </section>
 
-<sidebar>
+<script>
+  $( document ).ready(function() {
+    jQuery('.js-operator').click(function(e){
+      e.preventDefault();
+      var operator = $(this).data('control');
+      var operatorValue = parseInt(operator);
+      var current = $('.js-current').text();
+      var currentValue = parseInt(current);
+      var nextValue = currentValue + operatorValue;
+      //console.log(nextValue);
+      if (nextValue > 0) {
+        $('.js-current').text(nextValue);
+        $('.js-quantity option').text(nextValue);
+      }
+    })
+  });
 
-  <h4>{{ product.title }}</h4>
-
-  <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
-
-  {% if product.metafields.custom_fields["date"] != blank %}
-      <h3 class="custom-field--title">Date</h3>
-        {{ product.metafields.custom_fields["date"] | date: "%m/%d/%Y" }}
-  {% endif %}
-
-  {% if product.metafields.custom_fields["start_time"] != blank and product.metafields.custom_fields["start_time"] != blank %}
-    {{ product.metafields.custom_fields["start_time"] }} - {{ product.metafields.custom_fields["end_time"] }}
-  </div>
-  {% endif %}
-
-  {% if product.metafields.custom_fields["location"] != blank %}
-      <h3 class="custom-field--title">Location</h3>
-      {{ product.metafields.custom_fields["location"] }}
-  {% endif %}
-
-  <div class="control">
-    <div class="minus">
-      <a  href="#" data-control="-1" class="js-operator">-</a>
-    </div>
-    <div class="qty cart__qty-input">
-      <span class="medium-up--hide js-current">1</span>
-    </div>
-    <div class="plus">
-      <a  href="#" data-control="+1" class="js-operator">+</a>
-    </div>
-  </div>
-
-  <form action="/cart/add" method="post" data-cart-submit>
-    <div class="bws-button-wrapper">
-      <button class="regular-button bws-button js-button" type="submit" {% if product.available == false %}
-        disabled="disabled" {% endif %}>
-        <span data-submit-button-text>
-          {% if product.available %}
-          <div class="inner-wrapper">
-            {% include 'icon-ticket-light' %}
-            <span class="text">ADD TO CART</span>
-          </div>
-          {% else %}
-          <div class="inner-wrapper">
-            {% include 'icon-ticket-light' %}
-            <span class="text">{{ 'products.product.sold_out' | t }}</span>
-          </div>
-          {% endif %}
-        </span>
-      </button>
-    </div>
-
-    <select class="hidden" name="id">
-      <option value="{{ product.variants.first.id }}"></option>
-    </select>
-
-    <input type="hidden" name="properties[Date]"
-      value="{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}" />
-
-    <select name="quantity" class="hidden js-quantity">
-      <option>1</option>
-    </select>
-  </form>
-
-</sidebar>
+</script>
 
 {% schema %}
   {
