@@ -14,36 +14,35 @@
 
   {{ form.errors | default_errors }}
 
-  <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+  <label for="ContactFormName">Name *</label>
   <input type="text"
     name="contact[name]"
     id="ContactFormName"
-    placeholder="{{ 'contact.form.name' | t }}"
+    placeholder="Name *"
     value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
 
-  <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+  <label for="ContactFormEmail">Email *</label>
   <input type="email"
     name="contact[email]"
     id="ContactFormEmail"
-    placeholder="{{ 'contact.form.email' | t }}"
+    placeholder="{{Email *}}"
     value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
     spellcheck="false"
     autocomplete="off"
     autocapitalize="off">
 
-  <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
-  <input type="tel"
-    name="contact[phone]"
-    id="ContactFormPhone"
-    placeholder="{{ 'contact.form.phone' | t }}"
-    value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-    pattern="[0-9\-]*">
+  <label for="ContactFormSubject">Subject</label>
+  <input type="text"
+    name="contact[subject]"
+    id="ContactFormSubject"
+    placeholder="Subject"
+    value="{% if form[subject] %}{{ form[subject] }}{% elsif customer %}{{ customer.subject }}{% endif %}">
 
-  <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+  <label for="ContactFormMessage">Your Message</label>
   <textarea rows="10"
     name="contact[body]"
     id="ContactFormMessage"
-    placeholder="{{ 'contact.form.message' | t }}">
+    placeholder="Your Message">
     {%- if form.body -%}
       {{- form.body -}}
     {%- endif -%}
