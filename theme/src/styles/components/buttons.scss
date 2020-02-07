@@ -73,8 +73,19 @@
   }
 }
 
+.cart-dd .regular-button:hover .hover-svg,
 .schedule-list .absolute-link:hover .regular-button .hover-svg {
   @include transform(translate(570px, -355px) rotate(0) scale(4));
+}
+
+.cart-dd .regular-button {
+  &:hover .hover-svg {
+    @include transform(translate(550px, -355px) rotate(0) scale(4));
+  }
+
+  .hover-svg svg path {
+    fill: #b10b11;
+  }
 }
 
 button.regular-button {

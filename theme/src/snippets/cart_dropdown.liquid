@@ -20,7 +20,7 @@
                   <ul class="row middle-xs start-xs">
                     <li class="calendar-icon">{% include 'icon-calendar-red' %}</li>
                     <li>
-                      <p>{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                      <p class="date xs-small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
                     </li>
                   </ul>
 
@@ -61,7 +61,14 @@
           </div>
 
           <div class="flex2">
-            <div class="button-wrapper center"><a class="regular-button dark" data-text="Checkout" href="/checkout"><span class="text">Proceed to Checkout</span></a></div>	
+            <div class="button-wrapper center">
+              <a class="regular-button dark" data-text="Checkout" href="/checkout">
+                <span class="text">Proceed to Checkout</span>
+                <span class="hover-svg">
+                  {% include 'icon-regular-button-hover' %}
+                </span>
+              </a>
+            </div>	
           </div>
 
         </form>

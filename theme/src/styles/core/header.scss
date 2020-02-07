@@ -15,6 +15,8 @@
   }
 
   .bws-header {
+    position: relative;
+
     @include transition(400ms all $cubic);
 
     &.sticky {

@@ -86,13 +86,17 @@
         //console.log('woooork');
         e.preventDefault();
         e.stopPropagation();
-        //$(this).parent().toggleClass('active');
         $('.cart-dd').toggleClass('active');
-        $('body, html').toggleClass('oh');
+        $('header .overlay').addClass('active');
+        $('body, html').toggleClass('no-overflow');
       });
 
       jQuery('.cart-close').click(function(){
-        $('.cart-dd').removeClass('active');
+
+          $('.cart-dd').removeClass('active');
+          $('header .overlay').removeClass('active');
+          $('body, html').removeClass('no-overflow');
+          
       });
     });
 
