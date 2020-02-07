@@ -13,6 +13,8 @@
 .regular-button {
   background: $color-red;
   padding: 22.5px 71px;
+  position: relative;
+  overflow: hidden;
 
   @include inline-flex();
 
@@ -26,6 +28,8 @@
     font-size: 0.875em; // 14px
     line-height: 1.875em; // 30px
     letter-spacing: 0.06em;
+    position: relative;
+    z-index: 2;
 
     @include transition(400ms all $cubic);
   }
@@ -42,7 +46,35 @@
   svg {
     position: relative;
     top: 2px;
+    z-index: 2;
   }
+
+  .hover-svg {
+    position: absolute;
+    top: 100%;
+    overflow: visible;
+    width: 150px;
+    height: 90px;
+    z-index: 0;
+
+    @include transition(1100ms all $cubic);
+    // @include transform(translate(-30px, 0) rotate(25deg));
+    @include transform(translate(-100px, 0) rotate(45deg));
+
+    svg {
+      overflow: visible;
+    }
+  }
+
+  &:hover {
+    .hover-svg {
+      @include transform(translate(0, -175px) rotate(0));
+    }
+  }
+}
+
+.schedule-list .absolute-link:hover .regular-button .hover-svg {
+  @include transform(translate(570px, -355px) rotate(0) scale(4));
 }
 
 button.regular-button {
@@ -103,6 +135,7 @@ button.regular-button {
   margin-top: 50px;
 
   svg {
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;

@@ -505,9 +505,9 @@ if (document.body.classList.contains('template-index')) {
           // Shop the map
           home_map_object.__gm.Ma.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
           home_map_object.__gm.Ma.style.opacity = 1;
-        }, 400);
+        }, 600);
       })
-  }, 400);
+  }, 800);
 }
 
 /* 
@@ -530,7 +530,7 @@ function set_map_pin_styles(mapId) {
 
     let tcl = document.querySelectorAll('#home-map img[src*="tcl_pin_2.svg?641"]');
     tcl[1].setAttribute('data-window', home_map_features[0].infoWindow)
-  }, 400);
+  }, 600);
 }
 
 // Map Subway directions - changes copy and adjaccent map pin
@@ -593,6 +593,161 @@ function open_accordion(event) {
     
   }
 }
+
+let anchor = document.querySelectorAll('.anchor-scroll');
+anchor.forEach( item => {
+  item.addEventListener('click', scroll_to_element);
+});
+
+function scroll_to_element(event) {  
+  event.preventDefault();
+
+  let target = event.target.getAttribute('href');  
+  let distance = document.getElementById(target);
+  distance = parseInt(distance.offsetTop);
+  gsap.to(window, {duration: 1, ease: "Quint.easeInOut", delay: 0.2, scrollTo: distance, });
+}
+
+function current_slide(slide, slider) {
+  let slides = slider;
+  let current_slide = slide;
+
+  for(let a = 0; a < slides.length; a++) {
+    if (slides[a].classList.contains('active')) {
+      current_slide = a;
+    }
+  }
+
+  slide = current_slide;
+  return slide;
+}
+
+$(document).ready(function() {
+  let next_arrow = document.querySelector('#home-section-eight .next');
+  let prev_arrow = document.querySelector('#home-section-eight .prev');
+
+  let home_one = null;
+  home_one = $("#home-slider-one").lightSlider({
+      item: 3,
+      autoWidth: false,
+      slideMove: 3, // slidemove will be 1 if loop is true
+      slideMargin: 10,
+
+      addClass: '',
+      mode: "slide",
+      // mode: "fade",
+      useCSS: true,
+      cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
+
+      speed: 1000, //ms'
+      auto: false,
+      loop: false,
+      slideEndAnimation: true,
+      pause: 2000,
+
+      keyPress: true,
+      controls: true,
+      prevHtml: '',
+      nextHtml: '',
+
+      rtl:false,
+      adaptiveHeight:false,
+
+      vertical:false,
+      // verticalHeight:500,
+      vThumbWidth:100,
+
+      thumbItem:10,
+      pager: true,
+      gallery: false,
+      galleryMargin: 5,
+      thumbMargin: 5,
+      currentPagerPosition: 'middle',
+
+      enableTouch:true,
+      enableDrag:true,
+      freeMove:true,
+      swipeThreshold: 40,
+
+      responsive : [],
+
+      onBeforeStart: function (el) {},
+      onSliderLoad: function (el) {
+        // Adjust slder to match the tallest item
+        let slider = Array.from(el[0].children);
+        
+        for(let a = 0; a < slider.length; a++) {
+          slider[a] = slider[a].clientHeight
+        }
+
+        let tallest = slider.sort();
+        home_one[0].style.minHeight = tallest[tallest.length - 1] + 'px';
+        
+      },
+      onBeforeSlide: function (el) {},
+      onAfterSlide: function (el) {
+        let dots = document.querySelectorAll('#home-section-eight .lSPager li');
+        let current = get_current_dot(dots);
+
+        if (current == 0) {
+          prev_arrow.classList.add('disabled');
+        } else {
+          prev_arrow.classList.remove('disabled');
+        }
+
+        if (current == dots.length - 1) {
+          next_arrow.classList.add('disabled');
+        } else {
+          next_arrow.classList.remove('disabled');
+        }
+         
+      },
+      onBeforeNextSlide: function (el) {},
+      onBeforePrevSlide: function (el) {}
+  });
+
+  function get_current_dot(dots) {
+    let current = null;
+    for (let a = 0; a < dots.length; a++) {
+      if (dots[a].classList.contains('active')) {
+        current = a;
+      }
+    }
+    return current;
+  }
+
+  next_arrow.addEventListener('click', (event) => {
+    let current = null;
+    let dots = document.querySelectorAll('#home-section-eight .lSPager li');
+    current = get_current_dot(dots);
+    home_one.goToSlide(current + 1);
+
+    if (current <= dots.length - 2) {
+      home_one.goToSlide(current + 1);
+      event.target.classList.remove('disabled');
+      prev_arrow.classList.remove('disabled');
+    } 
+    if (current == dots.length - 2) {
+      event.target.classList.add('disabled');
+    }
+  });
+
+  prev_arrow.addEventListener('click', (event) => {
+    let current = null;
+    let dots = document.querySelectorAll('#home-section-eight .lSPager li');
+    current = get_current_dot(dots);
+
+    if (current >= 1) {
+      home_one.goToSlide(current - 1);
+      event.target.classList.remove('disabled');
+      next_arrow.classList.remove('disabled');
+    } 
+    if (current == 1) {
+      event.target.classList.add('disabled');
+    }
+  }); 
+});
 
 
 // let xhr = new XMLHttpRequest();

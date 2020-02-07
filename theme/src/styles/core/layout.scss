@@ -371,12 +371,17 @@ body a {
   //   bottom: -65px;
   // }
 
+  .absolute-link {
+    height: calc(100% - 62px);
+  }
+
   .bws-button-wrapper {
     @include flexbox();
 
     position: absolute;
     min-height: 62px;
     width: 100%;
+    top: 100%;
   }
 
   .regular-button {
@@ -399,12 +404,20 @@ body a {
     .text {
       font-size: 0.6875em;
     }
+
+    .hover-svg {
+      @include transform(translate(-120px, 60px) rotate(45deg));
+    }
+
+    &:hover .hover-svg {
+      @include transform(translate(-90px, -185px) rotate(0));
+    }
   }
 }
 
 
 .map-wrapper {
-  padding-bottom: 50%;
+  padding-bottom: 40%;
   position: relative;
 
   .google-map {
@@ -841,12 +854,103 @@ body .gm-style .gm-style-iw-d {
   font-family: $pnr;
 }
 
-#home-section-seven {}.custom-110 {
-  font-size: 2.25em;
-  line-height: 0.85em;
+// #home-section-seven {}.custom-110 {
+//   font-size: 2.25em;
+//   line-height: 0.85em;
+// }
+
+.slider-row,
+.lSSlideOuter {
+  overflow: hidden;
+  position: relative;
+
+  [class^=col-] {
+    position: relative;
+  }
+
+  .lSPager,
+  .arrow-column,
+  .arrow-column .arrow {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  .arrow {
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+
+    @include transition(400ms all $cubic);
+
+    svg {
+      pointer-events: none;
+
+      path {
+        @include transition(400ms all $cubic);
+      }
+    }
+
+    &.next {
+      right: 20px;
+    }
+
+    &.left {
+      left: -4.33%;
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      path {
+        stroke: $color-gray-border;
+      }
+    }
+  }
+
+  .lSPager {
+    margin-top: 40px;
+
+    .active a {
+      background: red;
+
+      @include transform(scale(0.8));
+    }
+
+    a,
+    li {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    li {
+      margin-right: 10px;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    li a {
+      background: $color-gray;
+      font-size: 0;
+      padding: 4.5px;
+      transform-origin: center;
+      display: inline-block;
+
+      @include transition(400ms all $cubic);
+    }
+  }
 }
 
 .testimonial-list {
+  // @include transition(600ms all $cubic);
+  transition-timing-function: $cubic;
+  // transition-delay: 400ms;
+  transition-duration: 800ms;
+
+
   .inner-wrapper {
     padding-left: 25px;
     padding-right: 25px;

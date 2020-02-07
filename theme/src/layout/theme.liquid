@@ -100,7 +100,10 @@
 
   {% include 'script-tags', layout: 'theme' %}
 
+  
   {{ 'gsap.min.js' | asset_url | script_tag }}
+  {{ 'ScrollToPlugin.min.js' | asset_url | script_tag }}
+  
 
   {{ content_for_header }}
 
@@ -121,6 +124,7 @@
   </main>
 
   {% section 'footer' %}
+  {{ 'lightslider.js' | asset_url | script_tag }}
 
 </body>
 </html>
