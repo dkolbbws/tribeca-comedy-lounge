@@ -113,3 +113,278 @@ option {
     }
   }
 }
+
+input,
+textarea {
+  &::-webkit-input-placeholder { /* Edge */
+    color: transparent;
+  }
+  
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: transparent;
+  }
+  
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input,
+textarea,
+label {
+  font-size: 1em;
+  font-family: $pnr;
+  color: $color-form-gray;
+  width: 100%;
+  background: transparent;
+}
+
+input {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid $color-form-gray;
+  // background: transparent;
+  // width: 100%;
+  height: 50px;
+  position: relative;
+
+  @include transition(400ms all $cubic);
+
+  // &::-webkit-input-placeholder { /* Edge */
+  //   color: transparent;
+  // }
+  
+  // &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  //   color: transparent;
+  // }
+  
+  // &::placeholder {
+  //   color: transparent;
+  // }
+
+  // &:focus {
+  //   outline: none;
+  // }
+
+  &:focus {
+    color: $color-white;
+
+    + label {
+      @include transform(translate(0, -60px));
+
+      color: $color-white;
+    }
+  }
+}
+
+.form-row {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+
+    @include transition(400ms all $cubic);
+    @include transform(translate(0, -30px));
+
+    &.input-filled {
+      @include transform(translate(0, -60px));
+    }
+  }
+
+  .wrap,
+  .left,
+  .right {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 17px;
+      width: 100%;
+      height: 1px;
+      background: $color-white;
+      transform-origin: left;
+  
+      @include transform(scaleX(0));
+      @include transition(400ms all $cubic);
+    }
+
+    &.active-input::before {
+      @include transform(scaleX(1));
+    }
+  }
+}
+
+.form-row.textarea {
+  .wrap {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  label {
+    @include transform(translate(20px, 55px));
+
+    &.input-filled {
+      @include transform(translate(0px, -10px));
+    }
+  }
+
+  .right-corner,
+  .left-corner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      background: $color-white;
+      width: 100%;
+      height: 100%;
+
+      @include transition(400ms all $cubic);
+    }
+  }
+
+  .right-corner::before {
+    width: 100%;
+    height: 1px;
+    transform-origin: left;
+    top: 18px;
+
+    @include transform(scaleX(0));
+  }
+
+  .right-corner::after {
+    width: 1px;
+    height: calc(100% - 22px);
+    transform-origin: top;
+    top: 18px;
+
+    @include transform(scaleY(0));
+  }
+
+  .right-corner.active {
+    &::before {
+      @include transform(scaleX(1));
+    }
+
+    &::after {
+      @include transform(scaleY(1));
+    }
+  }
+
+  .left-corner::before {
+    width: 100%;
+    height: 1px;
+    bottom: 4px;
+    transform-origin: right;
+
+    @include transform(scaleX(0));
+  }
+
+  .left-corner::after {
+    width: 1px;
+    height: calc(100% - 22px);
+    right: 0;
+    transform-origin: top;
+    top: 18px;
+
+    @include transform(scaleY(0));
+  }
+
+  .left-corner.active {
+    &::before {
+      @include transform(scaleX(1));
+    }
+
+    &::after {
+      @include transform(scaleY(1));
+    }
+  }
+}
+
+textarea {
+  border: 1px solid $color-form-gray;
+  background: transparent;
+  padding: 15px;
+}
+
+.form-row.submit {
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  .bws-button-wrapper {
+    position: relative;
+
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+  }  
+
+  input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-indent: -99999px;
+  }
+
+  span {
+    pointer-events: none;
+  }
+}
+
+form:focus {
+  outline: none;
+}
+
+.form-row.after-message p,
+.form-success {
+  text-align: center;
+}
+
+.shopify-challenge__container {
+  min-height: 80vh;
+
+  @include flexbox();
+  @include justify-content(center);
+  @include flex-direction(column);
+
+  input[type="submit"] {
+    position: relative;
+    border-bottom: none;
+    color: $color-white;
+    background: $color-red;
+    padding: 25px 30px 45px;
+    max-width: 200px;
+    margin-top: 20px;
+  }
+}
+
+@media all and (min-width: 769px) {
+  .form-row.double {
+    @include flexbox();
+
+    .left,
+    .right {
+      width: 50%;
+      flex: 0 0 50%;
+    }
+
+    .left {
+      padding-right: 15px;
+    }
+
+    .right {
+      padding-left: 15px;
+    }
+  }
+}

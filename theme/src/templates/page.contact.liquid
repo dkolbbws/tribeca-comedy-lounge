@@ -1,50 +1,141 @@
-<h1>{{ page.title }}</h1>
 
-<div class="rte">
-  {{ page.content }}
-</div>
+<section class="spacing-bottom-sm" id="contact-section-one">
+  {% include 'breadcrumbs' %}
+  <div class="row center-xs">
+    <h2>{{ page.title }}</h2>
+  </div>
+  <div class="row middle-xs">
+    <div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-2 col-xs-12 col-sm-offset-0">
+      <ul class="icon-list">
 
-{% form 'contact' %}
+        {% if settings.contact_location_address != blank %}
+          <li>
+            <span class="list-icon">{% include 'icon-map-pin' %}</span>
+            <span class="text">
+              <h4>Visit Us</h4>
+              <p class="large">{{ settings.contact_location_address }}</p>
+            </span>
+          </li>
+        {% endif %}
 
-  {% if form.posted_successfully? %}
-    <p class="form-success">
-      {{ 'contact.form.post_success' | t }}
-    </p>
-  {% endif %}
+        {% if settings.contact_general_email != blank %}
+          <li>
+            <span class="list-icon">{% include 'icon-mail' %}</span>
+            <span class="text">
+              <h4>For Your Letters</h4>
+              <p class="large">
+                <a href="mailt:{{ settings.contact_general_email }}" target="_blank" class="inline-link-single white">{{ settings.contact_general_email }}</a>
+              </p>
+            </span>
+          </li>
+        {% endif %}
 
-  {{ form.errors | default_errors }}
+        {% if settings.contact_phone_display != blank and settings.contact_phone_tel != blank %}
+          <li>
+            <span class="list-icon">{% include 'icon-phone' %}</span>
+            <span class="text">
+              <h4>Phone number</h4>
+              <p class="large">
+                <a href="tel:{{ settings.contact_phone_tel }}" target="_blank" class="inline-link-single white">{{ settings.contact_phone_display }}</a>
+              </p>
+            </span>
+          </li>
+        {% endif %}
 
-  <label for="ContactFormName">Name *</label>
-  <input type="text"
-    name="contact[name]"
-    id="ContactFormName"
-    placeholder="Name *" required>
+      </ul>
+    </div>
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+      <span class="image-with-caption">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/contact-image.jpg?v=1581129257" alt="">
+        <p class="caption xs-small">Photo: Filip Walak</p>
+      </span>
+    </div>
+  </div>
+</section>
 
-  <label for="ContactFormEmail">Email *</label>
-  <input type="email"
-    name="contact[email]"
-    id="ContactFormEmail"
-    placeholder="{{Email *}}" 
-    spellcheck="false"
-    autocomplete="off"
-    autocapitalize="off" required>
+{% section 'subway-map' %}
 
-  <label for="ContactFormSubject">Subject</label>
-  <input type="text"
-    name="contact[subject]"
-    id="ContactFormSubject"
-    placeholder="Subject">
+<section class="spacing-top-xxs spacing-bottom-xl" id="contact-section-three">
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <h2>Let's Talk</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
+      <p>I am ABOVE FORM</p>
+      {% form 'contact' %}
 
-  <label for="ContactFormMessage">Your Message</label>
-  <textarea rows="10"
-    name="contact[body]"
-    id="ContactFormMessage"
-    placeholder="Your Message">
-    {%- if form.body -%}
-      {{- form.body -}}
-    {%- endif -%}
-  </textarea>
+        <div class="form-wrapper">
+        {{ form.errors | default_errors }}
+            <div class="form-row single">
+              <div class="wrap">
+                <input type="text"
+                  name="contact[name]"
+                  id="ContactFormName"
+                  placeholder="Name" required>
+                  <label for="ContactFormName">Name <span class="color-red">*</span></label>
+              </div>
+            </div>
+            
+            <div class="form-row double">
+              <div class="left">
+                <input type="email"
+                  name="contact[email]"
+                  id="ContactFormEmail"
+                  placeholder="{{Email *}}" 
+                  spellcheck="false"
+                  autocomplete="off"
+                  autocapitalize="off" required>
+                  <label for="ContactFormEmail">Email <span class="color-red">*</span></label>
+              </div>
+              <div class="right">
+                <input type="text"
+                  name="contact[subject]"
+                  id="ContactFormSubject"
+                  placeholder="Subject">
+                  <label for="ContactFormSubject">Subject</label>
+              </div>
+            </div>
+            
+            <div class="form-row textarea single">
+              <div class="wrap">
+                <div class="left-corner"></div>
+                <div class="right-corner"></div>
+                <label for="ContactFormMessage">Your Message</label>
+                <textarea rows="10"
+                  name="contact[body]"
+                  id="ContactFormMessage">
+                  {%- if form.body -%}
+                    {{- form.body -}}
+                  {%- endif -%}
+                </textarea>
+              </div>
+            </div>
 
-  <input type="submit" class="button" value="SUBMIT">
+            <div class="form-row submit">
+              <div class="bws-button-wrapper">
+                <div class="bws-button regular-button">
+                  <input type="submit" class="button" value="SUBMIT MESSAGE">
+                  <span class="text">Submit Message</span>
+                  <span class="hover-svg">
+                    {% include 'icon-regular-button-hover' %}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-row after-message">
+              <p class="xs-small">Or have a look at <a href="pages/faq" class="inline-link-single red" target="_self">Frequently Asked Questions</a></p>
+            </div>
 
-{% endform %}
+      {% if form.posted_successfully? %}
+        <p class="form-success">
+          {{ 'contact.form.post_success' | t }}
+        </p>
+      {% endif %}
+            
+      {% endform %}
+    </div>
+
+  </div>
+</section>

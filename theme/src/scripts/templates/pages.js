@@ -483,32 +483,12 @@ function init_google_map(mapId, pinlat, pinlong) {
         };
     })(marker,content,infowindow));
 
-    home_map_bool = true;
+    // setTimeout( () => {
+      home_map_bool = true;
+    // }, 400);
   };
 }
 
-if (document.body.classList.contains('template-index')) {
-  setTimeout( () => {
-    let home_map_promise = new Promise((resolve,reject) => {
-      init_google_map('home-map', 40.7143614,-74.00774990000001)
-      if (home_map_bool) {
-        resolve();
-      }
-    });
-    
-    home_map_promise
-      .then( () => {
-          set_map_pin_styles('home-map');
-      })
-      .then( () => {
-        setTimeout( () => {
-          // Shop the map
-          home_map_object.__gm.Ma.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
-          home_map_object.__gm.Ma.style.opacity = 1;
-        }, 600);
-      })
-  }, 800);
-}
 
 /* 
   set_map_pin_styles
@@ -518,7 +498,7 @@ if (document.body.classList.contains('template-index')) {
 function set_map_pin_styles(mapId) {
   setTimeout( () => {
     // Hide all pins except for TCL and the first subway
-    let icons = Array.from(document.querySelectorAll('#home-map img[src*="currrent-map-pin.svg?641"]'));
+    let icons = Array.from(document.querySelectorAll('#subway-map img[src*="currrent-map-pin.svg?641"]'));
     icons.forEach( (icon,index) => { 
       icon.setAttribute('id', index); 
       icon.classList.add('hide-marker')
@@ -527,10 +507,11 @@ function set_map_pin_styles(mapId) {
     });
     let test = icons.filter( icon => { return icon.id == 0; });
     test[0].classList.remove('hide-marker');
+    // icons[0].classList.remove('hide-marker');
 
-    let tcl = document.querySelectorAll('#home-map img[src*="tcl_pin_2.svg?641"]');
+    let tcl = document.querySelectorAll('#subway-map img[src*="tcl_pin_2.svg?641"]');
     tcl[1].setAttribute('data-window', home_map_features[0].infoWindow)
-  }, 600);
+  }, 800);
 }
 
 // Map Subway directions - changes copy and adjaccent map pin
@@ -565,6 +546,29 @@ for (let a =0; a < subway_links.length; a++) {
     home_map_pins[a].classList.remove('hide-marker');
     }
   })
+}
+
+if (document.body.classList.contains('template-index') || (document.body.classList.contains('template-page') && document.getElementById('contact') != undefined) ) {  
+  setTimeout( () => {
+    let home_map_promise = new Promise((resolve,reject) => {
+      init_google_map('subway-map', 40.7143614,-74.00774990000001)
+      if (home_map_bool) {
+        resolve();
+      }
+    });
+    
+    home_map_promise
+      .then( () => {
+          set_map_pin_styles('subway-map');
+      })
+      .then( () => {
+        setTimeout( () => {
+          // Shop the map
+          home_map_object.__gm.Ma.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
+          home_map_object.__gm.Ma.style.opacity = 1;
+        }, 600);
+      })
+  }, 800);
 }
 
 let faq_item = document.querySelectorAll('.faq-list a');
@@ -623,130 +627,132 @@ function current_slide(slide, slider) {
 }
 
 $(document).ready(function() {
-  let next_arrow = document.querySelector('#home-section-eight .next');
-  let prev_arrow = document.querySelector('#home-section-eight .prev');
+  if (document.body.classList.contains('template-index')) {
+    let next_arrow = document.querySelector('#home-section-eight .next');
+    let prev_arrow = document.querySelector('#home-section-eight .prev');
 
-  let home_one = null;
-  home_one = $("#home-slider-one").lightSlider({
-      item: 3,
-      autoWidth: false,
-      slideMove: 3, // slidemove will be 1 if loop is true
-      slideMargin: 10,
+    let home_one = null;
+    home_one = $("#home-slider-one").lightSlider({
+        item: 3,
+        autoWidth: false,
+        slideMove: 3, // slidemove will be 1 if loop is true
+        slideMargin: 10,
 
-      addClass: '',
-      mode: "slide",
-      // mode: "fade",
-      useCSS: true,
-      cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-      easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
+        addClass: '',
+        mode: "slide",
+        // mode: "fade",
+        useCSS: true,
+        cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
 
-      speed: 1000, //ms'
-      auto: false,
-      loop: false,
-      slideEndAnimation: true,
-      pause: 2000,
+        speed: 1000, //ms'
+        auto: false,
+        loop: false,
+        slideEndAnimation: true,
+        pause: 2000,
 
-      keyPress: true,
-      controls: true,
-      prevHtml: '',
-      nextHtml: '',
+        keyPress: true,
+        controls: true,
+        prevHtml: '',
+        nextHtml: '',
 
-      rtl:false,
-      adaptiveHeight:false,
+        rtl:false,
+        adaptiveHeight:false,
 
-      vertical:false,
-      // verticalHeight:500,
-      vThumbWidth:100,
+        vertical:false,
+        // verticalHeight:500,
+        vThumbWidth:100,
 
-      thumbItem:10,
-      pager: true,
-      gallery: false,
-      galleryMargin: 5,
-      thumbMargin: 5,
-      currentPagerPosition: 'middle',
+        thumbItem:10,
+        pager: true,
+        gallery: false,
+        galleryMargin: 5,
+        thumbMargin: 5,
+        currentPagerPosition: 'middle',
 
-      enableTouch:true,
-      enableDrag:true,
-      freeMove:true,
-      swipeThreshold: 40,
+        enableTouch:true,
+        enableDrag:true,
+        freeMove:true,
+        swipeThreshold: 40,
 
-      responsive : [],
+        responsive : [],
 
-      onBeforeStart: function (el) {},
-      onSliderLoad: function (el) {
-        // Adjust slder to match the tallest item
-        let slider = Array.from(el[0].children);
-        
-        for(let a = 0; a < slider.length; a++) {
-          slider[a] = slider[a].clientHeight
+        onBeforeStart: function (el) {},
+        onSliderLoad: function (el) {
+          // Adjust slder to match the tallest item
+          let slider = Array.from(el[0].children);
+          
+          for(let a = 0; a < slider.length; a++) {
+            slider[a] = slider[a].clientHeight
+          }
+
+          let tallest = slider.sort();
+          home_one[0].style.minHeight = tallest[tallest.length - 1] + 'px';
+          
+        },
+        onBeforeSlide: function (el) {},
+        onAfterSlide: function (el) {
+          let dots = document.querySelectorAll('#home-section-eight .lSPager li');
+          let current = get_current_dot(dots);
+
+          if (current == 0) {
+            prev_arrow.classList.add('disabled');
+          } else {
+            prev_arrow.classList.remove('disabled');
+          }
+
+          if (current == dots.length - 1) {
+            next_arrow.classList.add('disabled');
+          } else {
+            next_arrow.classList.remove('disabled');
+          }
+          
+        },
+        onBeforeNextSlide: function (el) {},
+        onBeforePrevSlide: function (el) {}
+    });
+
+    function get_current_dot(dots) {
+      let current = null;
+      for (let a = 0; a < dots.length; a++) {
+        if (dots[a].classList.contains('active')) {
+          current = a;
         }
-
-        let tallest = slider.sort();
-        home_one[0].style.minHeight = tallest[tallest.length - 1] + 'px';
-        
-      },
-      onBeforeSlide: function (el) {},
-      onAfterSlide: function (el) {
-        let dots = document.querySelectorAll('#home-section-eight .lSPager li');
-        let current = get_current_dot(dots);
-
-        if (current == 0) {
-          prev_arrow.classList.add('disabled');
-        } else {
-          prev_arrow.classList.remove('disabled');
-        }
-
-        if (current == dots.length - 1) {
-          next_arrow.classList.add('disabled');
-        } else {
-          next_arrow.classList.remove('disabled');
-        }
-         
-      },
-      onBeforeNextSlide: function (el) {},
-      onBeforePrevSlide: function (el) {}
-  });
-
-  function get_current_dot(dots) {
-    let current = null;
-    for (let a = 0; a < dots.length; a++) {
-      if (dots[a].classList.contains('active')) {
-        current = a;
       }
+      return current;
     }
-    return current;
-  }
 
-  next_arrow.addEventListener('click', (event) => {
-    let current = null;
-    let dots = document.querySelectorAll('#home-section-eight .lSPager li');
-    current = get_current_dot(dots);
-    home_one.goToSlide(current + 1);
-
-    if (current <= dots.length - 2) {
+    next_arrow.addEventListener('click', (event) => {
+      let current = null;
+      let dots = document.querySelectorAll('#home-section-eight .lSPager li');
+      current = get_current_dot(dots);
       home_one.goToSlide(current + 1);
-      event.target.classList.remove('disabled');
-      prev_arrow.classList.remove('disabled');
-    } 
-    if (current == dots.length - 2) {
-      event.target.classList.add('disabled');
-    }
-  });
 
-  prev_arrow.addEventListener('click', (event) => {
-    let current = null;
-    let dots = document.querySelectorAll('#home-section-eight .lSPager li');
-    current = get_current_dot(dots);
+      if (current <= dots.length - 2) {
+        home_one.goToSlide(current + 1);
+        event.target.classList.remove('disabled');
+        prev_arrow.classList.remove('disabled');
+      } 
+      if (current == dots.length - 2) {
+        event.target.classList.add('disabled');
+      }
+    });
 
-    if (current >= 1) {
-      home_one.goToSlide(current - 1);
-      event.target.classList.remove('disabled');
-      next_arrow.classList.remove('disabled');
-    } 
-    if (current == 1) {
-      event.target.classList.add('disabled');
-    }
-  }); 
+    prev_arrow.addEventListener('click', (event) => {
+      let current = null;
+      let dots = document.querySelectorAll('#home-section-eight .lSPager li');
+      current = get_current_dot(dots);
+
+      if (current >= 1) {
+        home_one.goToSlide(current - 1);
+        event.target.classList.remove('disabled');
+        next_arrow.classList.remove('disabled');
+      } 
+      if (current == 1) {
+        event.target.classList.add('disabled');
+      }
+    }); 
+  } 
 });
 
 
@@ -772,3 +778,65 @@ $(document).ready(function() {
 // 	}
 // }
 // xhr.send();
+
+if (document.getElementById('contact') != undefined) {
+  let inputs = document.querySelectorAll('.form-wrapper input');
+  let textareas = document.querySelectorAll('.form-wrapper textarea');
+
+  inputs.forEach(item => {
+    item.addEventListener('input', (event) => {
+      if (event.target.value.length > 0) {
+        event.target.classList.add('teeee')
+        event.target.nextElementSibling.classList.add('input-filled');
+      } else {
+        event.target.nextElementSibling.classList.remove('input-filled');
+      }
+    });
+
+    item.addEventListener('focusin', (event) => {
+      event.target.parentElement.classList.add('active-input');
+    })
+
+    item.addEventListener('focusout', (event) => {
+      event.target.parentElement.classList.remove('active-input');
+    })
+  })
+
+  textareas.forEach(item => {
+    item.addEventListener('focusin', (event) => {
+      let right = event.target.parentElement.querySelector('.right-corner');
+      let left = event.target.parentElement.querySelector('.left-corner');
+      right.classList.add('active');
+      left.classList.add('active');
+
+      event.target.parentElement.childNodes[5].classList.add('input-filled');
+    });
+  });
+
+  textareas.forEach(item => {
+    item.addEventListener('focusout', (event) => {
+      let right = event.target.parentElement.querySelector('.right-corner');
+      let left = event.target.parentElement.querySelector('.left-corner');
+      right.classList.remove('active');
+      left.classList.remove('active');
+
+      if (event.target.value > 0) {
+        event.target.parentElement.childNodes[5].classList.remove('input-filled');
+      } else {
+        event.target.parentElement.childNodes[5].classList.add('input-filled');
+      }
+      
+    });
+  });
+  
+  textareas.forEach(item => {
+    item.addEventListener('input', (event) => {
+      if (event.target.value.length > 0) {
+        event.target.classList.add('teeee')
+        event.target.parentElement.childNodes[5].classList.add('input-filled');
+      } else {
+        event.target.parentElement.childNodes[5].classList.remove('input-filled');
+      }
+    })
+  })
+}

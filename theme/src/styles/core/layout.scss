@@ -1396,6 +1396,43 @@ footer {
   }
 }
 
+.icon-list li {
+  margin-bottom: 60px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include flexbox();
+  @include flex-direction(row);
+
+  .list-icon {
+    margin-right: 14px;
+    margin-top: 5px;
+  }
+
+  h4 {
+    margin-bottom: 17px;
+  }
+}
+
+.image-with-caption {
+  position: relative;
+
+  .caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin-bottom: 0;
+    color: $color-gray;
+  }
+}
+
+// Subweay Map
+#subway-section-one h2 {
+  margin-bottom: 27px;
+}
+
 @media all and (min-width: 1024px) {
   .remove-side-padding-desktop > [class^=col-] {
     padding-left: 0;
