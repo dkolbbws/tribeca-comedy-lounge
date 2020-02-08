@@ -55,6 +55,10 @@ body a {
   text-decoration: none;
 }
 
+main img {
+  width: 100%;
+}
+
 // Spacings
 .spacing-top-xxs {
   padding-top: 45px;
@@ -187,24 +191,28 @@ body a {
     top: -5.5vh;
     left: 5.67vw;
     z-index: 1;
+    max-width: 154px;
   }
 
   .image-circles.two {
     top: 26vh;
     left: 4.333vw;
     z-index: 1;
+    max-width: 146px
   }
 
   .image-circles.three {
     top: 28vh;
     z-index: 0;
     left: 12vw;
+    max-width: 252px;
   }
 
   .image-circles.four {
     top: -5.5vh;
     left: -4.67vw;
     z-index: 1;
+    max-width: 130px;
   }
 
   .image-circles.five {
@@ -212,12 +220,14 @@ body a {
     left: -28.33%;
     z-index: 1;
     top: 24vh;
+    max-width: 472.29px;
   }
 
   .image-circles.six {
     left: 23.33%;
     z-index: 0;
     top: 16vh;
+    max-width: 250px;
   }
 }
 
@@ -958,6 +968,7 @@ body .gm-style .gm-style-iw-d {
 
   img {
     margin-bottom: 10px;
+    max-width: 40px;
   }
 
   .large {
@@ -1206,15 +1217,23 @@ footer {
     position: relative;
   }
 
-  .about-images-one img:first-of-type {
-    position: relative;
-    left: 56%;
-    margin-bottom: 20px;
+  .about-images-one {
+    img:first-of-type {
+      position: relative;
+      left: 56%;
+      margin-bottom: 20px;
+      max-width: 120px;
+    }
+
+    img:nth-of-type(2) {
+      max-width: 470px;
+    }
   }
 
   .image-right {
     position: absolute;
     right: 0;
+    max-width: 195px;
   }
 
   .about-image-text {
@@ -1222,6 +1241,8 @@ footer {
     position: absolute;
     left: 58.333%;
     bottom: -10%;
+    max-width: 280.06px;
+    max-height: 280.06px;
   }
 
   .about-bottom-images {
@@ -1233,11 +1254,16 @@ footer {
       position: relative;
       top: -10%;
 
+      &:first-of-type {
+        max-width: 230px;
+      }
+
       &:last-of-type {
         position: absolute;
         max-width: 55.333%;
         top: -5%;
         right: -35%;
+        max-width: 134px;
       }
     }
   }
@@ -1268,6 +1294,7 @@ footer {
     position: absolute;
     left: -50%;
     bottom: 30px;
+    max-width: 116px;
   }
 }
 
