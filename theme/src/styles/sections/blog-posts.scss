@@ -9,3 +9,93 @@
 .blog-post__item {
   flex: 1 1 percentage(1 / 3);
 }
+
+.template-article main {
+  padding-top: 0;
+}
+
+#comedian-hero-row {
+  position: relative;
+  padding-top: 110px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+
+  .row {
+    position: relative;
+    z-index: 2;
+  }
+
+  .comedian-title {
+    padding-top: 140px;
+    padding-bottom: 247px;
+    text-transform: none;
+  }
+
+  .caption {
+    color: $color-gray;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    margin-bottom: 0;
+  }
+}
+
+#comedian-content-one {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $pnr;
+  }
+
+  .section-title {
+    font-weight: 600;
+
+    &.press {
+      margin-top: 40px;
+    }
+
+    &.networks {
+      padding-top: 52px;
+    }
+  }
+}
+
+.press-comedian-list li {
+  margin-bottom: 37px;
+  padding-right: 15px;
+
+  @include flexbox();
+  @include flex-direction(column);
+
+  .small {
+    color: $color-gray;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+}
+
+#comedians-related {
+  border-top: 1px solid $color-gray;
+
+  li {
+    margin-bottom: 0;
+  }
+}

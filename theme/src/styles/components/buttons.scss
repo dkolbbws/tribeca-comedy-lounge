@@ -78,6 +78,18 @@
   @include transform(translate(570px, -355px) rotate(0) scale(4));
 }
 
+#product-details,
+#product-hero-row {
+  .hover-svg {
+    // @include transform(translate(-170px, 0) rotate(45deg));
+    @include transform(translate(-250px, 0) rotate(45deg));
+  }
+
+  .regular-button:hover .hover-svg {
+    @include transform(translate(-50px, -200px) rotate(0deg) scale(1.4));
+  }
+}
+
 .cart-dd .regular-button {
   &:hover .hover-svg {
     @include transform(translate(550px, -355px) rotate(0) scale(4));

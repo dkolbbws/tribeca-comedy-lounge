@@ -32,58 +32,193 @@
   {%- endunless -%}
 {%- endif -%}
 
+{% assign background_red = '#DB0D15' %}
 
-{{ article.metafields.custom_fields["background"] }}
+{% comment %} {% if article.metafields.custom_fields["comedians_details"] != blank %}
+  {% assign separator = "|###|" %}
+  {% assign comedian_first_name_array = article.metafields.custom_fields["comedian_first_name"] | split: separator %}
+  {% assign comic_last_name_array = article.metafields.custom_fields["comic_last_name"] | split: separator %}
+  {% assign comedian_excerpt_array = article.metafields.custom_fields["comedian_excerpt"] | split: separator %}
+  {% assign fc_keys = article.metafields.custom_fields["comedians_details"] | split: "," %}
+  {% for i in fc_keys %}
+    {% assign index = i | plus: 0 %}
+        {{ comedian_first_name_array[index] }}
+        {{ comic_last_name_array[index] }}
+        {{ comedian_excerpt_array[index] }}
+    
+  {% endfor %}
+{% endif %} {% endcomment %}
+
+{% if article.metafields.custom_fields["background"] != blank %}
+  {% assign separator = "|###|" %}
+  {% assign background_image_array = article.metafields.custom_fields["background_image"] | split: separator %}
+  {% assign comedian_background_array = article.metafields.custom_fields["comedian_background"] | split: separator %}
+  {% assign photo_credit_array = article.metafields.custom_fields["photo_credit"] | split: separator %}
+  {% assign fc_keys = article.metafields.custom_fields["background"] | split: "," %}
+  <!-- {% for i in fc_keys %}
+    {% assign index = i | plus: 0 %}
+    {{ comedian_background_array[index] }}
+    {{ photo_credit_array[index] }}
+    
+  {% endfor %} -->
+{% endif %}
+
+{% if article.metafields.custom_fields["websites"] != blank %}
+      {% assign separator = "|###|" %}
+      {% assign website_title_array = article.metafields.custom_fields["website_title"] | split: separator %}
+      {% assign facebook_array = article.metafields.custom_fields["facebook"] | split: separator %}
+      {% assign twitter_array = article.metafields.custom_fields["twitter"] | split: separator %}
+      {% assign instagram_array = article.metafields.custom_fields["instagram"] | split: separator %}
+      {% assign fc_keys = article.metafields.custom_fields["websites"] | split: "," %}
+      <!-- {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+            {{ website_title_array[index] }}
+            {{ facebook_array[index] }}
+            {{ twitter_array[index] }}
+            {{ instagram_array[index] }}
+      {% endfor %} -->
+{% endif %}
 
 
 <article role="article"> 
-<section>
-  <div class="row middle-xs center-xs">
-    <div class="col-xs-12">
-      {% include 'breadcrumbs' %}
-    </div>
-  </div>
+<section data-section-id="{{ section.id }}" data-section-type="product" id="comedian-hero-row" style="background: url('{{ comedian_background_array[index] }}') no-repeat center center; background-size: cover;">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  {% include 'breadcrumbs' %}
   <div class="row center-xs">
     <div class="col-xs-10">
-      <h1 class="product-title">{{ article.title }}</h1>
-      
-      
+      <h1 class="comedian-title">{{ article.title }}</h1>
+    </div>
+  </div>
+  {% if photo_credit_array[index] != blank  %}
+    <p class="xxs-small caption">Photo: {{ photo_credit_array[index] }}</p>
+  {% endif %}
+</section>
+<section id="comedian-content-one">
+  <div class="row">
+    <div class="col-lg-5 col-lg-offest-2 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+      <h4 class="section-title">Bio</h4>
+      <div class="content-wrap">
+        {{ article.content }}
+      </div>
+
+      {% if article.metafields.custom_fields["comedians_press"] != blank %}
+      <h4 class="section-title press">In Press</h4>
+      <ul class="press-comedian-list row start-xs middle-xs">
+        <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              {% assign separator = "|###|" %}
+              {% assign press_publication_name_array = article.metafields.custom_fields["press_publication_name"] | split: separator %}
+              {% assign press_article_title_array = article.metafields.custom_fields["press_article_title"] | split: separator %}
+              {% assign press_link_array = article.metafields.custom_fields["press_link"] | split: separator %}
+              {% assign fc_keys = article.metafields.custom_fields["comedians_press"] | split: "," %}
+              {% for i in fc_keys %}
+                {% assign index = i | plus: 0 %}
+                  <p class="small">{{ press_publication_name_array[index] }}</p>
+                  <p>{{ press_article_title_array[index] }}</p>
+                  <p><a href="{{ press_link_array[index] }}" class="inline-link-single red">Read more</a></p>
+              {% endfor %}
+          </li>
+      </ul>
+      {% endif %}
+
+    </div>
+    <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12 col-xs-offset-0" id="product-sidebar">
+      <sidebar>
+        {% if website_title_array != blank %}
+          <h4 class="section-title">Website</h4>
+          <p>
+            <a href="{{ website_title_array }}" class="inline-link-single red">{{ website_title_array }}</a>
+          </p>
+        {% endif %}
+        
+        {% if instagram_array != blank or article.metafields.custom_fields["twitter"] != blank or article.metafields.custom_fields["facebook"] != blank %}    
+          {% assign facebook_array = article.metafields.custom_fields["facebook"] | split: separator %}
+          {% assign twitter_array = article.metafields.custom_fields["twitter"] | split: separator %}
+          {% assign instagram_array = article.metafields.custom_fields["instagram"] | split: separator %}
+
+          <h4 class="section-title networks">Networks</h4>
+            <ul class="row social-list">
+              {% if article.metafields.custom_fields["facebook"] != blank %}
+              <li>
+                <a href="{{ article.metafields.custom_fields["facebook"] }}" target="_blank">
+                  {% include 'icon-facebook-f' %}
+                </a>
+              </li>
+              {% endif %}
+              {% if article.metafields.custom_fields["twitter"] != blank %}
+              <li>
+                <a href="{{ article.metafields.custom_fields["twitter"] }}" target="_blank">
+                  {% include 'icon-twitter' %}
+                </a>
+              </li>
+              {% endif %}
+              {% if article.metafields.custom_fields["instagram"] != blank %}
+              <li>
+                <a href="{{ article.metafields.custom_fields["instagram"] }}" target="_blank">
+                  {% include 'icon-instagram' %}
+                </a>
+              </li>
+              {% endif %}
+          </ul>
+        {% endif %}
+        
+      </sidebar>
+    </div>
+  </div>
+</section>
+<section class="spacing-top-sm spacing-bottom-lg" id="comedians-related">
+  {% capture currentOne %}{{ article.title }}{% endcapture %}
+  
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <h1>More Comedians</h1>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+      <ul class="row middle-xs comedian-list main-comedian-list comedian-list">
+      {% for article in blogs.comedians.articles %}
+        {% if article.title != currentOne %}
+          {% if article.metafields.custom_fields["comedians_details"] != blank %}
+                  
+            {% assign separator = "|###|" %}
+            {% assign comedian_first_name_array = article.metafields.custom_fields["comedian_first_name"] | split: separator %}
+            {% assign comic_last_name_array = article.metafields.custom_fields["comic_last_name"] | split: separator %}
+            {% assign comedian_excerpt_array = article.metafields.custom_fields["comedian_excerpt"] | split: separator %}
+            {% assign fc_keys = article.metafields.custom_fields["comedians_details"] | split: "," %}
+            {% for i in fc_keys %}
+              {% assign index = i | plus: 0 %}
+                
+              <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12 center-xs">
+                <div class="inner-wrapper">
+                  <div class="inner-image" style="background: {{ background_red }} url('{{ article.image.src | img_url: '500x'}}') no-repeat center center; background-size: cover;"></div>
+                  <a href="{{ article.url }}" class="absolute-link"></a>
+                  <div class="content">
+                    {% include 'icon-comedian-x-white' %}
+                    <p class="large">“{{ comedian_excerpt_array[index] }}”</p>
+                    {% include 'icon-arrow-right-red-comeidans' %}
+                  </div>
+                  <div class="name">
+                    <p class="large">{{ comedian_first_name_array[index] }} {{ comic_last_name_array[index] }}</p>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+
+          {% endif %}
+        {% endif %}
+      {%endfor %}  
+    </ul>
+  </div>
+  </div>
+  </div>
+  <div class="row center-xs">
+    <div class="bws-button-wrapper">
+      <a href="/pages/comedians" class="underline-button-double red">All commedians</a>
     </div>
   </div>
 </section>
 
-  {% if article.image %}
-    <div class="hero-banner hero-banner--article lazyload" data-bgset="{% include 'responsive-bg-image', image: article.image %}"></div>
-
-    <noscript>
-      {%- assign image_size = article.image.width | append: 'x' -%}
-      <div class="hero-banner hero-banner--article" style="background-image: {{ article.image | img_url: image_size }}"></div>
-    </noscript>
-  {% endif %}
-
-  <header role="banner">
-    <h1>{{ article.title }}</h1>
-    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-    <p>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
-  </header>
-
-  <div class="rte">
-    {{ article.content }}
-  </div>
-
-  {% if article.tags.size > 0 %}
-    <ul>
-      {% for tag in article.tags %}
-        <li>
-          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  {% if settings.social_sharing_blog %}
-    {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
-  {% endif %}
 
   {% if blog.comments_enabled? %}
     <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
@@ -186,47 +321,6 @@
   {% endif %}
 
 </article>
-
-<section class="spacing-top-and-bottom-sm" id="comedians-section-one">
-  {% capture currentOne %}{{ article.title }}{% endcapture %}
-  <h1>More Comedians</h1>
-  <div class="row">
-    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-      <ul class="row middle-xs comedian-list main-comedian-list">
-      {% for article in blogs.comedians.articles %}
-        {% if article.title != currentOne %}
-          {% if article.metafields.custom_fields["comedians_details"] != blank %}
-                  
-            {% assign separator = "|###|" %}
-            {% assign comedian_first_name_array = article.metafields.custom_fields["comedian_first_name"] | split: separator %}
-            {% assign comic_last_name_array = article.metafields.custom_fields["comic_last_name"] | split: separator %}
-            {% assign comedian_excerpt_array = article.metafields.custom_fields["comedian_excerpt"] | split: separator %}
-            {% assign fc_keys = article.metafields.custom_fields["comedians_details"] | split: "," %}
-            {% for i in fc_keys %}
-              {% assign index = i | plus: 0 %}
-                
-              <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12 center-xs">
-                <div class="inner-wrapper">
-                  <div class="inner-image" style="background: {{ background_red }} url('{{ article.image.src | img_url: '500x'}}') no-repeat center center; background-size: cover;"></div>
-                  <a href="{{ article.url }}" class="absolute-link"></a>
-                  <div class="content">
-                    {% include 'icon-comedian-x-white' %}
-                    <p class="large">“{{ comedian_excerpt_array[index] }}”</p>
-                    {% include 'icon-arrow-right-red-comeidans' %}
-                  </div>
-                  <div class="name">
-                    <p class="large">{{ comedian_first_name_array[index] }} {{ comic_last_name_array[index] }}</p>
-                  </div>
-                </div>
-              </li>
-            {% endfor %}
-
-          {% endif %}
-        {% endif %}
-      {%endfor %}  
-    </ul>
-  </div>
-</section>
 
 <script type="application/ld+json">
 {

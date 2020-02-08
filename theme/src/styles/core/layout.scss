@@ -988,20 +988,6 @@ footer {
     font-weight: normal;
   }
 
-  .social-list {
-    position: relative;
-    left: 3px;
-    margin-top: 30px;
-
-    li {
-      margin-right: 20px;
-
-      a {
-        @include transition(400ms all $cubic);
-      }
-    }
-  }
-
   p,
   a.inline-link-single.white {
     color: $color-footer-text;
@@ -1106,6 +1092,27 @@ footer {
       a {
         font-size: 0.6875em;
       }
+    }
+  }
+}
+
+.social-list {
+  position: relative;
+  left: 3px;
+  margin-top: 30px;
+
+  li {
+    margin-right: 20px;
+
+    circle,
+    path,
+    a {
+      @include transition(400ms all $cubic);
+    }
+
+    a:hover circle,
+    a:hover path {
+      opacity: 0.5;
     }
   }
 }

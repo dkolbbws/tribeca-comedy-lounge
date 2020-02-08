@@ -51,6 +51,9 @@
           <div class="inner-wrapper">
             {% include 'icon-ticket-light' %}
             <span class="text">ADD TO CART ({{ product.price | money_without_trailing_zeros }})</span>
+            <span class="hover-svg">
+              {% include 'icon-regular-button-hover' %}
+            </span>
           </div>
         </button>
       </div>
@@ -62,9 +65,11 @@
   <div class="row">
     <div class="col-lg-5 col-lg-offest-2 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-10 col-xs-offset-1">
       <h4>Description</h4>
-      {{ product.description }}
+      <div class="content-wrap">
+        {{ product.description }}
+      </div>
       
-      <h4>Comedians list A</h4>
+      <h4>Comedians list</h4>
       <ul class="event-comedian-list row start-xs middle-xs">
         
           {% if product.metafields.custom_fields["comedians"] != blank %}
@@ -151,11 +156,17 @@
                 <div class="inner-wrapper">
                   {% include 'icon-ticket-light' %}
                   <span class="text">ADD TO CART</span>
+                  <span class="hover-svg">
+                    {% include 'icon-regular-button-hover' %}
+                  </span>
                 </div>
                 {% else %}
                 <div class="inner-wrapper">
                   {% include 'icon-ticket-light' %}
                   <span class="text">{{ 'products.product.sold_out' | t }}</span>
+                  <span class="hover-svg">
+                    {% include 'icon-regular-button-hover' %}
+                  </span>
                 </div>
                 {% endif %}
               </span>
