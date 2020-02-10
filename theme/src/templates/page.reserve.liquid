@@ -1,92 +1,168 @@
-<h1>{{ page.title }}</h1>
+<section id="reservations-section-one">
+  {% include 'breadcrumbs' %}
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <h2>Reserve a Spot</h2>
+      <p class="large">Need a spot for your big company? Let us know.</p>
+    </div>
+  </div>
+  {% form 'contact' %}
+  <div class="row spacing-bottom-sm form-wrapper">
+    <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/reservations-1.png?v=1581351144" class="reserve-image">
+    <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/reservations-2.png?v=1581351144" class="reserve-image">
+    <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-2.png?v=1579729358" class="reserve-image">
+    <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-1.png?v=1579729358" class="reserve-image">
+    <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/reserve-image-1.png?v=1581367903" class="reserve-image">
+    <div class="form-row">
+      <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
+        <div class="form-row section-heading">
+          <p class="large">Your Information</p>
+        </div>
+        <div class="form-row double">
+          <div class="left">
+            <span class="inner-wrap">
+              <input type="text"
+                name="contact[firstname]"
+                id="ContactFormFirstName"
+                placeholder="First Name *"
+                required>
+              <label for="ContactFormFirstName">First Name *</label>
+            </span>
+          </div>
+          <div class="right">
+            <span class="inner-wrap">
+              <input type="text"
+                name="contact[lastname]"
+                id="ContactFormLastName"
+                placeholder="Last Name *"
+                required>
+                <label for="ContactFormLastName">Last Name *</label>
+              </span>
+          </div>
+        </div>
+        <div class="form-row double">
+          <div class="left">
+            <span class="inner-wrap">
+              <input type="email"
+                name="contact[email]"
+                id="ContactFormEmail"
+                placeholder="{{Email *}}" 
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off"
+                required>
+              <label for="ContactFormEmail">Email <span class="color-red">*</span></label>
+            </span>
+            <p class="input-subtitle xs-small">This is where we'll send your confirmation. (If you don't see it within 2 minutes, please check your promotions or spam folders.)</p>
+          </div>
+          <div class="right">
+            <span class="inner-wrap">
+              <input type="tel"
+                name="contact[phone]"
+                id="ContactFormPhone"
+                placeholder="Phone Number"
+                pattern="[0-9\-]*">
+              <label for="ContactFormPhone">Phone Number</label>
+            </span>
+            <p class="input-subtitle xs-small">We'll only use this to contact you if there are questions about your reservation.</p>
+          </div>
+        </div>
+        <div class="form-row section-heading">
+          <p class="large">Ticket Details</p>
+        </div>
+        <div class="form-row double">
+          <div class="left">
+            <span class="inner-wrap arrow">
+              <input type="date"
+                name="contact[date]"
+                id="ContactFormDate"
+                placeholder="Date *"
+                required>
+              <label for="ContactFormDate">Show date <span class="color-red">*</span></label>
+            </span>
+            <p class="input-subtitle xs-small">Tickets and vouchers for either Dark Horse or Tribeca are gladly accepted at both locations.</p>
+          </div>
+          <div class="right">
+           <span class="inner-wrap arrow">
+              <select id="ContactFormNumberparty" name="contact[Numberparty]" value="" required>
+                <option selected="true" disabled="disabled"></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            <label for="ContactFormNumberparty">Number in party <span class="color-red">*</span></label>
+          </span>
+          <p class="input-subtitle xs-small">For parties of 8 or more, please call <a href="tel:646-504-5653" class="inline-link-single red">(646) 504-5653</a> or email <a href="mailto:{{ settings.contact_general_email }}" class="inline-link-single red">{{ settings.contact_general_email }}</a></p>
+          </div>
+        </div>
+        <div class="form-row double">
+          <div class="left">
+            <span class="inner-wrap arrow">
+              <select id="ContactFormTickettype" name="contact[tickettype]" required>
+                <option selected="true" disabled="disabled"></option>
+                <option>Type 1</option>
+                <option>Type 2</option>
+                <option>Type 3</option>
+              </select>
+              <label for="ContactFormTickettype">Ticket Type <span class="color-red">*</span></label>
+            </span>
+          </div>
+          <div class="right">
+            <span class="inner-wrap">
+              <input type="text"
+              name="contact[voucher]"
+              id="ContactFormVoucher"
+              placeholder="Voucher">
+              <label for="ContactFormVoucher">Voucher number</label>
+            </span>
+            <p class="input-subtitle xs-small">(if not Paper ticket or Other)</p>
+          </div>
+        </div>
+        <div class="form-row textarea normal single">
+          <div class="wrap">
+            <div class="left-corner"></div>
+            <div class="right-corner"></div>
+            <label for="ContactFormMessage">Special requests</label>
+            <textarea rows="10"
+              name="contact[body]"
+              id="ContactFormMessage"
+              placeholder="Your Message">
+              {%- if form.body -%}
+                {{- form.body -}}
+              {%- endif -%}
+            </textarea>
+          </div>
+        </div>
+        <div class="form-row single checkbox">
+          <div class="wrap">
+            <div class="checkbox-wrap">
+              <input type="checkbox" id="checkbox-1">
+            </div>
+            <label for="checkbox-1">Check here and we'll occasionally email you jokes, ticket discounts, news about famous comics dropping in, and special private shows. We will NEVER share your email with any other company or organization and you can unsubscribe any time.</label>
+          </div>
+        </div>
+        <div class="form-row submit">
+          <div class="bws-button-wrapper">
+            <div class="bws-button regular-button">
+              <input type="submit" class="button" value="SUBMIT">
+              <span class="text">Submit</span>
+              <span class="hover-svg">
+                {% include 'icon-regular-button-hover' %}
+              </span>
+            </div>
+          </div>
+        </div>
 
-<div class="rte">
-  {{ page.content }}
-</div>
+        {% if form.posted_successfully? %}
+          <p class="form-success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {% endif %}
 
-{% form 'contact' %}
+        {{ form.errors | default_errors }}
 
-  {% if form.posted_successfully? %}
-    <p class="form-success">
-      {{ 'contact.form.post_success' | t }}
-    </p>
-  {% endif %}
-
-  {{ form.errors | default_errors }}
-
-  Your Informations
-
-  <label for="ContactFormFirstName">First Name *</label>
-  <input type="text"
-    name="contact[firstname]"
-    id="ContactFormFirstName"
-    placeholder="First Name *"
-    required>
-
-  <label for="ContactFormLastName">Last Name *</label>
-  <input type="text"
-    name="contact[lastname]"
-    id="ContactFormLastName"
-    placeholder="Last Name *"
-    required>
-
-  <label for="ContactFormEmail">Email *</label>
-  <input type="email"
-    name="contact[email]"
-    id="ContactFormEmail"
-    placeholder="{{Email *}}" 
-    spellcheck="false"
-    autocomplete="off"
-    autocapitalize="off"
-    required>
-
-  <label for="ContactFormPhone">Phone Number</label>
-  <input type="tel"
-    name="contact[phone]"
-    id="ContactFormPhone"
-    placeholder="Phone Number"
-    pattern="[0-9\-]*">
-
-
-  Ticket Details
-
-  <label for="ContactFormDate">Show date *</label>
-  <input type="date"
-    name="contact[date]"
-    id="ContactFormDate"
-    placeholder="Date *"
-    required>
-
-  <label for="ContactFormNumberparty">Number in party *</label>
-  <select id="ContactFormNumberparty" name="contact[Numberparty]" required>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-  </select>
-
-  <label for="ContactFormTickettype">Ticket Type *</label>
-  <select id="ContactFormTickettype" name="contact[tickettype]" required>
-    <option>Type 1</option>
-    <option>Type 2</option>
-    <option>Type 3</option>
-  </select>
-
-  <label for="ContactFormVoucher">Voucher number</label>
-  <input type="text"
-    name="contact[voucher]"
-    id="ContactFormVoucher"
-    placeholder="Voucher">
-
-  <label for="ContactFormMessage">Special requests</label>
-  <textarea rows="10"
-    name="contact[body]"
-    id="ContactFormMessage"
-    placeholder="Your Message">
-    {%- if form.body -%}
-      {{- form.body -}}
-    {%- endif -%}
-  </textarea>
-
-  <input type="submit" class="button" value="SUBMIT">
-
-{% endform %}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>

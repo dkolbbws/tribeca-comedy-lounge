@@ -133,6 +133,8 @@ textarea {
   }
 }
 
+input[type="date"],
+select,
 input,
 textarea,
 label {
@@ -143,34 +145,146 @@ label {
   background: transparent;
 }
 
-input {
+input[type="date"],
+select {
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 50px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-row .inner-wrap {
+  position: relative;
+  min-height: 50px;
+
+  select + input[type="date"],
+  select + label {
+    pointer-events: none;
+  }
+
+  select:focus {
+    color: $color-white;
+
+    + label {
+      @include transform(translate(0, -60px));
+
+      color: $color-white;
+    }
+  }
+
+  &.arrow::before {
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 6px;
+    background: url('~../assets/arrows/icon-select-down.svg') no-repeat center center;
+    background-size: contain;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    margin: auto 0 auto 10px;
+  }
+}
+
+input[type="date"] {
+  color: transparent;
+  position: relative;
+  
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    min-width: 50px;
+    height: 50px;
+  }
+
+  &::-webkit-inner-spin-button { 
+    display: none; 
+  }
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  opacity: 0;
+}
+
+.form-row .checkbox-wrap {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    pointer-events: none;
+
+    @include transition(400ms all $cubic);
+  }
+
+  &::before {
+    border: 1px solid $color-form-gray;
+    width: 17px;
+    height: 17px;
+  }
+
+  &::after {
+    background: url('~../assets/icon-white-check.svg') no-repeat center center;
+    background-size: 10px;
+    width: 12px; 
+    height: 8px;
+    top: 5px;
+    left: 2px;
+    transform-origin: center;
+
+    @include transform(scale(0));
+  }
+
+  + label {
+    // margin-left: 31px;
+    margin-left: 40px;
+    display: inline-block;
+    color: $color-white;
+    line-height: 22px;
+    top: 5px;
+    position: relative;
+    width: calc(100% - 40px);
+  }
+
+  &.input-filled {
+    &::after {
+      @include transform(scale(1));
+    }
+
+    &::before {
+      background: $color-red;
+      border-color: $color-red;
+    }
+  }
+}
+
+.form-row.textarea + .form-row.checkbox {
+  margin-top: 50px;
+}
+
+input,
+input[type="date"],
+select {
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
   border-top: 1px solid transparent;
   border-bottom: 1px solid $color-form-gray;
-  // background: transparent;
-  // width: 100%;
   height: 50px;
   position: relative;
 
   @include transition(400ms all $cubic);
+}
 
-  // &::-webkit-input-placeholder { /* Edge */
-  //   color: transparent;
-  // }
-  
-  // &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  //   color: transparent;
-  // }
-  
-  // &::placeholder {
-  //   color: transparent;
-  // }
-
-  // &:focus {
-  //   outline: none;
-  // }
-
+input {
   &:focus {
     color: $color-white;
 
@@ -227,8 +341,71 @@ input {
     margin-top: 20px;
   }
 
+  &.normal {
+    label.input-filled,
+    label {
+      @include transform(none);
+
+      font-size: 18px;
+      color: $color-white;
+      margin-bottom: 35px;
+    }
+
+    .right-corner::after,
+    .left-corner::after {
+      height: calc(100% - 59px);
+      top: 55px;
+    }
+
+    .right-corner::before {
+      top: 54px;
+    }
+
+    textarea {
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $color-form-gray;
+
+        @include transition(400ms all $cubic);
+      }
+
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: $color-form-gray;
+
+        @include transition(400ms all $cubic);
+      }
+
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: $color-form-gray;
+
+        @include transition(400ms all $cubic);
+      }
+
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $color-form-gray;
+
+        @include transition(400ms all $cubic);
+      }
+
+      &:focus::-webkit-input-placeholder {
+        color: transparent;
+      }
+
+      &:focus::-moz-placeholder {
+        color: transparent;
+      }
+
+      &:focus:-ms-input-placeholder {
+        color: transparent;
+      }
+
+      &:focus:-moz-placeholder { 
+        color: transparent;
+      }
+    }
+  }
+
   label {
-    @include transform(translate(20px, 55px));
+    @include transform(translate(20px, 35px));
 
     &.input-filled {
       @include transform(translate(0px, -10px));
@@ -312,6 +489,16 @@ input {
   }
 }
 
+.form-row {
+  &.section-heading {
+    margin-bottom: 13px;
+
+    &:not(:first-of-type) {
+      margin-top: 40px;
+    }
+  }
+}
+
 textarea {
   border: 1px solid $color-form-gray;
   background: transparent;
@@ -375,16 +562,16 @@ form:focus {
 
     .left,
     .right {
-      width: 50%;
-      flex: 0 0 50%;
+      width: 48%;
+      flex: 0 0 48%;
     }
 
     .left {
-      padding-right: 15px;
+      margin-right: 15px;
     }
 
     .right {
-      padding-left: 15px;
+      margin-left: 15px;
     }
   }
 }

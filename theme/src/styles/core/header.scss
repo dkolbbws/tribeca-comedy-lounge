@@ -85,9 +85,16 @@
   color: $color-white;
   font-size: 0.75em;
 
-  &.icon-ticket svg {
-    position: relative;
-    top: 2px;;
+  &.icon-ticket {
+    &::before {
+      background: $color-red;
+    }
+
+    svg {
+      position: relative;
+      top: -2px;
+      margin-right: 5px;
+    }
   }
 
   &.highlited-menu-item {

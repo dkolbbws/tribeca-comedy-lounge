@@ -189,11 +189,12 @@
 
 .no-overflow {
   overflow: hidden;
+  // position: fixed;
 }
 
 .overlay {
   position: fixed;
-  height: 100vh;
+  height: 110vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.44);
   opacity: 0;
