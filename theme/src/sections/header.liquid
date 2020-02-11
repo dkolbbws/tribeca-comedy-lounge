@@ -46,10 +46,11 @@
         </div>
         <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0">
           <ul class="navigation-menu right-side-navigation">
-            {% assign current_title = link.title | downcase %}
+            
+          
             {% for link in linklists.main-navigation-right.links %}
               <li>
-                {% if link.title contains 'buy' %}
+                {% if link.title contains 'buy' or link.title contains 'Buy' or link.title contains 'BUY' %}
                   <a href="{{ link.url }}" class="highlited-menu-item icon-ticket">
                     {% include 'icon-ticket' %}
                     {{ link.title }}

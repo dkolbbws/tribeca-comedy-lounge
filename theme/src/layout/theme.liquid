@@ -88,14 +88,14 @@
         e.stopPropagation();
         $('.cart-dd').toggleClass('active');
         $('header .overlay').addClass('active');
-        $('body, html').toggleClass('no-overflow');
+        $('body').toggleClass('no-overflow');
       });
 
       jQuery('.cart-close').click(function(){
 
           $('.cart-dd').removeClass('active');
           $('header .overlay').removeClass('active');
-          $('body, html').removeClass('no-overflow');
+          $('body').removeClass('no-overflow');
           
       });
     });

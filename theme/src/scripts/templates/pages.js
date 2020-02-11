@@ -779,17 +779,27 @@ $(document).ready(function() {
 // }
 // xhr.send();
 
-if (document.getElementById('contact') != undefined) {
+if (document.getElementById('contact') != undefined || document.getElementById('reservations')) {
   let inputs = document.querySelectorAll('.form-wrapper input');
   let textareas = document.querySelectorAll('.form-wrapper textarea');
+  let selects = document.querySelectorAll('.form-wrapper select');
 
   inputs.forEach(item => {
     item.addEventListener('input', (event) => {
-      if (event.target.value.length > 0) {
-        event.target.classList.add('teeee')
-        event.target.nextElementSibling.classList.add('input-filled');
+      if (event.target.type == "checkbox") {
+        if (event.target.attributes.length <= 2) {
+          event.target.setAttribute('checked', 'checked');
+          event.target.parentElement.classList.add('input-filled');
+        } else {
+          event.target.removeAttribute('checked');
+          event.target.parentElement.classList.remove('input-filled');
+        }
       } else {
-        event.target.nextElementSibling.classList.remove('input-filled');
+        if (event.target.value.length > 0 && event.target.type != "checkbox") {
+          event.target.nextElementSibling.classList.add('input-filled');
+        } else {
+          event.target.nextElementSibling.classList.remove('input-filled');
+        }
       }
     });
 
@@ -820,23 +830,27 @@ if (document.getElementById('contact') != undefined) {
       right.classList.remove('active');
       left.classList.remove('active');
 
-      if (event.target.value > 0) {
-        event.target.parentElement.childNodes[5].classList.remove('input-filled');
-      } else {
-        event.target.parentElement.childNodes[5].classList.add('input-filled');
-      }
-      
+      textarea_value(event);
     });
   });
   
   textareas.forEach(item => {
-    item.addEventListener('input', (event) => {
-      if (event.target.value.length > 0) {
-        event.target.classList.add('teeee')
-        event.target.parentElement.childNodes[5].classList.add('input-filled');
-      } else {
-        event.target.parentElement.childNodes[5].classList.remove('input-filled');
-      }
+    item.addEventListener('input', textarea_value);
+  })
+
+  function textarea_value(event) {
+    if (event.target.value.length > 0) {
+      event.target.classList.add('teeee')
+      event.target.parentElement.childNodes[5].classList.add('input-filled');
+    } else {
+      event.target.parentElement.childNodes[5].classList.remove('input-filled');
+    }
+  }
+
+  selects.forEach(item => {
+    item.addEventListener('click', (event) => {
+      console.log(event);
+      event.target.nextElementSibling.classList.add('input-filled');
     })
   })
 }

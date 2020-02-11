@@ -41,10 +41,11 @@
         padding: 63px 55px 0;
       }
 
-      .bws-button-wrapper {
+      &:not(:nth-of-type(5)) .bws-button-wrapper {
         padding: 0 55px 63px;
         z-index: 2;
         position: relative;
+        bottom: -62px;
       }
     }
 
@@ -85,17 +86,4 @@
     right: 0;
     z-index: -1;
   }
-
-  .bws-button-wrapper {
-    // @include flexbox();
-
-    // position: absolute;
-    // min-height: 62px;
-    // width: 100%;
-    bottom: -62px;
-  }
-
-  // .bws-button {
-  //   top: 0;
-  // }
 }

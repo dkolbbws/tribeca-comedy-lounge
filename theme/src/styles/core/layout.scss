@@ -264,15 +264,40 @@ main img {
     padding-left: 0;
     padding-right: 0;
     border-top: 1px solid $color-gray-border;
-    border-bottom: 1px solid $color-gray-border;
     border-left: 1px solid $color-gray-border;
+    // border-right: 1px solid $color-gray-border;
     position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: $color-gray-border;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &:nth-of-type(3)::after,
+    &:nth-of-type(5)::after,
+    &:nth-of-type(3n+5)::after {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 1px;
+      background: $color-gray-border;
+      // background: $color-red;
+      right: 0;
+      top: 0;
+    }
+    
 
     @include transition(400ms all $cubic);
 
-    &:last-of-type {
-      border-right: 1px solid $color-gray-border;
-    }
+    // &:last-of-type {
+    //   border-right: 1px solid $color-gray-border;
+    // }
 
     &:hover .regular-button {
       @include transform(translate(0, -100%));
@@ -388,10 +413,27 @@ main img {
   .bws-button-wrapper {
     @include flexbox();
 
-    position: absolute;
-    min-height: 62px;
-    width: 100%;
-    top: 100%;
+    // position: absolute;
+    // min-height: 62px;
+    // width: 100%;
+    // top: 100%;
+    &:not(:nth-of-type(5)) {
+      position: absolute;
+      min-height: 62px;
+      width: 100%;
+      top: 100%;
+    }
+  }
+
+  li:nth-of-type(5) .bws-button-wrapper {
+    position: relative;
+    top: 0;
+    left: 55px;
+    z-index: 2;
+
+    .icon-button::before {
+      bottom: 15px;
+    }
   }
 
   .regular-button {
@@ -424,7 +466,6 @@ main img {
     }
   }
 }
-
 
 .map-wrapper {
   padding-bottom: 40%;
@@ -1002,11 +1043,13 @@ footer {
   p,
   a.inline-link-single.white {
     color: $color-footer-text;
+    overflow: visible;
   }
 
   a.inline-link-single.white::after,
   a.inline-link-single.white::before {
     background: $color-footer-text;
+    bottom: -3px;
   }
 
   .menu {
@@ -1459,6 +1502,53 @@ footer {
 // Subweay Map
 #subway-section-one h2 {
   margin-bottom: 27px;
+}
+
+#reservations-section-one {
+  h2 {
+    margin-bottom: 35px;
+
+    + p {
+      margin-bottom: 50px;
+    }
+  }
+
+  #contact_form .form-wrapper {
+    position: relative;
+  }
+}
+
+.reserve-image {
+  position: absolute;
+
+  &:first-of-type {
+    // max-width: 298px;
+    max-width: 228px;
+    right: 0;
+  }
+
+  &:nth-of-type(2) {
+    max-width: 184px;
+    right: 4%;
+    top: 16%;
+  }
+
+  &:nth-of-type(3) {
+    max-width: 235.42px;
+    top: 45%;
+  }
+
+  &:nth-of-type(4) {
+    max-width: 120px;
+    top: 58%;
+    left: 9%;
+  }
+
+  &:last-of-type {
+    max-width: 192px;
+    top: 58%;
+    right: 0;
+  }
 }
 
 @media all and (min-width: 1024px) {
