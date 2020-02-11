@@ -53,6 +53,7 @@ let home_map_pins = new Array();
 let home_map_bool = false;
 let home_map_object = {};
 let home_map_features = {};
+let marker = null;
 
 // Google Map Settings
 function init_google_map(mapId, pinlat, pinlong) {
@@ -459,7 +460,7 @@ function init_google_map(mapId, pinlat, pinlong) {
   ];
 
   home_map_features = features;
-  let marker = null;
+  // let marker = null;
   
   // Create markers.
   for (var i = 0; i < features.length; i++) {
@@ -505,6 +506,7 @@ function set_map_pin_styles(mapId) {
       icon.setAttribute('data-window', home_map_features[index]);
       home_map_pins.push(icon);
     });
+    console.log(marker, icons, ' icons')
     let test = icons.filter( icon => { return icon.id == 0; });
     test[0].classList.remove('hide-marker');
     // icons[0].classList.remove('hide-marker');
@@ -545,6 +547,11 @@ for (let a =0; a < subway_links.length; a++) {
     home_map_pins[a].parentElement.style.opacity += 1;
     home_map_pins[a].classList.remove('hide-marker');
     }
+    
+    // Get and close google maps info windows
+    let maps = document.getElementById('subway-map');
+    let windows = maps.querySelectorAll('button.gm-ui-hover-effect');
+    windows.forEach(element => { element.click(); });
   })
 }
 
