@@ -9,7 +9,7 @@
     </div>
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
       <p class="custom-60 font-helio">Enjoy!</p>
-      <h2>The <span class="behind-red-one">Only Comedy {% include 'behind-red-one.liquid' %} </span> Club in Lower Manhattan</h2>
+      <h2>Lower Manhattan’s  <span class="behind-red-one">Upscale Comedy {% include 'behind-red-one.liquid' %} </span>  Destination</h2>
       <div class="row center-xs">
         <div class="col-lg-7 col-md-7 col-xs-7 col-xs-12">
           <div class="bws-button-wrapper">
@@ -141,12 +141,12 @@
     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-13 col-xs-offset-0">
       <p class="custom-80">Eat<span class="color-red">.</span></p>
       <p class="custom-80">Drink<span class="color-red">.</span></p>
-      <p class="custom-80 behind-red-two">Drugs<span class="color-red">.</span> {% include 'behind-red-three' %}</p>
-      <p>It began with a simple idea. In a city renowned for its world-class comedians and world-class chefs, why not combine both to create a uniquely enjoyable experience? At most comedy clubs, food is at best an afterthought (and often as laughable as anything you’ll hear from the stage).</p>
+      <p class="custom-80 behind-red-two">Laugh {% include 'behind-red-three' %}</p>
+      <p>Did you know laughing burns 200 calories per hour? We’ll make sure you’re fueled up with the best cuisine of any comedy club in NYC.</p>
       <div class="bws-button-wrapper">
-        <a href="/page/schedule" class="bws-button icon-button red">
+        <a href="http://www.granmorsi.com/menu" target="_blank" class="bws-button icon-button red">
           {% include 'icon-pdf' %}
-          <span class="text">discover our menu</span>
+          <span class="text">view our menu</span>
         </a>
       </div>
     </div>
@@ -156,7 +156,7 @@
 <section class="spacing-top-and-bottom-sm" id="home-section-six">
   <div class="row center-xs">
     <div class="col-xs-12">
-      <h2>The <span class="behind-red-one">fun {% include 'behind-red-four' %}</span> staff</h2>
+      <h2>Laugh <span class="behind-red-one">with {% include 'behind-red-four' %}</span> us</h2>
     </div>
   </div>
   <div class="row">
@@ -180,7 +180,7 @@
                   <div class="inner-image" style="background: {{ background_red }} url('{{ article.image.src | img_url: '500x'}}') no-repeat center center; background-size: cover;"></div>
                   <a href="{{ article.url }}" class="absolute-link"></a>
                   <div class="content">
-                    {% include 'icon-comedian-x-white' %}
+                    {% comment %} {% include 'icon-comedian-x-white' %} {% endcomment %}
                     <p class="large">“{{ comedian_excerpt_array[index] }}”</p>
                     {% include 'icon-arrow-right-red-comeidans' %}
                   </div>
@@ -200,7 +200,7 @@
   </div>
   <div class="row center-xs">
     <div class="bws-button-wrapper">
-      <a href="/pages/comedians" class="underline-button-double red">All commedians</a>
+      <a href="/pages/comedians" class="underline-button-double red">More comedians</a>
     </div>
   </div>
 </section>

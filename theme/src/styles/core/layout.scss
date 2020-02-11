@@ -155,9 +155,17 @@ main img {
 }
 
 .behind-red-two svg {
-  bottom: 40%;
-  z-index: 1;
+  // bottom: 40%;
+  // z-index: 1;
+  // left: -9px;
+  bottom: 0;
+  z-index: -1;
   left: -9px;
+}
+
+#home-section-two .behind-red-two svg {
+  bottom: 33%;
+  z-index: 1;
 }
 
 .behind-red-three svg {
