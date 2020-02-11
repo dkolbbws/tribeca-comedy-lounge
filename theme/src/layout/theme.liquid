@@ -87,16 +87,12 @@
         e.preventDefault();
         e.stopPropagation();
         $('.cart-dd').toggleClass('active');
-        $('header .overlay').addClass('active');
         $('body').toggleClass('no-overflow');
       });
 
       jQuery('.cart-close').click(function(){
-
           $('.cart-dd').removeClass('active');
-          $('header .overlay').removeClass('active');
           $('body').removeClass('no-overflow');
-          
       });
     });
 

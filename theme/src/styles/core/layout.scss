@@ -1312,6 +1312,23 @@ footer {
   }
 }
 
+.about-right-image-one {
+  max-width: 230px;
+  right: 110.33%;
+  bottom: 0;
+}
+
+.about-right-image-two {
+  max-width: 143px;
+  right: 70.33%;
+  bottom: 70px;
+}
+
+.about-right-image-one,
+.about-right-image-two {
+  position: absolute;
+}
+
 .gallery-grid {
   margin-top: 8px;
   margin-bottom: 8px;
@@ -1548,6 +1565,77 @@ footer {
     max-width: 192px;
     top: 58%;
     right: 0;
+  }
+}
+
+#general-page-section-two {
+  p + h1,
+  p + h2,
+  p + h3,
+  p + h4,
+  p + h5,
+  p + h6,
+  ul + h1,
+  ul + h2,
+  ul + h3,
+  ul + h4,
+  ul + h5,
+  ul + h6,
+  ol + h1,
+  ol + h2,
+  ol + h3,
+  ol + h4,
+  ol + h5,
+  ol + h6 {
+    margin-top: 40px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 20px;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-left: 0;
+
+    li {
+      position: relative;
+      margin-bottom: 5px;
+    }
+  }
+
+  ol {
+    counter-reset: ol-item;
+
+    li::before {
+      content: counter(ol-item)". ";
+      counter-increment: ol-item;
+      font-size: 1em;
+      margin-right: 5px;
+      color: $color-white;
+    }
+  }
+
+  ul li {
+    padding-left: 20px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 8px;
+      height: 8px;
+      left: 0;
+      top: 4px;
+      border-radius: 50%;
+      background: $color-red;
+    }
   }
 }
 

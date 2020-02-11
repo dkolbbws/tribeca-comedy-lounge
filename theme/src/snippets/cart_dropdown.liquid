@@ -20,17 +20,15 @@
                   <ul class="row middle-xs start-xs">
                     <li class="calendar-icon">{% include 'icon-calendar-red' %}</li>
                     <li>
-                      <p class="date xs-small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                      <ul rv-hide="item.propertyArray | empty">
+                          <li rv-each-property="item.propertyArray < properties">
+                              <small class="date">{property.value}</small>
+                          </li>
+                      </ul>
                     </li>
                   </ul>
 
                 <div class="top">
-
-                   <ul rv-hide="item.propertyArray | empty">
-                      <li rv-each-property="item.propertyArray < properties">
-                          <small class="date">{property.value}</small>
-                      </li>
-                  </ul>
 
                   <div rv-show="item.variant_title"></div>
 
