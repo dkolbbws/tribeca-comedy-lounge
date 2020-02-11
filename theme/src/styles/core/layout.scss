@@ -1397,6 +1397,7 @@ footer {
       border-radius: 50%;
       background: $color-red;
       border: 1px solid $color-red;
+      pointer-events: none;
 
       @include flexbox();
       @include transition(400ms all $cubic);
