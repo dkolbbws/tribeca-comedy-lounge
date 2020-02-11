@@ -164,8 +164,9 @@ main img {
 }
 
 #home-section-two .behind-red-two svg {
-  bottom: 33%;
+  bottom: 22%;
   z-index: 1;
+  left: -5px;
 }
 
 .behind-red-three svg {
@@ -180,6 +181,10 @@ main img {
 
   p.small {
     margin-bottom: 40px;
+  }
+
+  .svg-text {
+    margin-bottom: 10px;
   }
 
   .regular-button {
@@ -244,6 +249,13 @@ main img {
     @include flexbox();
     @include justify-content(center);
     @include align-items(center);
+  }
+
+  .svg-text svg {
+    position: relative;
+    right: 0;
+    left: 0;
+    top: 6px;
   }
 }
 
