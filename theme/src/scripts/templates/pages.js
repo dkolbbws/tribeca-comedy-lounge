@@ -719,6 +719,48 @@ $(document).ready(function() {
         onBeforePrevSlide: function (el) {}
     });
 
+    var home_two =$("#home-section-two .schedule-list");
+    if (home_two.length > 0) {
+      setTimeout(home_two.lightSlider({
+        item: 1,
+        autoWidth: true,
+        slideMove: 1, // slidemove will be 1 if loop is true
+        slideMargin: 50,
+
+        addClass: '',
+        mode: "slide",
+        // mode: "fade",
+        useCSS: true,
+        cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
+
+        speed: 1000, //ms'
+        auto: false,
+        loop: false,
+        slideEndAnimation: true,
+        pause: 2000,
+
+        keyPress: true,
+        controls: true,
+        prevHtml: '',
+        nextHtml: '',
+
+        rtl:false,
+        adaptiveHeight:false,
+
+        vertical:false,
+
+        pager: false,
+
+        enableTouch:true,
+        enableDrag:true,
+        freeMove:true,
+        swipeThreshold: 40,
+
+        responsive : [],
+    }), 1500);
+  }
+
     function get_current_dot(dots) {
       let current = null;
       for (let a = 0; a < dots.length; a++) {
@@ -862,57 +904,72 @@ if (document.getElementById('contact') != undefined || document.getElementById('
   })
 }
 
-$(document).ready(function() {
-  $('.js-hamburger').click(function(){
-    $('html').addClass('oh');
-    $('.js-nav-dropdown').addClass('active');
-  });
+// $(document).ready(function() {
+//   $('.js-hamburger').click(function(){
+//     $('html').addClass('oh');
+//     $('.js-nav-dropdown').addClass('active');
+//   });
 
-  $('.js-m-nav-close').click(function(){
-    $('.js-nav-dropdown').removeClass('active');
-    $('html').removeClass('oh');
-  });
+//   $('.js-m-nav-close').click(function(){
+//     $('.js-nav-dropdown').removeClass('active');
+//     $('html').removeClass('oh');
+//   });
+// });
 
-  var home_two =$("#home-section-two .schedule-list");
-  if (home_two.length > 0) {
-    setTimeout(home_two.lightSlider({
-      item: 1,
-      autoWidth: true,
-      slideMove: 1, // slidemove will be 1 if loop is true
-      slideMargin: 50,
-
-      addClass: '',
-      mode: "slide",
-      // mode: "fade",
-      useCSS: true,
-      cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-      easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
-
-      speed: 1000, //ms'
-      auto: false,
-      loop: false,
-      slideEndAnimation: true,
-      pause: 2000,
-
-      keyPress: true,
-      controls: true,
-      prevHtml: '',
-      nextHtml: '',
-
-      rtl:false,
-      adaptiveHeight:false,
-
-      vertical:false,
-
-      pager: false,
-
-      enableTouch:true,
-      enableDrag:true,
-      freeMove:true,
-      swipeThreshold: 40,
-
-      responsive : [],
-  }), 1500);
+// reverse array order and return
+function reverse_array(arr) {
+  let new_arr = new Array();
+  for (let a = arr.length -1; a >= 0; a--) {
+    new_arr.push(arr[a]);
+  }
+  return new_arr;
 }
+
+// Mobile Nav Elements
+let nav_trigger = document.querySelector('.js-hamburger');
+let nav_menu = document.querySelector('.js-nav-dropdown');
+let h = document.querySelector('html');
+let nav_close = document.querySelector('.js-m-nav-close');
+let all_nav_items = nav_menu.querySelectorAll('.m-nav-item');
+let reverse_all_nav_items = null;
+
+// Open Mobile Nav
+nav_trigger.addEventListener('click', (event) => {
+  event.preventDefault();
   
+  h.classList.add('oh');
+  nav_menu.classList.add('active');
+
+  // Animate Items In
+  setTimeout( () => {
+    let delays = 0.08;
+    all_nav_items.forEach(item => {
+      gsap.to(item, {duration: 0.08, opacity: 1, delay: delays, ease: "Quint.easeInOut", x: 0});
+      delays += 0.08;
+    });
+  }, 200);
+
+  // Reverse the order of the nav elements array
+  reverse_all_nav_items = reverse_array(all_nav_items);
 });
+
+// Close Mobile Nav
+nav_close.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  let delays = 0.04;
+  let full_delay = ((reverse_all_nav_items.length - 1) * delays) * 1000;
+  full_delay += 200;
+
+  // Animate Items Out
+  reverse_all_nav_items.forEach(item => {
+    gsap.to(item, {duration: 0.04, opacity: 0, delay: delays, ease: "Quint.easeInOut", x: -20});
+    delays += 0.04;
+  });
+
+  setTimeout( () => {
+    h.classList.remove('oh');
+    nav_menu.classList.remove('active');  
+  }, full_delay);
+});
+
