@@ -1,7 +1,7 @@
 #shopify-section-header {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   left: 0;
   right: 0;
   z-index: 10;
@@ -121,6 +121,124 @@
       @include flexbox();
       @include justify-content(center);
       @include align-items(center);
+    }
+  }
+}
+
+//Mobile dropwdown
+.hamburger {
+  @include flex-direction(column);
+  @include justify-content(space-between);
+
+  position: absolute;
+  top: 34px;
+  left: 25px;
+  width: 27px;
+  height: 16px;
+
+  span {
+    background-color: #e5e5e5;
+    display: block;
+    width: 100%;
+    height: 2px;
+  }
+}
+
+.m-nav-dropdown {
+  @include transition(400ms all $cubic);
+  @include flex-direction(column);
+
+  background-color: $color-dark;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+
+  .m-nav-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+
+    svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  .navigation-menu {
+    @include flex-direction(column);
+    @include align-items(flex-start);
+
+    padding: 55px 40px;
+
+    li {
+      margin-bottom: 30px;
+
+      a {
+        font-size: 30px;
+
+        &.icon-ticket svg {
+          top: 0;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  .nav-footer {
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(flex-start);
+
+    background-color: $color-dark-4;
+    font-size: 23px;
+    flex-grow: 1;
+    padding: 0 40px;
+
+    .social-list {
+      margin-bottom: 0;
+
+      li {
+        @include flexbox;
+      }
+    }
+  }
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+  }
+}
+
+.bws-header a.m-cart {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+
+  svg {
+    width: 24px;
+    height: 27px;
+  }
+
+  .cart-count {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bws-header {
+    > div {
+      > .col-lg-4 {
+        display: none;
+      }
     }
   }
 }

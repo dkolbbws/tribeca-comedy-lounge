@@ -39,7 +39,7 @@
             </ul>
           </nav>
         </div>
-        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-0 col-xs-12 col-xs-offset-0">
           <a href="/" class="bws-logo">
             {% include 'tcl-logo' %}
           </a>
@@ -61,14 +61,89 @@
               </li>
             {% endfor %}
             <li>
-              <a href="/cart" class="cart">
+              <a href="/cart" class="js-cart cart">
                 {% include 'icon-bag' %}
                 <span class="cart-count">{{ cart.item_count }}</span>
               </a>
             </li>
           </ul>
         </div>
+
+        <nav class="m-flex-show m-nav-dropdown js-nav-dropdown">
+          <span class="js-m-nav-close m-nav-close">{% include 'icon-close' %}</span>
+
+          <ul class="navigation-menu">
+            {% for link in linklists.mobile-nav.links %}
+              <li>
+                {% if link.title contains 'buy' or link.title contains 'Buy' or link.title contains 'BUY' %}
+                  <a href="{{ link.url }}" class="highlited-menu-item icon-ticket">
+                    {% include 'icon-ticket' %}
+                    {{ link.title }}
+                  </a>
+                {% else %}
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+
+          <div class="nav-footer">
+
+            {% if settings.contact_location_address != blank %}
+              <p class="xs-small">{{ settings.contact_location_address }}</p>
+            {% endif %}
+            {% if settings.contact_general_email != blank %}
+              <p class="xs-small">
+                <a href="mailt:{{ settings.contact_general_email }}" target="_blank" class="inline-link-single white">{{ settings.contact_general_email }}</a>
+              </p>
+            {% endif %}
+            {% if settings.contact_phone_display != blank and settings.contact_phone_tel != blank %}
+              <p class="xs-small">
+                <a href="tel:{{ settings.contact_phone_tel }}" target="_blank" class="inline-link-single white">{{ settings.contact_phone_display }}</a>
+              </p>
+            {% endif %}
+
+            <ul class="row social-list">
+              {% if settings.social_facebook_link != blank %}
+                <li>
+                  <a href="{{ social_facebook_link }}" target="_blank">
+                    {% include 'icon-facebook-f' %}
+                  </a>
+                </li>
+              {% endif %}
+
+              {% if settings.social_twitter_link != blank %}
+                <li>
+                  <a href="{{ social_twitter_link }}" target="_blank">
+                    {% include 'icon-twitter' %}
+                  </a>
+                </li>
+              {% endif %}
+
+              {% if settings.social_instagram_link != blank %}
+                <li>
+                  <a href="{{ social_instagram_link }}" target="_blank">
+                    {% include 'icon-instagram' %}
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+
+          </div>
+        </nav>
       </div>
+
+      <i class="m-flex-show hamburger js-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </i>
+
+      <a href="/cart" class="cart js-cart m-block-show m-cart">
+        {% include 'icon-bag' %}
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
+
   </header>
 
   {% if template != 'cart' %}

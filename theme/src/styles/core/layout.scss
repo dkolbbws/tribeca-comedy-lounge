@@ -3,6 +3,10 @@ html {
   box-sizing: border-box;
 }
 
+.oh {
+  overflow: hidden;
+}
+
 //Hide preview bar
 #preview-bar-iframe {
   display: none;
@@ -1660,10 +1664,37 @@ footer {
   }
 }
 
+//Mobile classes
+.m-flex-show,
+.m-block-show,
+.m-inline-show,
+.m-inline-block-show {
+  display: none !important;
+}
+
 @media all and (min-width: 1024px) {
   .remove-side-padding-desktop > [class^=col-] {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  //Mobile classes
+  .m-flex-show {
+    display: flex !important;
+  }
+
+  .m-block-show {
+    display: block !important;
+  }
+
+  .m-inline-show {
+    display: inline !important;
+  }
+
+  .m-inline-block-show {
+    display: inline-block !important;
   }
 }
 

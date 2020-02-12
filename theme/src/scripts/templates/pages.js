@@ -861,3 +861,15 @@ if (document.getElementById('contact') != undefined || document.getElementById('
     })
   })
 }
+
+$(document).ready(function() {
+  $('.js-hamburger').click(function(){
+    $('html').addClass('oh');
+    $('.js-nav-dropdown').addClass('active');
+  });
+
+  $('.js-m-nav-close').click(function(){
+    $('.js-nav-dropdown').removeClass('active');
+    $('html').removeClass('oh');
+  });
+});
