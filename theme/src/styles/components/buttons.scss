@@ -323,3 +323,15 @@ button.icon-button {
   bottom: 0;
   top: 0;
 }
+
+@media all and (max-width: 768px) {
+  .regular-button .hover-svg {
+    opacity: 0;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .regular-button {
+    padding: 22.5px 20%;
+  }
+}

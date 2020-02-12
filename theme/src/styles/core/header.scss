@@ -24,10 +24,6 @@
       box-shdaow: 0 -16px 27px rgba(255, 255, 255, 0.1);
 
       @include transform(translate(0, -35px));
-
-      .bws-logo {
-        @include transform(scale(0.6));
-      }
     }
   }
 }
@@ -282,6 +278,30 @@
     > div {
       > .col-lg-4 {
         display: none;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1025px) {
+  .bws-header.sticky .bws-logo {
+    @include transform(scale(0.6));
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .bws-header {
+    .bws-logo svg {
+      max-width: 52px;
+    }
+
+    &.sticky {
+      .bws-logo {
+        @include transform(translate(0px, 4px));
+      }
+
+      .hamburger {
+        @include transform(translate(0, 4px));
       }
     }
   }

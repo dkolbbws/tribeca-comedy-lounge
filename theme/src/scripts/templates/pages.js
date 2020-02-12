@@ -633,6 +633,76 @@ function current_slide(slide, slider) {
   return slide;
 }
 
+function get_current_dot(dots) {
+  let current = null;
+  for (let a = 0; a < dots.length; a++) {
+    if (dots[a].classList.contains('active')) {
+      current = a;
+    }
+  }
+  return current;
+}
+
+function next_arrow_click(id, sliderVar) {
+  let current = null;
+  let dots = document.querySelectorAll(id + ' .lSPager li');
+  current = get_current_dot(dots);
+  sliderVar.goToSlide(current + 1);
+
+  if (current <= dots.length - 2) {
+    sliderVar.goToSlide(current + 1);
+    event.target.classList.remove('disabled');
+    prev_arrow.classList.remove('disabled');
+  } 
+  if (current == dots.length - 2) {
+    event.target.classList.add('disabled');
+  }
+}
+
+function prev_arrow_click(id, sliderVar) {
+  let current = null;
+  let dots = document.querySelectorAll(id + ' .lSPager li');
+  current = get_current_dot(dots);
+
+  if (current >= 1) {
+    sliderVar.goToSlide(current - 1);
+    event.target.classList.remove('disabled');
+    next_arrow.classList.remove('disabled');
+  } 
+  if (current == 1) {
+    event.target.classList.add('disabled');
+  }
+}
+
+function slider_onAfterSlide(id, nextArrow, prevArrow) {
+  let dots = document.querySelectorAll(id + ' .lSPager li');
+  let current = get_current_dot(dots);
+
+  if (current == 0) {
+    prevArrow.classList.add('disabled');
+  } else {
+    prevArrow.classList.remove('disabled');
+  }
+
+  if (current == dots.length - 1) {
+    nextArrow.classList.add('disabled');
+  } else {
+    nextArrow.classList.remove('disabled');
+  }
+}
+
+function adjust_slider_load_height(el, sliderVar) {
+  // Adjust slder to match the tallest item
+  let slider = Array.from(el[0].children);
+          
+  for(let a = 0; a < slider.length; a++) {
+    slider[a] = slider[a].clientHeight
+  }
+
+  let tallest = slider.sort();
+  sliderVar[0].style.minHeight = tallest[tallest.length - 1] + 'px';
+}
+
 $(document).ready(function() {
   if (document.body.classList.contains('template-index')) {
     let next_arrow = document.querySelector('#home-section-eight .next');
@@ -686,80 +756,95 @@ $(document).ready(function() {
 
         onBeforeStart: function (el) {},
         onSliderLoad: function (el) {
-          // Adjust slder to match the tallest item
-          let slider = Array.from(el[0].children);
-          
-          for(let a = 0; a < slider.length; a++) {
-            slider[a] = slider[a].clientHeight
-          }
-
-          let tallest = slider.sort();
-          home_one[0].style.minHeight = tallest[tallest.length - 1] + 'px';
-          
+          adjust_slider_load_height(el, home_one);
         },
         onBeforeSlide: function (el) {},
         onAfterSlide: function (el) {
-          let dots = document.querySelectorAll('#home-section-eight .lSPager li');
-          let current = get_current_dot(dots);
-
-          if (current == 0) {
-            prev_arrow.classList.add('disabled');
-          } else {
-            prev_arrow.classList.remove('disabled');
-          }
-
-          if (current == dots.length - 1) {
-            next_arrow.classList.add('disabled');
-          } else {
-            next_arrow.classList.remove('disabled');
-          }
-          
+          slider_onAfterSlide('#home-section-eight', next_arrow, prev_arrow);
         },
         onBeforeNextSlide: function (el) {},
         onBeforePrevSlide: function (el) {}
     });
 
-    function get_current_dot(dots) {
-      let current = null;
-      for (let a = 0; a < dots.length; a++) {
-        if (dots[a].classList.contains('active')) {
-          current = a;
-        }
-      }
-      return current;
-    }
-
     next_arrow.addEventListener('click', (event) => {
-      let current = null;
-      let dots = document.querySelectorAll('#home-section-eight .lSPager li');
-      current = get_current_dot(dots);
-      home_one.goToSlide(current + 1);
-
-      if (current <= dots.length - 2) {
-        home_one.goToSlide(current + 1);
-        event.target.classList.remove('disabled');
-        prev_arrow.classList.remove('disabled');
-      } 
-      if (current == dots.length - 2) {
-        event.target.classList.add('disabled');
-      }
+      next_arrow_click('#home-section-eight', home_one);
     });
 
     prev_arrow.addEventListener('click', (event) => {
-      let current = null;
-      let dots = document.querySelectorAll('#home-section-eight .lSPager li');
-      current = get_current_dot(dots);
-
-      if (current >= 1) {
-        home_one.goToSlide(current - 1);
-        event.target.classList.remove('disabled');
-        next_arrow.classList.remove('disabled');
-      } 
-      if (current == 1) {
-        event.target.classList.add('disabled');
-      }
+      prev_arrow_click('#home-section-eight', home_one);
     }); 
   } 
+
+  if (document.body.classList.contains('template-product')) {
+    let next_arrow = document.querySelector('#product-collection .next');
+    let prev_arrow = document.querySelector('#product-collection .prev');
+
+    let related_events = null;
+    related_events = $("#mobile-related-events").lightSlider({
+        item: 1,
+        autoWidth: false,
+        slideMove: 1, // slidemove will be 1 if loop is true
+        slideMargin: 0,
+
+        addClass: '',
+        mode: "slide",
+        // mode: "fade",
+        useCSS: true,
+        cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
+
+        speed: 1000, //ms'
+        auto: false,
+        loop: false,
+        slideEndAnimation: true,
+        pause: 2000,
+
+        keyPress: true,
+        controls: true,
+        prevHtml: '',
+        nextHtml: '',
+
+        rtl:false,
+        adaptiveHeight:false,
+
+        vertical:false,
+        // verticalHeight:500,
+        vThumbWidth:100,
+
+        thumbItem:10,
+        pager: true,
+        gallery: false,
+        galleryMargin: 5,
+        thumbMargin: 5,
+        currentPagerPosition: 'middle',
+
+        enableTouch:true,
+        enableDrag:true,
+        freeMove:true,
+        swipeThreshold: 40,
+
+        responsive : [],
+
+        onBeforeStart: function (el) {},
+        onSliderLoad: function (el) {
+          adjust_slider_load_height(el, related_events);
+        },
+        onBeforeSlide: function (el) {},
+        onAfterSlide: function (el) {
+          slider_onAfterSlide('#product-collection', next_arrow, prev_arrow);
+        },
+        onBeforeNextSlide: function (el) {},
+        onBeforePrevSlide: function (el) {}
+    });
+
+    next_arrow.addEventListener('click', (event) => {
+      next_arrow_click('#product-collection', related_events);
+    });
+
+    prev_arrow.addEventListener('click', (event) => {
+      prev_arrow_click('#product-collection', related_events);
+    }); 
+  }
 });
 
 

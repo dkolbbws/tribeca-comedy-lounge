@@ -64,6 +64,10 @@ body.template-product main {
 
     &:last-of-type {
       margin-right: 0;
+
+      &::before {
+        background: transparent;
+      }
     }
   }
 
@@ -170,6 +174,8 @@ sidebar {
 
 .event-comedian-list {
   li {
+    padding-bottom: 10px;
+
     @include flexbox();
 
     p {
@@ -187,4 +193,149 @@ sidebar {
 
 .content-wrap {
   margin-bottom: 40px;
+}
+
+// Mobile Events Slider
+.mobile-related {
+  #mobile-related-events {
+    @include transition(400ms all $cubic);
+  }
+
+  .inner-wrap {
+    position: relative;
+    border: 1px solid $color-separator-dark-gray;
+  }
+
+  .lSPager {
+    display: none;
+    visibility: hidden;
+  }
+
+  .slider-column {
+    width: 100%;
+    max-width: calc(100% - 90px);
+  }
+
+  .lSSlideOuter {
+    overflow: visible;
+  }
+
+  .lightSlider {
+    li.lslide {
+      left: 6px;
+      position: relative;
+      opacity: 0;
+
+      @include transition(400ms all $cubic);
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .arrow-column {
+    z-index: 3;
+    width: 45px;
+  }
+}
+
+.mobile-related {
+  display: none;
+  visibility: hidden;
+}
+
+@media all and (max-width: 1024px) {
+  #product-hero-row {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #product-sidebar {
+    .sidebar-list li ul {
+      @include flexbox();
+      @include flex-wrap(initial);
+    }
+
+    button.regular-button {
+      padding: 22.5px 20%;
+    }
+  }
+
+  .desktop-related ul.schedule-list li[id^=schedule-item-]:nth-of-type(2) {
+    border-right: 1px solid $color-separator-dark-gray;
+
+    li {
+      border-color: transparent;
+    }
+  }
+}
+
+@media all and (max-width: 1024px) and (min-width: 769px) {
+  .product-title {
+    font-size: 3em;
+    line-height: 1.25em;
+  }
+
+  .control .qty, 
+  .control .qty a {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  #product-sidebar {
+    margin-top: 40px;
+  }
+
+  #product-details {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  #product-collection h2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  .product-title {
+    font-size: 2.8em;
+    line-height: 1.25em;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .desktop-related {
+    display: none;
+    visibility: hidden;
+  }
+
+  .mobile-related {
+    visibility: visible;
+    // display: none;
+    @include flexbox;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 401px) {
+  .product-title {
+    font-size: 2.4em;
+    line-height: 1.25em;
+  }
+  
+}
+
+@media all and (max-width: 400px) {
+  .product-title {
+    font-size: 2em;
+    line-height: 1.25em;
+  }
+
+  .event-comedian-list li {
+    max-width: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
 }
