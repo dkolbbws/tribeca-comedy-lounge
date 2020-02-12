@@ -862,14 +862,71 @@ if (document.getElementById('contact') != undefined || document.getElementById('
   })
 }
 
-$(document).ready(function() {
-  $('.js-hamburger').click(function(){
-    $('html').addClass('oh');
-    $('.js-nav-dropdown').addClass('active');
+// $(document).ready(function() {
+//   $('.js-hamburger').click(function(){
+//     $('html').addClass('oh');
+//     $('.js-nav-dropdown').addClass('active');
+//   });
+
+//   $('.js-m-nav-close').click(function(){
+//     $('.js-nav-dropdown').removeClass('active');
+//     $('html').removeClass('oh');
+//   });
+// });
+
+// reverse array order and return
+function reverse_array(arr) {
+  let new_arr = new Array();
+  for (let a = arr.length -1; a >= 0; a--) {
+    new_arr.push(arr[a]);
+  }
+  return new_arr;
+}
+
+// Mobile Nav Elements
+let nav_trigger = document.querySelector('.js-hamburger');
+let nav_menu = document.querySelector('.js-nav-dropdown');
+let h = document.querySelector('html');
+let nav_close = document.querySelector('.js-m-nav-close');
+let all_nav_items = nav_menu.querySelectorAll('.m-nav-item');
+let reverse_all_nav_items = null;
+
+// Open Mobile Nav
+nav_trigger.addEventListener('click', (event) => {
+  event.preventDefault();
+  
+  h.classList.add('oh');
+  nav_menu.classList.add('active');
+
+  // Animate Items In
+  setTimeout( () => {
+    let delays = 0.08;
+    all_nav_items.forEach(item => {
+      gsap.to(item, {duration: 0.08, opacity: 1, delay: delays, ease: "Quint.easeInOut", x: 0});
+      delays += 0.08;
+    });
+  }, 200);
+
+  // Reverse the order of the nav elements array
+  reverse_all_nav_items = reverse_array(all_nav_items);
+});
+
+// Close Mobile Nav
+nav_close.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  let delays = 0.04;
+  let full_delay = ((reverse_all_nav_items.length - 1) * delays) * 1000;
+  full_delay += 200;
+
+  // Animate Items Out
+  reverse_all_nav_items.forEach(item => {
+    gsap.to(item, {duration: 0.04, opacity: 0, delay: delays, ease: "Quint.easeInOut", x: -20});
+    delays += 0.04;
   });
 
-  $('.js-m-nav-close').click(function(){
-    $('.js-nav-dropdown').removeClass('active');
-    $('html').removeClass('oh');
-  });
+  setTimeout( () => {
+    h.classList.remove('oh');
+    nav_menu.classList.remove('active');  
+  }, full_delay);
 });

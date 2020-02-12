@@ -131,7 +131,8 @@
   @include justify-content(space-between);
 
   position: absolute;
-  top: 34px;
+  // top: 34px;
+  top: 60px;
   left: 25px;
   width: 27px;
   height: 16px;
@@ -141,12 +142,28 @@
     display: block;
     width: 100%;
     height: 2px;
+    transform-origin: left;
+
+    @include transition(400ms all $cubic);
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    span:nth-of-type(2) {
+      @include transform(scaleX(0.5));
+    }
+
+    span:last-of-type {
+      @include transform(scaleX(0.2));
+    }
   }
 }
 
 .m-nav-dropdown {
   @include transition(400ms all $cubic);
   @include flex-direction(column);
+  @include transform(translate(0, -25px));
 
   background-color: $color-dark;
   opacity: 0;
@@ -163,30 +180,49 @@
     position: absolute;
     top: 40px;
     right: 40px;
+    transform-origin: center;
+
+    @include transition(400ms all $cubic);
 
     svg {
-      width: 34px;
-      height: 34px;
+      width: 20px;
+      height: 20px;
     }
+
+    &:hover {
+      cursor: pointer;
+
+      @include transform(rotate(90deg)); 
+    }
+  }
+
+  .m-nav-item {
+    opacity: 0;
+    position: relative;
+
+    @include transition(400ms all $cubic);
+    @include transform(translate(-20px, 0));
   }
 
   .navigation-menu {
     @include flex-direction(column);
     @include align-items(flex-start);
 
-    padding: 55px 40px;
+    padding: 75px 40px 55px;
+    margin: 0;
 
     li {
-      margin-bottom: 30px;
+      margin-bottom: 35px;
 
-      a {
-        font-size: 30px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
 
-        &.icon-ticket svg {
-          top: 0;
-          width: 30px;
-          height: 30px;
-        }
+      a.icon-ticket svg {
+        top: 2px;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
       }
     }
   }
@@ -194,19 +230,23 @@
   .nav-footer {
     @include flexbox;
     @include flex-direction(column);
-    @include justify-content(center);
+    // @include justify-content(center);
+    @include justify-content(flex-start);
     @include align-items(flex-start);
 
     background-color: $color-dark-4;
     font-size: 23px;
     flex-grow: 1;
-    padding: 0 40px;
+    padding: 40px;
 
     .social-list {
       margin-bottom: 0;
+      margin-top: 20px;
 
       li {
         @include flexbox;
+
+        margin-right: 30px;
       }
     }
   }
@@ -215,12 +255,16 @@
     opacity: 1;
     pointer-events: all;
     visibility: visible;
+    overflow: scroll;
+
+    @include transform(translate(0, 0));
   }
 }
 
 .bws-header a.m-cart {
   position: absolute;
-  top: 30px;
+  // top: 30px;
+  top: 55px;
   right: 25px;
 
   svg {
@@ -238,6 +282,24 @@
     > div {
       > .col-lg-4 {
         display: none;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1024px) and (min-width: 769px) {
+  .m-nav-dropdown .navigation-menu li a {
+    font-size: 25px;
+  }
+} // End 1024 Max and 769 Min
+
+@media all and (max-width: 768px) {
+  .m-nav-dropdown .navigation-menu {
+    li a {
+      font-size: 15px;
+
+      &.icon-ticket svg {
+        top: -4px;
       }
     }
   }
