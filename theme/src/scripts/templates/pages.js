@@ -845,6 +845,48 @@ $(document).ready(function() {
       prev_arrow_click('#product-collection', related_events);
     }); 
   }
+
+  //   var home_two =$("#home-section-two .schedule-list");
+  //   if (home_two.length > 0) {
+  //     setTimeout(home_two.lightSlider({
+  //       item: 1,
+  //       autoWidth: true,
+  //       slideMove: 1, // slidemove will be 1 if loop is true
+  //       slideMargin: 50,
+
+  //       addClass: '',
+  //       mode: "slide",
+  //       // mode: "fade",
+  //       useCSS: true,
+  //       cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+  //       easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
+
+  //       speed: 1000, //ms'
+  //       auto: false,
+  //       loop: false,
+  //       slideEndAnimation: true,
+  //       pause: 2000,
+
+  //       keyPress: true,
+  //       controls: true,
+  //       prevHtml: '',
+  //       nextHtml: '',
+
+  //       rtl:false,
+  //       adaptiveHeight:false,
+
+  //       vertical:false,
+
+  //       pager: false,
+
+  //       enableTouch:true,
+  //       enableDrag:true,
+  //       freeMove:true,
+  //       swipeThreshold: 40,
+
+  //       responsive : [],
+  //   }), 1500);
+  // }
 });
 
 
@@ -1015,3 +1057,4 @@ nav_close.addEventListener('click', (event) => {
     nav_menu.classList.remove('active');  
   }, full_delay);
 });
+
