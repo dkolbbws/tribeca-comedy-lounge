@@ -242,3 +242,14 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .bws-header {
+    .bws-logo {
+      svg {
+        margin-top: -25px;
+        width: 60px;
+      }
+    }
+  }
+}
