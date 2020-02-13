@@ -34,10 +34,14 @@
   @include flexbox();
 
   &.left-side-navigation {
+    margin-right: 30px;
+
     @include justify-content(space-between);
   }
 
   &.right-side-navigation {
+    margin-left: 30px;
+    
     @include justify-content(space-between);
   }
 

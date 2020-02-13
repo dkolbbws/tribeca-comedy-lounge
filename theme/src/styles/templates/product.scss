@@ -195,56 +195,6 @@ sidebar {
   margin-bottom: 40px;
 }
 
-// Mobile Events Slider
-.mobile-related {
-  #mobile-related-events {
-    @include transition(400ms all $cubic);
-  }
-
-  .inner-wrap {
-    position: relative;
-    border: 1px solid $color-separator-dark-gray;
-  }
-
-  .lSPager {
-    display: none;
-    visibility: hidden;
-  }
-
-  .slider-column {
-    width: 100%;
-    max-width: calc(100% - 90px);
-  }
-
-  .lSSlideOuter {
-    overflow: visible;
-  }
-
-  .lightSlider {
-    li.lslide {
-      left: 6px;
-      position: relative;
-      opacity: 0;
-
-      @include transition(400ms all $cubic);
-
-      &.active {
-        opacity: 1;
-      }
-    }
-  }
-
-  .arrow-column {
-    z-index: 3;
-    width: 45px;
-  }
-}
-
-.mobile-related {
-  display: none;
-  visibility: hidden;
-}
-
 @media all and (max-width: 1024px) {
   #product-hero-row {
     padding-left: 15px;
@@ -303,19 +253,6 @@ sidebar {
   .product-title {
     font-size: 2.8em;
     line-height: 1.25em;
-  }
-}
-
-@media all and (max-width: 576px) {
-  .desktop-related {
-    display: none;
-    visibility: hidden;
-  }
-
-  .mobile-related {
-    visibility: visible;
-    // display: none;
-    @include flexbox;
   }
 }
 

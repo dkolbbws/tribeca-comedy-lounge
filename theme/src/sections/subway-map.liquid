@@ -1,11 +1,11 @@
 <section class="spacing-top-and-bottom-sm" id="subway-section-one">
-  <div class="row center-xs">
+  <div class="row center-xs hide-on-tablet">
     <div class="col-xs-12">
       <h2>Take a subway</h2>
     </div>
   </div>
   
-  <div class="row center-xs middle-xs">
+  <div class="row center-xs middle-xs hide-on-tablet">
     <ul class="col-xs-12 subway-list">
       <li>
         <p>
@@ -44,7 +44,67 @@
       </li>
     </ul>
   </div>
-  <div class="row center-xs" id="subway-copy">
+  <div class="row show-on-tablet">
+    <ul class="col-xs-12 mobile-subway-list">
+      <li class="row middle-xs">
+        <div class="col-xs-4">
+          {% include 'icon-a-c-trains' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">A,C to Chambers Street</p>
+        </div>
+      </li>
+      <li class="row  middle-xs">
+        <div class="col-xs-4">
+          {% include 'icon-e-train' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">E to World Trade</p>
+        </div>
+      </li>
+      <li class="row  middle-xs">
+        <div class="col-xs-4">
+          {% include 'icon-2-3-trains' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">2,3 to Park Place</p>
+        </div>
+      </li>
+      <li class="row  middle-xs">
+        <div class="col-xs-4">
+          {% include 'icon-4-5-6-trains' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">4,5,6 to Brooklyn Bridge/City Hall</p>
+        </div>
+      </li>
+      <li class="row  middle-xs">
+        <div class="col-xs-4">
+          {% include 'icon-j-z-trains' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">J,Z to Chamber Street</p>
+        </div>
+      </li>
+      <li class="row  middle-xs">
+        <div class="col-xs-4">
+          {% include 'icon-r-train' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">R to City Hall</p>
+        </div>
+      </li>
+      <li class="row  middle-xs">
+        <div class="col-xs-4">
+          {% include 'path-train' %}
+        </div>
+        <div class="col-xs-8">
+          <p class="small">Path to World Trade Center</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="row center-xs hide-on-tablet" id="subway-copy">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
       <p id="subway-station-copy">Use A, C Subway to get to Chambers Street. Then lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>

@@ -7,7 +7,7 @@
       <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/hero-circle-2.png?v=1579557371" alt="" class="image-circles two">
       <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/city-image-3.png?v=1580413752" alt="" class="image-circles three">
     </div>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-11">
       <p class="svg-text">{% include 'text-enjoy' %}</p>
       <h2>Lower Manhattan’s  <span class="behind-red-one">Upscale {% include 'behind-red-one.liquid' %}</span> Comedy  Destination</h2>
       <div class="row center-xs">
@@ -36,17 +36,24 @@
   </div>
 </section>
 
-<section class="spacing-top-and-bottom-xs" id="home-section-two">
+<section class="spacing-bottom-xs" id="home-section-two">
   <div class="row center-xs">
     <div class="col-xs-10">
-      <h2 class="font-barlow"><span class="custom-110">LAUGH</span> YOUR <span class="behind-red-two"><span class="svg-text">{% include 'text-ass' %}</span> {% include 'behind-red-two' %}</span> OFF</h2>
+      <h2 class="font-barlow desktop-row"><span class="custom-110">LAUGH</span> YOUR <span class="behind-red-two"><span class="svg-text">{% include 'text-ass' %}</span> {% include 'behind-red-two' %}</span> OFF</h2>
+      <h2 class="font-barlow mobile-row-block">Upcoming Shows</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+
+  <div class="row desktop-row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
       <ul class="row schedule-list">
         {% for product in collections.home-featured.products limit: 3 %}
-          <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
+
+          {% if forloop.index == 3 %}
+            <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="schedule-item-{{ forloop.index }}">
+          {% else %}
+            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}">
+          {% endif %}
             <a href="{{ product.url }}" class="absolute-link"></a>
             <div class="top">
               <ul class="date row middle-xs">
@@ -118,6 +125,92 @@
       </ul>
     </div>
   </div>
+
+  <div class="row mobile-row slider-row">
+    <div class="col-xs-1 arrow-column">
+      <span class="arrow prev disabled"><svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 14L1 7.5L7 1" stroke="white" stroke-width="0.8" stroke-miterlimit="10"/></svg></span>
+    </div>
+    <div class="col-xs-10">
+      <ul class="row schedule-list" id="home-events-section-two-mobile">
+        {% for product in collections.home-featured.products limit: 3 %}
+
+          <li id="schedule-item-{{ forloop.index }}">
+            <div class="inner-wrap">
+            <a href="{{ product.url }}" class="absolute-link"></a>
+            <div class="top">
+              <ul class="date row middle-xs">
+                <li>{% include 'icon-calendar-red' %}</li>
+                <li>
+                  {% if product.metafields.custom_fields["date"] != blank %} 
+                    <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                  {% endif %}
+                </li>
+              </ul>
+
+              <h5>{{ product.title }}</h5>
+
+              <ul class="price-and-location row middle-xs">
+                <li class="start-xs middle-xs">
+                  <p>{{ product.price | money_without_trailing_zeros }}</p>
+                </li>
+                <li class="start-xs middle-xs">
+                  {% include 'icon-small-red-pin' %}
+                  {% if product.metafields.custom_fields["location"] != blank %}
+                    {{ product.metafields.custom_fields["location"] }}
+                  {% endif %}
+                </li>
+              </ul>
+
+              <a href="{{ product.url }}" class="underline-button-double red">View details</a>
+            </div>
+
+            <form action="/cart/add" method="post" data-cart-submit>
+              <div class="bws-button-wrapper">
+                <button class="regular-button bws-button js-button" type="submit" {% if product.available == false %}
+                  disabled="disabled" {% endif %}>
+                  <span data-submit-button-text>
+                    {% if product.available %}
+                    <div class="inner-wrapper">
+                      {% include 'icon-ticket-light' %}
+                      <span class="text">ADD TO CART</span>
+                      <span class="hover-svg">
+                        {% include 'icon-regular-button-hover' %}
+                      </span>
+                    </div>
+                    {% else %}
+                    <div class="inner-wrapper">
+                      {% include 'icon-ticket-light' %}
+                      <span class="text">{{ 'products.product.sold_out' | t }}</span>
+                      <span class="hover-svg">
+                        {% include 'icon-regular-button-hover' %}
+                      </span>
+                    </div>
+                    {% endif %}
+                  </span>
+                </button>
+              </div>
+
+              <select class="hidden" name="id">
+                <option value="{{ product.variants.first.id }}"></option>
+              </select>
+
+              <input type="hidden" name="properties[Date]"
+                value="{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}" />
+
+              <select name="quantity" class="hidden js-quantity">
+                <option>1</option>
+              </select>
+            </form>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-xs-1 arrow-column">
+      <span class="arrow next"><svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.999999 1L7 7.5L1 14" stroke="white" stroke-width="0.8" stroke-miterlimit="10"/></svg></span>
+    </div>
+  </div>
+
   <div class="row center-xs">
     <div class="bws-button-wrapper">
       <a href="/pages/schedule" class="underline-button-double red">More Shows</a>
@@ -128,20 +221,21 @@
 {% section 'subway-map' %}
 
 <section class="spacing-top-sm spacing-bottom-lg" id="home-section-five">
-  <div class="row middle-xs">
-    <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-      <div class="row center-xs">
-        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-2.png?v=1579729358" alt="pizza" class="col-xs-10">
+  <div class="row middle-lg middle-md middle-sm start-xs">
+    <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+      <div class="row center-lg center-md center-sm start-xs">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-2.png?v=1579729358" alt="pizza" class="col-lg-10 col-md-10 col-sm-10 col-xs-8 col-xs-offset-2">
         <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-1.png?v=1579729358" alt="steak and greens" class="col-xs-5">
         <!-- <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/food-3.png?v=1579729358" alt="potatoes" class="col-xs-4"> -->
-        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home_drinks_3.png?v=1580755478" alt="whiskey drink" class="col-xs-4">
-        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home_drinks_2.png?v=1580755478" alt="fruity drink" class="col-xs-4">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home_drinks_3.png?v=1580755478" alt="whiskey drink" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <img src="https://cdn.shopify.com/s/files/1/0307/9746/3685/files/home_drinks_2.png?v=1580755478" alt="fruity drink" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
       </div>
     </div>
-    <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-13 col-xs-offset-0">
-      <p class="custom-80">Eat<span class="color-red">.</span></p>
-      <p class="custom-80">Drink<span class="color-red">.</span></p>
-      <p class="custom-80 behind-red-two">Laugh {% include 'behind-red-three' %}</p>
+    <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+      <p class="custom-80 hide-on-tablet">Eat<span class="color-red">.</span></p>
+      <p class="custom-80 hide-on-tablet">Drink<span class="color-red">.</span></p>
+      <p class="custom-80 behind-red-two hide-on-tablet">Laugh {% include 'behind-red-three' %}</p>
+      <h2 class="show-on-tablet">Food & Drinks</h2>
       <p>Did you know laughing burns 200 calories per hour? We’ll make sure you’re fueled up with the best cuisine of any comedy club in NYC.</p>
       <div class="bws-button-wrapper">
         <a href="http://www.granmorsi.com/menu" target="_blank" class="bws-button icon-button red">
@@ -159,7 +253,8 @@
       <h2>Laugh <span class="behind-red-one">with {% include 'behind-red-four' %}</span> us</h2>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row hide-on-tablet">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
       <ul class="row center-xs middle-xs comedian-list">
 
@@ -198,6 +293,41 @@
       </ul>
     </div>
   </div>
+
+  <div class="row show-on-tablet slider-row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <ul class="row center-xs middle-xs comedian-list" id="home-comedians-mobile-slider">
+
+        {% for article in blogs.comedians.articles limit:4 %}
+
+          {% if article.metafields.custom_fields["comedians_details"] != blank %}
+                  
+            {% assign separator = "|###|" %}
+            {% assign comedian_first_name_array = article.metafields.custom_fields["comedian_first_name"] | split: separator %}
+            {% assign comic_last_name_array = article.metafields.custom_fields["comic_last_name"] | split: separator %}
+            {% assign comedian_excerpt_array = article.metafields.custom_fields["comedian_excerpt"] | split: separator %}
+            {% assign fc_keys = article.metafields.custom_fields["comedians_details"] | split: "," %}
+            {% for i in fc_keys %}
+              {% assign index = i | plus: 0 %}
+                
+              <li>
+                <div class="inner-wrapper">
+                  <div class="inner-image" style="background: {{ background_red }} url('{{ article.image.src | img_url: '500x'}}') no-repeat center center; background-size: cover;"></div>
+                  <a href="{{ article.url }}" class="absolute-link"></a>
+                  <div class="name">
+                    <p class="large">{{ comedian_first_name_array[index] }} {{ comic_last_name_array[index] }}</p>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+
+          {% endif %}
+        {% endfor %}  
+
+      </ul>
+    </div>
+  </div>
+
   <div class="row center-xs">
     <div class="bws-button-wrapper">
       <a href="/pages/comedians" class="underline-button-double red">More comedians</a>

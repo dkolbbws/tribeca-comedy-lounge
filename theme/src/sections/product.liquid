@@ -340,13 +340,12 @@
 
   {% comment %} Mobile Events {% endcomment %}
   <div class="row mobile-related slider-row">
-    <div class="arrow-column">
+    <div class="col-xs-1 arrow-column">
       <span class="arrow prev disabled"><svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 14L1 7.5L7 1" stroke="white" stroke-width="0.8" stroke-miterlimit="10"/></svg></span>
     </div>
-    <div class="slider-column">
+    <div class="col-xs-10">
       <ul class="row schedule-list" id="mobile-related-events">
         {% for product in collections.home-featured.products limit: 3 %}
-          {% comment %} <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="schedule-item-{{ forloop.index }}"> {% endcomment %}
 
           <li id="schedule-item-{{ forloop.index }}">
             <div class="inner-wrap">
@@ -419,7 +418,7 @@
         {% endfor %}
       </ul>
     </div>
-    <div class="arrow-column">
+    <div class="col-xs-1 arrow-column">
       <span class="arrow next"><svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.999999 1L7 7.5L1 14" stroke="white" stroke-width="0.8" stroke-miterlimit="10"/></svg></span>
     </div>
   </div>
