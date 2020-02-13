@@ -1730,6 +1730,7 @@ footer {
       font-size: 70px;
     }
   }
+
   #home-section-one {
     padding-top: 80px;
     padding-left: 25px;
@@ -1787,24 +1788,7 @@ footer {
 
     h2 {
       font-size: 70px;
-    }
-
-    .schedule-list {
-      flex-wrap: nowrap;
-      overflow: visible;
-      margin-left: 0;
-      margin-right: 0;
-
-      > li {
-        border-right: 1px solid $color-gray-border;
-        border-bottom: 1px solid $color-gray-border;
-        box-sizing: border-box;
-        max-width: none;
-        padding: 0;
-        flex-basis: auto;
-        width: 100vw;
-      }
-    }    
+    }  
   }
 
   #subway-section-one {
@@ -1890,7 +1874,182 @@ footer {
       margin-bottom: 30px;
     }
   }
-}
+
+  #home-sections-seven {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .image-cta-one {
+      flex-basis: auto;
+      max-width: 100%;
+    }
+
+    .custom-110 {
+      font-size: 70px;
+    }
+  }
+
+  #footer-section-one {
+    >.row {
+      margin-left: 0;
+      margin-right: 0;
+      padding-bottom: 0;
+    }
+
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    .col-logo {
+      display: none !important;
+    }
+
+    .s1 {
+      border-bottom: 1px solid #2F2F2F;
+      padding: 0 0 20px 0;
+    }
+
+    .s2 {
+      border-bottom: 1px solid #2F2F2F;
+      padding: 20px 0;
+    }
+
+    .s3 {
+      padding: 20px 0;
+    }
+  }
+
+  #subfooter {
+    padding-bottom: 30px !important;
+
+    ul {
+      display: none;
+    }
+  }
+
+  //SCHEDULE PAGE
+  body#schedule {
+    #home-sections-seven {
+      padding-bottom: 0;
+    }
+  }
+
+  //ABOUT PAGE
+  #about-section-one {
+    padding-bottom: 80px;
+
+    .spacing-top-xxs {
+      padding-top: 0;
+    }
+
+    .about-images-one {
+      flex-basis: auto;
+      padding-top: 0;
+      max-width: 100%;
+      width: 100%;
+
+      img {
+        &:first-of-type {
+          left: -20px;
+          max-width: 90px;
+        }
+
+        &:nth-of-type(2) {
+          max-width: 100px;
+          position: absolute;
+          right: 0;
+        }
+
+        &:nth-of-type(3) {
+          display: none;
+        }
+      }
+    }
+
+    .image-right {
+      max-width: 140px;
+    }
+
+    .about-right-image-two {
+      bottom: -150px;
+      max-width: 120px;
+    }
+  }
+
+  #about-section-two {
+    background-position: 80% -80px !important;
+    position: relative;
+
+    &:before {
+      content: "";
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 0, 0, 0.8)
+      );
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    > .row {
+      position: relative;
+    }
+  }
+
+  #about-section-four {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    > div > div:nth-of-type(1) {
+      padding-top: 60px;
+    }
+
+    > div > div:nth-of-type(2) {
+      margin-top: 60px;
+    }
+  }
+
+  //FAQ
+  .faq-list {
+    li {
+       a.faq-top {
+         padding: 20px;
+
+         .text {
+           max-width: calc(100% - 50px);
+         }
+       }
+    }
+  }
+
+  //CONTACT
+  #contact-section-one {
+    padding-bottom: 0;
+
+    .col-lg-6 {
+      margin-top: 30px;
+    }
+  }
+
+  .icon-list {
+    padding-left: 25px;
+    padding-right: 25px;
+
+    li {
+      margin-bottom: 30px;
+    }
+  }
+
+  #contact-section-three {
+    padding-bottom: 80px;
+  }
+} //Endo of 768px
 
 @media all and (max-width: 1024px) {
   .schedule-list {

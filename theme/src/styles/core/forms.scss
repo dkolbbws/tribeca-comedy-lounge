@@ -575,3 +575,14 @@ form:focus {
     }
   }
 }
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding-left: 25px;
+    padding-right: 25px;
+
+    img {
+      display: none;
+    }
+  }
+}
