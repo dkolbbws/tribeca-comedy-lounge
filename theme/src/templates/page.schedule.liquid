@@ -17,6 +17,7 @@
       <ul class="product collection__grid row schedule-list events-collection-list">
         {% for product in collection.products | limit: 8 %}
         <li class="col-xs-12" id="event-{{ forloop.index }}">
+        {% comment %} <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="event-{{ forloop.index }}"> {% endcomment %}
                 
                 <a href="{{ product.url | within: collection }}" class="absolute-link"></a>
                 <div class="top">
@@ -175,7 +176,7 @@
 </section>
 {% endpaginate %}
 
-<section class="spacing-top-and-bottom-sm" id="home-sections-seven">
+<section class="spacing-top-and-bottom-sm" id="schedule-sections-two">
   <div class="row center-xs">
     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 image-cta-two" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/cta-bg.jpg?v=1580762520') no-repeat center center; background-size: cover;">
       

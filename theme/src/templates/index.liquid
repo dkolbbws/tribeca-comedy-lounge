@@ -56,30 +56,35 @@
           {% endif %}
             <a href="{{ product.url }}" class="absolute-link"></a>
             <div class="top">
-              <ul class="date row middle-xs">
-                <li>{% include 'icon-calendar-red' %}</li>
-                <li>
-                  {% if product.metafields.custom_fields["date"] != blank %} 
-                    <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
-                  {% endif %}
-                </li>
-              </ul>
+              {% comment %} <div class="top-wrap"> {% endcomment %}
+                <ul class="date row middle-xs">
+                  <li>{% include 'icon-calendar-red' %}</li>
+                  <li>
+                    {% if product.metafields.custom_fields["date"] != blank %} 
+                      <p class="small">{{ product.metafields.custom_fields["date"] | date: "%B %d, %Y" }}</p>
+                    {% endif %}
+                  </li>
+                </ul>
 
-              <h5>{{ product.title }}</h5>
+                <h5>{{ product.title }}</h5>
 
-              <ul class="price-and-location row middle-xs">
-                <li class="start-xs middle-xs">
-                  <p>{{ product.price | money_without_trailing_zeros }}</p>
-                </li>
-                <li class="start-xs middle-xs">
-                  {% include 'icon-small-red-pin' %}
-                  {% if product.metafields.custom_fields["location"] != blank %}
-                    {{ product.metafields.custom_fields["location"] }}
-                  {% endif %}
-                </li>
-              </ul>
+                <ul class="price-and-location row middle-xs">
+                  <li class="start-xs middle-xs">
+                    <p>{{ product.price | money_without_trailing_zeros }}</p>
+                  </li>
+                  <li class="start-xs middle-xs">
+                    {% include 'icon-small-red-pin' %}
+                    {% if product.metafields.custom_fields["location"] != blank %}
+                      {{ product.metafields.custom_fields["location"] }}
+                    {% endif %}
+                  </li>
+                </ul>
+              {% comment %} </div> {% endcomment %}
 
-              <a href="{{ product.url }}" class="underline-button-double red">View details</a>
+              <a href="{{ product.url }}" class="underline-button-double red">
+                {% comment %} <span class="text">View details</span> {% endcomment %}
+                View Details
+              </a>
             </div>
 
             <form action="/cart/add" method="post" data-cart-submit>
@@ -337,7 +342,7 @@
   
 <section class="spcing-top-and-bottom-sm" id="home-sections-seven">
   <div class="row center-xs">
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 image-cta-one" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/cta-bg.jpg?v=1580762520') no-repeat center center; background-size: cover;">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 image-cta-one" style="background: url('https://cdn.shopify.com/s/files/1/0307/9746/3685/files/cta-bg.jpg?v=1580762520') no-repeat center center; background-size: cover;">
       
       <h2><span class="custom-110">Enjoy</span><br/> a great night</h2>
       <div class="row center-xs">

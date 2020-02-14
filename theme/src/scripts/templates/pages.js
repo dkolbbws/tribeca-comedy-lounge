@@ -757,7 +757,22 @@ $(document).ready(function() {
         freeMove:true,
         swipeThreshold: 40,
 
-        responsive : [],
+        responsive : [
+          {
+            breakpoint: 768,
+            settings: {
+                item:2,
+                slideMove:1,
+              }
+          },
+          {
+            breakpoint: 576,
+            settings: {
+                item:1,
+                slideMove:1,
+              }
+          },
+        ],
 
         onBeforeStart: function (el) {},
         onSliderLoad: function (el) {

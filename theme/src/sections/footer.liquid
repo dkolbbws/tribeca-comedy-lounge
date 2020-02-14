@@ -4,7 +4,7 @@
       <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-10 col-xs-offset-1 col-logo">
         {% include 'tcl-logo' %}
       </div>
-      <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12 col-xs-offset-0 s1">
+      <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-6 col-xs-offset-1 s1">
         <p class="large">Get in Touch</p>
           {% if settings.contact_location_address != blank %}
             <p class="xs-small">{{ settings.contact_location_address }}</p>
@@ -47,7 +47,7 @@
           {% endif %}
         </ul>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 s2">
+      <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-2 col-md-offset-0 col-xs-6 col-xs-offset-1 s2">
         <p class="large">Navigation</p>
         <ul class="menu">
           {% for link in linklists.footer.links %}
@@ -57,7 +57,17 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 s3">
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 show-on-tablet">
+      <p class="large">Privacy</p>
+        <ul class="menu">
+          {% for link in linklists.privacy.links %}
+            <li>
+              <a href="{{ link.href }}" class="inline-link-single white">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1 s3">
         <p class="large">Tweets</p>
         <div class="elfsight-sapp-bfbcfa67-d976-45ca-8462-bf05fbc55d2c"></div>
       </div>
@@ -81,11 +91,11 @@
         
       </div>
 
-      <div class="col-lg-5 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <div class="col-lg-5 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-0">
         <p class="xxs-small ">&copy; {{ 'now' | date: "%Y" }} Tribeca Comedy Lounge. All Rights Reserved. Made With Love in NYC</p>
       </div>
 
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hide-on-tablet">
         <ul class="menu row center-xs">
           {% for link in linklists.privacy.links %}
             <li>
