@@ -244,10 +244,39 @@ sidebar {
     padding-bottom: 40px;
   }
 
-  #product-collection h2 {
-    margin-bottom: 20px;
+  #product-collection {
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    // .bws-button-wrapper {
+    .underline-button-double {
+      margin-bottom: 20px;
+    }
+
+    .schedule-list .top {
+      height: 90%;
+    }
   }
-}
+
+  #comedian-hero-row .comedian-title {
+    padding-top: 50px;
+    padding-bottom: 147px;
+  }
+
+  #comedian-content-one {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  #comedians-related .comedian-list {
+    margin-bottom: 0;
+
+    .name {
+      text-align: center;
+    }
+  }
+} // End 768 Max
 
 @media all and (max-width: 768px) and (min-width: 577px) {
   .product-title {
@@ -261,7 +290,6 @@ sidebar {
     font-size: 2.4em;
     line-height: 1.25em;
   }
-  
 }
 
 @media all and (max-width: 400px) {

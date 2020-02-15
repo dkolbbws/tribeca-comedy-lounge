@@ -864,8 +864,6 @@ $(document).ready(function() {
       prev_arrow_click('#home-section-two', home_events, next_arrow_events);
     }); 
 
-    // let next_arrow_comedians = document.querySelector('#home-section-six .next');
-    // let prev_arrow_comedians = document.querySelector('#home-section-six .prev');
     var home_comedians = $("#home-comedians-mobile-slider").lightSlider({
       item: 1,
       autoWidth: false,
@@ -918,20 +916,11 @@ $(document).ready(function() {
         },
         onBeforeSlide: function (el) {},
         onAfterSlide: function (el) {
-          // slider_onAfterSlide('#home-section-six', next_arrow_events, prev_arrow_events);
           slider_onAfterSlide('#home-section-six');
         },
         onBeforeNextSlide: function (el) {},
         onBeforePrevSlide: function (el) {}
     });
-    
-    // next_arrow_events.addEventListener('click', (event) => {
-    //   next_arrow_click('#home-section-six', home_events, prev_arrow_events);
-    // });
-
-    // prev_arrow_events.addEventListener('click', (event) => {
-    //   prev_arrow_click('#home-section-six', home_events, next_arrow_events);
-    // }); 
   } 
 
   if (document.body.classList.contains('template-product')) {
@@ -943,7 +932,7 @@ $(document).ready(function() {
         item: 1,
         autoWidth: false,
         slideMove: 1, // slidemove will be 1 if loop is true
-        slideMargin: 0,
+        slideMargin: 50,
 
         addClass: '',
         mode: "slide",
@@ -1003,6 +992,66 @@ $(document).ready(function() {
     prev_arrow.addEventListener('click', (event) => {
       prev_arrow_click('#product-collection', related_events, next_arrow);
     }); 
+  }
+
+  if (document.body.classList.contains('template-article')) {
+    var inner_comedians_related = $("#mobile-related-comedians").lightSlider({
+      item: 1,
+      autoWidth: false,
+      slideMove: 1, // slidemove will be 1 if loop is true
+      // slideMargin: 0,
+      slideMargin: 12,
+  
+      addClass: '',
+      mode: "slide",
+      // mode: "fade",
+      useCSS: true,
+      cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)', //'for jquery animation',////
+  
+      speed: 1000, //ms'
+      auto: false,
+      loop: true,
+      slideEndAnimation: true,
+      pause: 2000,
+  
+      keyPress: true,
+      controls: true,
+      prevHtml: '',
+      nextHtml: '',
+  
+      rtl:false,
+      adaptiveHeight:false,
+  
+      vertical:false,
+      // verticalHeight:500,
+      vThumbWidth:100,
+  
+      thumbItem:10,
+      pager: false,
+      gallery: false,
+      galleryMargin: 5,
+      thumbMargin: 5,
+      currentPagerPosition: 'middle',
+  
+      enableTouch:true,
+      enableDrag:true,
+      freeMove:true,
+      swipeThreshold: 40,
+  
+      responsive : [],
+  
+        onBeforeStart: function (el) {},
+        onSliderLoad: function (el) {
+          adjust_slider_load_height(el, inner_comedians_related);
+        },
+        onBeforeSlide: function (el) {},
+        onAfterSlide: function (el) {
+          slider_onAfterSlide('#comedians-related');
+        },
+        onBeforeNextSlide: function (el) {},
+        onBeforePrevSlide: function (el) {}
+    });
   }
 });
 
@@ -1175,3 +1224,40 @@ nav_close.addEventListener('click', (event) => {
   }, full_delay);
 });
 
+if (document.body.classList.contains('template-cart')) {
+  let plus = document.querySelectorAll('.product li .control .plus');
+  let minus = document.querySelectorAll('.product li .control .minus'); 
+  let control = document.querySelectorAll('.product li .control');
+
+  // Temporary Cart Quantity Update
+  control.forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault();
+      
+      if (event.target.classList.contains('control-plus')) {
+        if (Number(item.textContent) >= 0) {
+          let current = Number(item.textContent);
+           current += 1;
+           item.childNodes[3].innerText = current;
+           item.childNodes[7].childNodes[1].value = current;
+        } else {
+          item.childNodes[3].innerText = 0;
+          item.childNodes[7].childNodes[1].value = 0;
+        }
+      }
+
+      if (event.target.classList.contains('control-minus')) {
+        if (Number(item.textContent) != 0) {
+          let current = Number(item.textContent);
+           current -= 1;
+          item.childNodes[3].innerText = current;
+          item.childNodes[7].childNodes[1].value = current;
+        } else {
+          item.childNodes[3].innerText = 0;
+          item.childNodes[7].childNodes[1].value = 0;
+        }
+      }
+    });
+  })
+
+}

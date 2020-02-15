@@ -267,7 +267,12 @@
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
       <ul class="row schedule-list">
         {% for product in collections.home-featured.products limit: 3 %}
-          <li class="col-lg-4 col-md-4 col-sm-6 col-xs-6" id="schedule-item-{{ forloop.index }}">
+          {% if forloop.index == 3 %}
+            <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="schedule-item-{{ forloop.index }}">
+          {% else %}
+            <li class="col-lg-4 col-md-4 col-sm-6 col-xs-6" id="schedule-item-{{ forloop.index }}">
+          {% endif %}
+          
             <a href="{{ product.url }}" class="absolute-link"></a>
             <div class="top">
               <ul class="date row middle-xs">

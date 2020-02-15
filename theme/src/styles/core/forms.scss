@@ -35,12 +35,44 @@ label[for] {
   cursor: pointer;
 }
 
-textarea {
+main textarea {
   min-height: 100px;
+  background: $color-dark;
 }
 
 select::-ms-expand {
   display: none;
+}
+
+td[data-label="Quantity"] {
+  position: relative;
+
+  input[type="number"] {
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  // &::before {
+  //   position: absolute;
+  //   content: "";
+  //   width: 12px;
+  //   height: 50px;
+  //   background: url('~../assets/arrows/icon-number.svg') no-repeat center center;
+  //   right: 0;
+  //   pointer-events: none;
+  // }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  // margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
 }
 
 // Force option color (affects IE only)
@@ -501,10 +533,22 @@ input {
 
 textarea {
   border: 1px solid $color-form-gray;
-  background: transparent;
+  // background: transparent;
   padding: 15px;
 }
 
+.template-cart .submit {
+  input[type="submit"] {
+    left: 0;
+    top: 0;
+  }
+
+  .text {
+    padding-left: 0;
+  }
+}
+
+.template-cart .submit,
 .form-row.submit {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -556,7 +600,8 @@ form:focus {
   }
 }
 
-@media all and (min-width: 769px) {
+// @media all and (min-width: 769px) {
+@media all and (min-width: 577px) {
   .form-row.double {
     @include flexbox();
 
@@ -584,5 +629,19 @@ form:focus {
     img {
       display: none;
     }
+  }
+
+  .form-row.submit {
+    margin-bottom: 0;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .form-row.double .left {
+    margin-bottom: 20px;
+  }
+
+  .form-row.after-message {
+    margin-top: 20px;
   }
 }

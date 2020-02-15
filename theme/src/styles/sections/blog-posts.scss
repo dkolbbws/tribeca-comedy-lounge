@@ -99,3 +99,42 @@
     margin-bottom: 0;
   }
 }
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  .press-comedian-list li.col-xs-12 {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .press-comedian-list li:last-of-type {
+    margin-bottom: 0;
+  }
+
+  #comedian-content-one #product-sidebar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #comedians-related {
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media all and (max-width: 576px) {
+  .press-comedian-list li {
+    border-bottom: 1px solid $color-gray;
+
+    p:last-of-type {
+      margin-bottom: 30px;
+    }
+
+    &:last-of-type {
+      border-color: transparent;
+    }
+  }
+}

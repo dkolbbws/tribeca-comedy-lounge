@@ -407,9 +407,107 @@
   }
 }
 
+.template-cart {
+  // [data-label="Product"] {
+  //   display: none;
+  //   visibility: hidden;
+  // }
+  .responsive-table-row a {
+    color: $color-red;
+  }
+
+  .responsive-table-row td {
+    padding-right: 30px;
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+
+  .responsive-table tbody .responsive-table-row:first-of-type {
+    margin-top: 30px;
+  }
+
+  table,
+  table tbody {
+    display: block;
+  }
+
+  ul.product li {
+    border-bottom: 1px solid $color-separator-dark-gray;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+
+    @include flexbox();
+    @include justify-content(space-between);
+
+    h4 {
+      margin-bottom: 20px;
+    }
+
+    h4,
+    h4 a{
+      color: $color-white;
+    }
+
+    .item-title {
+      max-width: 50%;
+    }
+
+    input[type="number"] {
+      max-width: 60px;
+      text-align: center; 
+      display: none;
+      visibility: hidden; 
+    }
+
+    .item-date {
+      margin-bottom: 20px;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+
+    small {
+      color: $color-red;
+    }
+
+    .control {
+      max-height: 50px;
+
+      @include flexbox();
+      @include justify-content(center);
+
+      .minus,
+      .plus,
+      .qty {
+        min-width: 50px;
+      }
+    }
+  }
+
+  .subtotal {
+    padding: 20px 7px 40px;
+    border-bottom: 1px solid $color-separator-dark-gray;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .notes {
+    margin-top: 40px;
+  }
+
+  .submit.update-cart input[type="submit"] {
+    @include transform(scaleX(2) translateX(25%));
+  }
+}
+
 @media all and (max-width: 768px) {
   .template-cart {
-
     .col-form {
       padding-bottom: 60px;
       width: 100%;
@@ -565,6 +663,10 @@
       }
     }
 
+    ul.title {
+      margin-top: 20px;
+    }
+
     .flex2 .button-wrapper svg {
       opacity: 0;
     }
@@ -609,6 +711,49 @@
           }
         }
       }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  body.template-cart {
+    ul.product li {
+      @include flex-direction(column);
+      @include flex-wrap(wrap);
+
+      [data-label="Price"] {
+        @include flexbox();
+
+        margin-bottom: 40px;
+        order: 2;
+      }
+
+      .item-title {
+        max-width: 100%;
+      }
+
+      .control {
+        margin-bottom: 30px;
+        max-width: 100px;
+
+        @include justify-content(flex-start);
+      }
+    }
+  } 
+
+  .cart-buttons {
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+
+    .regular-button,
+    .submit {
+      width: 100%;
+    }
+
+    .regular-button {
+      @include flexbox();
+      @include justify-content(center);
     }
   }
 }
