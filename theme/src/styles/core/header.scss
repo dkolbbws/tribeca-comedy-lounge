@@ -129,6 +129,7 @@
 .hamburger {
   @include flex-direction(column);
   @include justify-content(space-between);
+  @include transition(400ms all $cubic);
 
   position: absolute;
   // top: 34px;
@@ -137,6 +138,7 @@
   width: 27px;
   height: 16px;
   z-index: 5;
+  opacity: 1;
 
   span {
     background-color: #e5e5e5;
@@ -146,6 +148,10 @@
     transform-origin: left;
 
     @include transition(400ms all $cubic);
+  }
+
+  &.active {
+    opacity: 0;
   }
 
   &:hover {

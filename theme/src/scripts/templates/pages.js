@@ -1190,6 +1190,7 @@ nav_trigger.addEventListener('click', (event) => {
   document.body.classList.add('oh');
   h.classList.add('oh');
   nav_menu.classList.add('active');
+  nav_trigger.classList.add('active');
 
   // Animate Items In
   setTimeout( () => {
@@ -1221,7 +1222,8 @@ nav_close.addEventListener('click', (event) => {
   setTimeout( () => {
     h.classList.remove('oh');
     document.body.classList.remove('oh');
-    nav_menu.classList.remove('active');  
+    nav_menu.classList.remove('active');
+    nav_trigger.classList.remove('active');
   }, full_delay);
 });
 
