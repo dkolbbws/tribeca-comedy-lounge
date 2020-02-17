@@ -199,6 +199,16 @@
     }
   }
 
+  .navigation-menu,
+  .nav-footer {
+    display: block;
+    text-align: left;
+  }
+
+  div.nav-footer {
+    padding-bottom: 60px;
+  }
+
   .m-nav-item {
     opacity: 0;
     position: relative;
@@ -211,7 +221,7 @@
     @include flex-direction(column);
     @include align-items(flex-start);
 
-    padding: 75px 40px 55px;
+    padding: 75px 40px 45px;
     margin: 0;
 
     li {
@@ -241,6 +251,10 @@
     font-size: 23px;
     flex-grow: 1;
     padding: 40px;
+
+    p {
+      text-align: left;
+    }
 
     .social-list {
       margin-bottom: 0;
