@@ -2465,12 +2465,12 @@ footer {
 
     p.large {
       padding-top: 40px;
-      border-top: 1px solid $color-gray-border;
+      // border-top: 1px solid $color-gray-border;
     }
 
     .s1 p.large {
       border-color: transparent;
-      padding-top: 20px;
+      // padding-top: 20px;
     }
   }
 
@@ -2587,6 +2587,16 @@ footer {
     .eapps-twitter-feed-container,
     .menu {
       margin-bottom: 40px;
+    }
+
+    p.large {
+      padding-top: 40px;
+      border-top: 1px solid $color-gray-border;
+    }
+
+    .s1 p.large {
+      border-color: transparent;
+      padding-top: 20px;
     }
 
     .menu {

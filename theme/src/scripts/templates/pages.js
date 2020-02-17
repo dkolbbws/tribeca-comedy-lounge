@@ -19,7 +19,6 @@ schedule_items.forEach(items => {
   items.addEventListener('mouseenter', siblings_fade_out);
   items.addEventListener('mouseleave', siblings_fade_in);
 })
-console.log(schedule_items);
 
 /* 
   siblings_fade_out
@@ -56,7 +55,7 @@ let home_map_features = {};
 let marker = null;
 
 // Google Map Settings
-function init_google_map(mapId, pinlat, pinlong, zoomLevel) {
+function initMap(mapId, pinlat, pinlong, zoomLevel) {
   // Map itself settings
   let map = new google.maps.Map(document.getElementById(mapId), {
     zoom: zoomLevel,
@@ -506,13 +505,12 @@ function set_map_pin_styles(mapId) {
       icon.setAttribute('data-window', home_map_features[index]);
       home_map_pins.push(icon);
     });
-    console.log(marker, icons, ' icons')
     let test = icons.filter( icon => { return icon.id == 0; });
     test[0].classList.remove('hide-marker');
     // icons[0].classList.remove('hide-marker');
 
     let tcl = document.querySelectorAll('#subway-map img[src*="tcl_pin_2.svg?641"]');
-    tcl[1].setAttribute('data-window', home_map_features[0].infoWindow)
+    tcl[1].setAttribute('data-window', home_map_features[0].infoWindow);
   }, 800);
 }
 
@@ -558,7 +556,8 @@ for (let a =0; a < subway_links.length; a++) {
 if (document.body.classList.contains('template-index') || (document.body.classList.contains('template-page') && document.getElementById('contact') != undefined) ) {  
   setTimeout( () => {
     let home_map_promise = new Promise((resolve,reject) => {
-      init_google_map('subway-map', 40.7143614,-74.00774990000001, 15)
+      initMap('subway-map', 40.7143614,-74.00774990000001, 15)
+
       if (home_map_bool) {
         resolve();
       }
@@ -566,7 +565,7 @@ if (document.body.classList.contains('template-index') || (document.body.classLi
     
     home_map_promise
       .then( () => {
-        if(window.clientWidth >= 769) {
+        if(window.outerWidth >= 769) {
           set_map_pin_styles('subway-map');
         }
       })

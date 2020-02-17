@@ -100,7 +100,6 @@
   </script>
 
   {% include 'script-tags', layout: 'theme' %}
-
   
   {{ 'gsap.min.js' | asset_url | script_tag }}
   {{ 'ScrollToPlugin.min.js' | asset_url | script_tag }}
@@ -108,9 +107,8 @@
 
   {{ content_for_header }}
 
-  
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyActpSfMzs0FT_9c9X7GjnnDIDNrqQs2Q0&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyActpSfMzs0FT_9c9X7GjnnDIDNrqQs2Q0">
     </script>
 </head>
 
