@@ -192,7 +192,12 @@
             {% for i in fc_keys %}
               {% assign index = i | plus: 0 %}
                 
-              <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12 center-xs">
+              {% comment %} <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12 center-xs"> {% endcomment %}
+              {% if forloop.index == 3 %}
+                <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="schedule-item-{{ forloop.index }}">
+              {% else %}
+                <li class="col-lg-4 col-md-4 col-sm-6 col-xs-6" id="schedule-item-{{ forloop.index }}">
+              {% endif %}
                 <div class="inner-wrapper">
                   <div class="inner-image" style="background: {{ background_red }} url('{{ article.image.src | img_url: '500x'}}') no-repeat center center; background-size: cover;"></div>
                   <a href="{{ article.url }}" class="absolute-link"></a>

@@ -738,6 +738,11 @@ body .gm-style .gm-style-iw-d {
   margin-bottom: 45px;
 }
 
+#home-section-five>div img:first-of-type,
+  #about-section-four img:first-of-type, #home-section-five img:first-of-type {
+    height: 100%;
+  }
+
 .comedian-list {
   margin-bottom: 40px;
 
@@ -1852,6 +1857,10 @@ footer {
       right: -5%;
     }
   }
+
+  .icon-list .text {
+    word-break: break-all;
+  }
 }
 
 @media all and (max-width: 1024px) and (min-width: 577px) {
@@ -2433,11 +2442,6 @@ footer {
         border-color: transparent;
       }
     }
-  }
-
-  #home-section-five>div img:first-of-type,
-  #about-section-four img:first-of-type, #home-section-five img:first-of-type {
-    height: 100%;
   }
 
   #about-section-four .row [class^=col-]:last-of-type {
