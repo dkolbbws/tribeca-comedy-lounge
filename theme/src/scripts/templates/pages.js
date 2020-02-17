@@ -1187,6 +1187,7 @@ let reverse_all_nav_items = null;
 nav_trigger.addEventListener('click', (event) => {
   event.preventDefault();
   
+  document.body.classList.add('oh');
   h.classList.add('oh');
   nav_menu.classList.add('active');
 
@@ -1219,6 +1220,7 @@ nav_close.addEventListener('click', (event) => {
 
   setTimeout( () => {
     h.classList.remove('oh');
+    document.body.classList.remove('oh');
     nav_menu.classList.remove('active');  
   }, full_delay);
 });

@@ -136,6 +136,7 @@
   left: 25px;
   width: 27px;
   height: 16px;
+  z-index: 5;
 
   span {
     background-color: #e5e5e5;
@@ -212,7 +213,7 @@
   }
 
   div.nav-footer {
-    padding-bottom: 60px;
+    padding-bottom: 140px;
   }
 
   .m-nav-item {
