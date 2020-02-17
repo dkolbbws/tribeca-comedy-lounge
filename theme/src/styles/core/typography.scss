@@ -32,12 +32,12 @@ body {
 
 @font-face {
   font-family: 'Proxima-Nova';
-  src: url('~/fonts/Proxima Nova Alt Regular-webfont.eot');
-  src: url('~/fonts/Proxima Nova Alt Regular-webfont.eot?#iefix') format('embedded-opentype'),
-       url('~/fonts/Proxima Nova Alt Regular-webfont.woff2') format('woff2'),
-       url('~/fonts/Proxima Nova Alt Regular-webfont.woff') format('woff'),
-       url('~/fonts/Proxima Nova Alt Regular-webfont.ttf') format('truetype'),
-       url('~/fonts/Proxima Nova Alt Regular-webfont.svg#proxima_nova_altregular') format('svg');
+  src: url('~/assets/Proxima Nova Alt Regular-webfont.eot');
+  src: url('~/assets/Proxima Nova Alt Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('~/assets/Proxima Nova Alt Regular-webfont.woff2') format('woff2'),
+       url('~/assets/Proxima Nova Alt Regular-webfont.woff') format('woff'),
+       url('~/assets/Proxima Nova Alt Regular-webfont.ttf') format('truetype'),
+       url('~/assets/Proxima Nova Alt Regular-webfont.svg#proxima_nova_altregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -124,7 +124,7 @@ h6 {
 }
 
 .font-helio {
-  font-family: $he;
+  // font-family: $he;
   font-weight: 400;
 }
 
