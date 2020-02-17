@@ -175,6 +175,9 @@
   width: 100vw;
   height: 100vh;
   z-index: 3;
+  min-height: 100vh;
+  overflow: scroll;
+  -webkit-overflow-scrolling: scroll;
 
   .m-nav-close {
     position: absolute;

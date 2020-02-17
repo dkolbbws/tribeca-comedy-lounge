@@ -1701,6 +1701,10 @@ footer {
   }
 }
 
+.comedian-list.lightSlider {
+  @include transition(400ms all $cubic);
+}
+
 //Mobile classes
 .m-flex-show,
 .m-block-show,
@@ -2254,7 +2258,7 @@ footer {
       }
 
       img:nth-of-type(2) {
-        top: 30%;
+        top: 10%;
       }
     }
   }
@@ -2429,6 +2433,16 @@ footer {
         border-color: transparent;
       }
     }
+  }
+
+  #home-section-five>div img:first-of-type,
+  #about-section-four img:first-of-type, #home-section-five img:first-of-type {
+    height: 100%;
+  }
+
+  #about-section-four .row [class^=col-]:last-of-type {
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
 
   #comedians-related .slider-row > [class^=col-],

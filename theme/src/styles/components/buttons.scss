@@ -324,6 +324,12 @@ button.icon-button {
   top: 0;
 }
 
+@media all and (max-width: 1024px) {
+  p.small .underline-button-double {
+    top: 3px;
+  }
+}
+
 @media all and (max-width: 768px) {
   .regular-button .hover-svg {
     opacity: 0;
