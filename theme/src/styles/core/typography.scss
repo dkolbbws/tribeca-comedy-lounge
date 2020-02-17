@@ -17,27 +17,27 @@ body {
 
 @font-face {
   font-family: 'Futura-Light', sans-serif;
-  src: url('~/fonts/FuturaLight.woff') format("woff");
+  src: url('~/assets/FuturaLight.woff') format("woff");
 }
 
 @font-face {
   font-family: 'Futura-Medium', sans-serif;
-  src: url('~/fonts/Futura-Medium.woff');
+  src: url('~/assets/Futura-Medium.woff');
 }
 
 @font-face {
   font-family: 'Futura-Bold', sans-serif;
-  src: url('~/fonts/Futura_Bold.woff') format("woff");
+  src: url('~/assets/Futura_Bold.woff') format("woff");
 }
 
 @font-face {
   font-family: 'Proxima-Nova';
-  src: url('~/assets/Proxima Nova Alt Regular-webfont.eot');
-  src: url('~/assets/Proxima Nova Alt Regular-webfont.eot?#iefix') format('embedded-opentype'),
-       url('~/assets/Proxima Nova Alt Regular-webfont.woff2') format('woff2'),
-       url('~/assets/Proxima Nova Alt Regular-webfont.woff') format('woff'),
-       url('~/assets/Proxima Nova Alt Regular-webfont.ttf') format('truetype'),
-       url('~/assets/Proxima Nova Alt Regular-webfont.svg#proxima_nova_altregular') format('svg');
+  src: url('~/assets/Proxima_Nova_Alt_Regular_webfont.eot');
+  src: url('~/assets/Proxima_Nova_Alt_Regular_webfont.eot?#iefix') format('embedded-opentype'),
+       url('~/assets/Proxima_Nova_Alt_Regular_webfont.woff2') format('woff2'),
+       url('~/assets/Proxima_Nova_Alt_Regular_webfont.woff2') format('woff'),
+       url('~/assets/Proxima_Nova_Alt_Regular_webfont.ttf') format('truetype'),
+       url('~/assets/Proxima_Nova_Alt_Regular_webfont.svg#proxima_nova_altregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
