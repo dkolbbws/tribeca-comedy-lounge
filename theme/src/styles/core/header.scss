@@ -21,7 +21,7 @@
 
     &.sticky {
       background: $color-dark;
-      box-shdaow: 0 -16px 27px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 -16px 27px rgba(255, 255, 255, 0.1);
 
       @include transform(translate(0, -35px));
     }
@@ -333,7 +333,7 @@
 
 @media all and (min-width: 1025px) {
   .bws-header.sticky .bws-logo {
-    @include transform(scale(0.6));
+    @include transform(scale(0.7) translate(0, 2px));
   }
 }
 

@@ -383,7 +383,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'regular',
       infoWindow: 
         `<div class="map_window">
-          <p>World Trade E</p>
+          <p>World Trade - E</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/World+Trade+Center+Station/@40.7127692,-74.0098616,17.71z/data=!4m12!1m6!3m5!1s0x0:0x7f33d7e5a45131b9!2sWorld+Trade+Center+Station!8m2!3d40.7126452!4d-74.009898!3m4!1s0x0:0x7f33d7e5a45131b9!8m2!3d40.7126452!4d-74.009898" class="red" target="_blank">Get Directions</a>
           </div>
@@ -395,7 +395,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'regular',
       infoWindow: 
         `<div class="map_window">
-          <p>Chambers St AC</p>
+          <p>Chambers St - A,C</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/Chambers+Street+Station/@40.7155174,-74.0114114,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25a1f204ccf73:0x1ab2757eb7b2e169!8m2!3d40.7155134!4d-74.0092227" class="red" target="_blank">Get Directions</a>
           </div>
@@ -406,7 +406,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'regular',
       infoWindow: 
         `<div class="map_window">
-          <p>Fulton Station 2 3</p>
+          <p>Fulton Station - 2,3</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/Fulton+Street+Station/@40.7091998,-74.0079743,17.47z/data=!4m12!1m6!3m5!1s0x0:0xd3127d75ae72e8fc!2sFulton+Center!8m2!3d40.709373!4d-74.0083258!3m4!1s0x89c25a1807690bc1:0x4222d970a6f11740!8m2!3d40.7095648!4d-74.0063833" class="red" target="_blank">Get Directions</a>
           </div>
@@ -417,7 +417,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'regular',
       infoWindow: 
         `<div class="map_window">
-          <p>Brooklyn Bridge 4 5 6</p>
+          <p>Brooklyn Bridge - 4,5,6</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/Brooklyn+Bridge+-+City+Hall+Subway+Station/@40.7122151,-74.0052509,16.96z/data=!4m5!3m4!1s0x89c25a222fcb050d:0x8300747c6c6fec23!8m2!3d40.7128214!4d-74.0042831" class="red" target="_blank">Get Directions</a>
           </div>
@@ -428,7 +428,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'regular',
       infoWindow: 
         `<div class="map_window">
-          <p>Chambers St J Z</p>
+          <p>Chambers St - J,Z</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/Chambers+St/@40.7129431,-74.0088383,17.16z/data=!4m8!1m2!2m1!1schamber+j+z!3m4!1s0x0:0x4e8cb404e99345c2!8m2!3d40.7131116!4d-74.0040464" class="red" target="_blank">Get Directions</a>
           </div>
@@ -439,7 +439,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'regular',
       infoWindow: 
         `<div class="map_window">
-          <p>City Hall R</p>
+          <p>City Hall - R</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/City+Hall+Station/@40.7135285,-74.0088988,17z/data=!4m12!1m6!3m5!1s0x89c25a18a8f1e8a7:0x354a2435f5095fd1!2sCity+Hall+Station!8m2!3d40.7135245!4d-74.0067101!3m4!1s0x89c25a18a8f1e8a7:0x354a2435f5095fd1!8m2!3d40.7135245!4d-74.0067101" class="red" target="_blank">Get Directions</a>
           </div>
@@ -450,7 +450,7 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
       type: 'path',
       infoWindow: 
         `<div class="map_window">
-          <p>World Trade Path</p>
+          <p>World Trade - Path</p>
           <div class="bws-button-wrapper">
             <a href="https://www.google.com/maps/place/World+Trade+Center/@40.7126492,-74.0120867,17z/data=!4m12!1m6!3m5!1s0x89c25a191cac2c15:0x7f33d7e5a45131b9!2sWorld+Trade+Center+Station!8m2!3d40.7126452!4d-74.009898!3m4!1s0x89c25a197b9fec67:0xdf170c5ccb9d0b00!8m2!3d40.7115741!4d-74.0114486" class="red" target="_blank">Get Directions</a>
           </div>
@@ -1148,7 +1148,6 @@ if (document.getElementById('contact') != undefined || document.getElementById('
 
   selects.forEach(item => {
     item.addEventListener('click', (event) => {
-      console.log(event);
       event.target.nextElementSibling.classList.add('input-filled');
     })
   })
@@ -1262,5 +1261,11 @@ if (document.body.classList.contains('template-cart')) {
       }
     });
   })
-
 }
+
+if (navigator.userAgent.includes('iPad') || navigator.userAgent.includes('iPhone')) {
+  let cart = document.getElementById('cart-dd');
+  let checkout_button = cart.querySelector('.flex2 .button-wrapper');
+  checkout_button.classList.add('adjust-form-ios');
+}
+
