@@ -1037,6 +1037,10 @@ footer {
     color: $color-white;
   }
 
+  .payment-icons svg {
+    width: 100%;
+  }
+
   .menu a,
   .xs-small,
   .xxs-small,
@@ -1887,6 +1891,10 @@ footer {
 
   .icon-list .text {
     word-break: break-all;
+  }
+
+  footer .s3 p {
+    margin-top: 40px;
   }
 }
 

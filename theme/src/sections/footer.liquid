@@ -4,7 +4,7 @@
       <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-10 col-xs-offset-1 col-logo">
         {% include 'tcl-logo' %}
       </div>
-      <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-6 col-xs-offset-1 s1">
+      <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6 col-xs-offset-1 s1">
         <p class="large">Get in Touch</p>
           {% if settings.contact_location_address != blank %}
             <p class="xs-small">{{ settings.contact_location_address }}</p>
@@ -66,13 +66,14 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 s3">
+      {% comment %} <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 s3"> {% endcomment %}
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-1 s3">
         <p class="large">Tweets</p>
         <div class="elfsight-sapp-bfbcfa67-d976-45ca-8462-bf05fbc55d2c"></div>
       </div>
     </div>
     <div class="row center-xs middle-xs" id="subfooter">
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 payment-icons">
         {% include 'payment-icons' %}
       </div>
 
