@@ -165,14 +165,19 @@
           </div>
         </form>
       {% else %}
-        <h1>{{ 'cart.general.title' | t }}</h1>
+        {% comment %} <h1>{{ 'cart.general.title' | t }}</h1> {% endcomment %}
 
         {% comment %}
         Cart empty state
         {% endcomment %}
-        <div class="supports-cookies">
-          <p>{{ 'cart.general.empty' | t }}</p>
-          <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+        <div class="supports-cookies row center-xs">
+          <div class="col-xs-10 empty_cart">
+            <div class="sad-icon">{% include 'icon-sad-face-red' %}</div>
+            <h4>Your cart is empty.</h4>
+            <p class="xs-small">Have a look at the schedule to discover our upcoming shows.</p>
+            {% comment %} <h3>{{ 'cart.general.empty' | t }}</h3> {% endcomment %}
+            {% comment %} <p class="cart-link">{{ 'cart.general.continue_browsing_html' | t }}</p> {% endcomment %}
+          </div>
         </div>
 
         {% comment %}

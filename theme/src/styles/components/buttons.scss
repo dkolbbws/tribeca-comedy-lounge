@@ -324,6 +324,62 @@ button.icon-button {
   top: 0;
 }
 
+.cart-link a {
+  position: relative;
+  color: $color-red;
+
+  @include transition(400ms all $cubic);
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: -1px;
+    right: 0;
+    background: $color-red;
+    transition-timing-function: $cubic;
+    transition-duration: 400ms;
+
+    // @include transform(scaleX(0));
+  }
+
+  &::before {
+    transition-delay: 400ms;
+    transform-origin: left;
+
+    @include transform(scaleX(1));
+  }
+
+  &::after {
+    transition-delay: 0ms;
+    transform-origin: left;
+    
+    // @include transform(translate(-101%, 0));
+    @include transform(scaleX(0));
+  }
+
+  &:hover {
+    &::before {
+      transition-delay: 0ms;
+      transform-origin: right;
+
+      // @include transform(translate(101% ,0));
+      @include transform(scaleX(0));
+    }
+  
+    &::after {
+      transition-delay: 400ms;
+      transform-origin: right;
+
+      // @include transform(translate(0,0));
+      @include transform(scaleX(1));
+    }
+  }
+}
+
 @media all and (max-width: 1024px) {
   p.small .underline-button-double {
     top: 3px;

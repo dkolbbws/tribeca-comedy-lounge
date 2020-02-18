@@ -43,6 +43,7 @@
     margin-left: 30px;
     
     @include justify-content(space-between);
+    @include align-items(center);
   }
 
   a {
@@ -86,6 +87,9 @@
   font-size: 0.75em;
 
   &.icon-ticket {
+    top: 3px;
+    position: relative;
+
     &::before {
       background: $color-red;
     }
@@ -103,6 +107,7 @@
 
   &.cart {
     position: relative;
+    top: 1px;
 
     .cart-count {
       position: absolute;
@@ -183,8 +188,6 @@
   height: 100%;
   z-index: 3;
   min-height: 100vh;
-  // overflow: scroll;
-  // -webkit-overflow-scrolling: scroll;
 
   .m-nav-close {
     position: absolute;
@@ -205,12 +208,6 @@
       @include transform(rotate(90deg)); 
     }
   }
-
-  // .navigation-menu,
-  // .nav-footer {
-  //   display: block;
-  //   text-align: left;
-  // }
 
   .wrap {
     overflow: scroll;
@@ -242,13 +239,30 @@
 
       &:last-of-type {
         margin-bottom: 0;
+        width: 100%;
+        text-align: left;
       }
 
-      a.icon-ticket svg {
-        top: 2px;
-        width: 25px;
-        height: 25px;
-        margin-right: 10px;
+      a.icon-ticket {
+        background: $color-red;
+        color: $color-white;
+        padding: 22.5px 50px;
+        line-height: 18px;
+
+        svg {
+          top: 2px;
+          width: 25px;
+          height: 25px;
+          margin-right: 10px;
+
+          path {
+            fill: $color-white;
+          }
+        }
+
+        &::before {
+          background: transparent;
+        }
       }
     }
   }
