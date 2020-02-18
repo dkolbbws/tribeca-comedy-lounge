@@ -9,14 +9,8 @@
           {% if settings.contact_location_address != blank %}
             <p class="xs-small">{{ settings.contact_location_address }}</p>
           {% endif %}
-          {% if settings.contact_general_email != blank %}
 
-            <p class="xs-small hide-on-tablet">
-              <a href="mailt:{{ settings.contact_general_email }}" target="_blank" class="inline-link-single white">{{ settings.contact_general_email }}</a>
-            </p>
-          {% endif %}
-
-          <p class="xs-small show-on-tablet">
+          <p class="xs-small">
               <a href="/pages/contact" target="_self" class="inline-link-single white">Contact Us</a>
             </p>
           {% if settings.contact_phone_display != blank and settings.contact_phone_tel != blank %}
@@ -52,7 +46,7 @@
           {% endif %}
         </ul>
       </div>
-      {% comment %} <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-2 col-md-offset-0 col-xs-6 col-xs-offset-1 s2">
+      <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-2 col-md-offset-0 col-xs-6 col-xs-offset-1 s2">
         <p class="large">Navigation</p>
         <ul class="menu">
           {% for link in linklists.footer.links %}
@@ -61,7 +55,7 @@
             </li>
           {% endfor %}
         </ul>
-      </div> {% endcomment %}
+      </div>
       <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 show-on-tablet s2a">
       <p class="large">Privacy</p>
         <ul class="menu">
@@ -72,28 +66,14 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col-lg-3 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1 s3">
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 s3">
         <p class="large">Tweets</p>
         <div class="elfsight-sapp-bfbcfa67-d976-45ca-8462-bf05fbc55d2c"></div>
       </div>
     </div>
     <div class="row center-xs middle-xs" id="subfooter">
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-        
-        {% if section.settings.show_payment_icons %}
-          {% unless shop.enabled_payment_types == empty %}
-          {{ shop.enabled_payment_types | JSON }}
-            <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-            <ul class="payment-icons">
-              {% for type in shop.enabled_payment_types %}
-                <li>
-                  {{ type | payment_type_svg_tag: class: 'icon' }}
-                </li>
-              {% endfor %}
-            </ul>
-          {% endunless %}
-        {% endif %}
-        
+        {% include 'payment-icons' %}
       </div>
 
       <div class="col-lg-5 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-0">

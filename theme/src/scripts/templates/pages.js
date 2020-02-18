@@ -355,7 +355,9 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
 
   var icons = {
     tcl: {
-      icon: 'https://cdn.shopify.com/s/files/1/0307/9746/3685/files/tcl_pin_2.svg?641'
+      // icon: 'https://cdn.shopify.com/s/files/1/0307/9746/3685/files/tcl_pin_2.svg?641'
+      icon: 'https://cdn.shopify.com/s/files/1/0307/9746/3685/files/icon-map-pin-small.svg?2336'
+      // icon: 'https://cdn.shopify.com/s/files/1/0307/9746/3685/files/icon-map-pin-small-logo.svg?2339'
     },
     regular: {
       icon: 'https://cdn.shopify.com/s/files/1/0307/9746/3685/files/currrent-map-pin.svg?641'
@@ -1263,9 +1265,16 @@ if (document.body.classList.contains('template-cart')) {
   })
 }
 
+// Fixes ios bottom spacing due to the home button/safari bottom bar
 if (navigator.userAgent.includes('iPad') || navigator.userAgent.includes('iPhone')) {
   let cart = document.getElementById('cart-dd');
   let checkout_button = cart.querySelector('.flex2 .button-wrapper');
   checkout_button.classList.add('adjust-form-ios');
 }
+
+// let contact_from = document.getElementById('contact_form');
+// contact_from.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   console.log('stoppped');
+// });
 

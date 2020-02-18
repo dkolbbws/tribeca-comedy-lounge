@@ -168,7 +168,7 @@ main img {
 }
 
 #home-section-two .behind-red-two svg {
-  bottom: 22%;
+  bottom: 20%;
   z-index: 1;
   left: -5px;
 }
@@ -1261,6 +1261,7 @@ footer {
 }
 
 #about-section-one {
+  .row,
   [class^=col-] {
     position: relative;
   }
@@ -1288,7 +1289,7 @@ footer {
     max-height: 43%;
     position: absolute;
     left: 58.333%;
-    bottom: -10%;
+    bottom: -9%;
     max-width: 280.06px;
     max-height: 280.06px;
   }
@@ -1501,7 +1502,9 @@ footer {
   }
 
   h4 {
-    font-family: $pnr;
+    font-family: $br;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   @include flexbox();
@@ -1909,52 +1912,6 @@ footer {
   }
 }
 
-// Duplicated - something about this row in mid tablet just dosen't listen
-// @media all and (max-width: 768px) and (min-width: 645px) {
-//   body #about-section-one {
-//     .spacing-top-xxs {
-//       padding-top: 0;
-//     }
-
-//     .spacing-bottom-lg {
-//       padding-bottom: 0;
-//     }
-
-//     .about-images-one {
-//       flex-basis: auto;
-//       padding-top: 0;
-//       max-width: 90%;
-//       width: 100%;
-//       padding-bottom: 0;
-//       margin-bottom: 80px;
-//       position: relative;
-
-//       img {
-//         position: relative;
-
-//         &:first-of-type {
-//           top: -20%;
-//           left: 3%;
-//           max-width: 90px;
-//         }
-
-//         &:nth-of-type(2) {
-//           max-width: 200px;
-//           right: 0;
-//           top: -40%;
-//           left: 70%;
-//         }
-
-//         &:last-of-type {
-//           top: 5%;
-//           left: 0%;
-//           left: 8.333%;
-//         }
-//       }
-//     }
-//   }
-// } // end 768 Max and 645 min
-
 @media all and (max-width: 768px) {
   body.template-index {
     .custom-80 {
@@ -2187,6 +2144,11 @@ footer {
       }
     }
 
+    .about-image-single .image-right {
+      display: none;
+      visibility: hidden;
+    }
+
     .about-image-text {
       left: 8.333%;
       bottom: 18%;
@@ -2208,6 +2170,7 @@ footer {
 
     .text-copy {
       top: -40px;
+      margin-bottom: 20px;
     }
   }
 
@@ -2336,8 +2299,22 @@ footer {
       order: 3;
     }
 
+    .s2 {
+      display: none;
+      visibility: hidden;
+    }
+
     .s3 {
       order: 2;
+      padding-left: 0;
+    }
+
+    .eapps-twitter-feed .eapps-twitter-feed-posts-item-inner {
+      padding: 0 0 16px;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
     }
 
     #subfooter {
@@ -2348,10 +2325,6 @@ footer {
       [class^=col-]:nth-of-type(2) {
         order: 1;
       }
-    }
-
-    .xs-small.show-on-tablet {
-      display: block;
     }
   }
 
