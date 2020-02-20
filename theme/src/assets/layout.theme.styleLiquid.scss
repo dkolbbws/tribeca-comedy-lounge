@@ -1,0 +1,20 @@
+/**
+ * Insert your styles with Liquid below.
+ *
+ * Import additional stylesheets into this sheet using CSS imports:
+ * @import url('./global/form.scss');
+ */
+
+ <style>
+@font-face {
+  font-family: 'Proxima-Nova';
+  src: url('//cdn.shopify.com/s/files/1/0307/9746/3685/t/1/assets/Proxima_Nova_Alt_Regular_webfont.eot?3237');
+  src: url('//cdn.shopify.com/s/files/1/0307/9746/3685/t/1/assets/Proxima_Nova_Alt_Regular_webfont.eot?%23iefix&3237') format('embedded-opentype'),
+       url('//cdn.shopify.com/s/files/1/0307/9746/3685/t/1/assets/Proxima_Nova_Alt_Regular_webfont.woff2?3237') format('woff2'),
+       url('//cdn.shopify.com/s/files/1/0307/9746/3685/t/1/assets/Proxima_Nova_Alt_Regular_webfont.woff2?3237') format('woff'),
+       url('//cdn.shopify.com/s/files/1/0307/9746/3685/t/1/assets/Proxima_Nova_Alt_Regular_webfont.ttf?3237') format('truetype'),
+       url('//cdn.shopify.com/s/files/1/0307/9746/3685/t/1/assets/Proxima_Nova_Alt_Regular_webfont.svg%23proxima_nova_altregular?3237') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+</style>

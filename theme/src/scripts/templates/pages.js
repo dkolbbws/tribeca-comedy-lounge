@@ -1087,6 +1087,7 @@ if (document.getElementById('contact') != undefined || document.getElementById('
 
   inputs.forEach(item => {
     item.addEventListener('input', (event) => {
+      console.log(event.target, event.target.type, event.target.value, event.target.value.length);
       if (event.target.type == "checkbox") {
         if (event.target.attributes.length <= 2) {
           event.target.setAttribute('checked', 'checked');
@@ -1095,9 +1096,19 @@ if (document.getElementById('contact') != undefined || document.getElementById('
           event.target.removeAttribute('checked');
           event.target.parentElement.classList.remove('input-filled');
         }
+      } else if (event.target.type == "date") {
+        if (event.target.value.length > 0 && event.target.type != "checkbox") {
+          event.target.nextElementSibling.classList.add('input-filled');
+          event.target.classList.add('input-filled');
+        } else {
+          event.target.nextElementSibling.classList.remove('input-filled');
+          event.target.classList.remove('input-filled');
+        }
       } else {
         if (event.target.value.length > 0 && event.target.type != "checkbox") {
           event.target.nextElementSibling.classList.add('input-filled');
+
+          // if (event.target)
         } else {
           event.target.nextElementSibling.classList.remove('input-filled');
         }

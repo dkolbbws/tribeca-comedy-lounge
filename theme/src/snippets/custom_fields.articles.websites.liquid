@@ -1,0 +1,35 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/tribeca-comedy-lounge.myshopify.com/articles/configure/144245/edit
+{% endcomment %}
+{% if article.metafields.custom_fields["websites"] != blank %}
+  <div class="custom-field custom-field__websites custom-field__type--field-collection">
+    <h3 class="custom-field--title">Websites</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign website_title_array = article.metafields.custom_fields["website_title"] | split: separator %}
+      {% assign facebook_array = article.metafields.custom_fields["facebook"] | split: separator %}
+      {% assign twitter_array = article.metafields.custom_fields["twitter"] | split: separator %}
+      {% assign instagram_array = article.metafields.custom_fields["instagram"] | split: separator %}
+      {% assign fc_keys = article.metafields.custom_fields["websites"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item-- fc-index--{{ index }}">
+          <div class="fc-field field__website-title">
+            {{ website_title_array[index] }}
+          </div>
+          <div class="fc-field field__facebook">
+            {{ facebook_array[index] }}
+          </div>
+          <div class="fc-field field__twitter">
+            {{ twitter_array[index] }}
+          </div>
+          <div class="fc-field field__instagram">
+            {{ instagram_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

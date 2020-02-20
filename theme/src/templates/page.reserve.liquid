@@ -46,7 +46,7 @@
               <input type="email"
                 name="contact[email]"
                 id="ContactFormEmail"
-                placeholder="{{Email *}}" 
+                placeholder="Email *" 
                 spellcheck="false"
                 autocomplete="off"
                 autocapitalize="off"
@@ -126,11 +126,7 @@
             <textarea rows="10"
               name="contact[body]"
               id="ContactFormMessage"
-              placeholder="Your Message">
-              {%- if form.body -%}
-                {{- form.body -}}
-              {%- endif -%}
-            </textarea>
+              placeholder="Your Message"></textarea>
           </div>
         </div>
         <div class="form-row single checkbox">
@@ -153,16 +149,60 @@
           </div>
         </div>
 
-        {% if form.posted_successfully? %}
-          <p class="form-success">
-            {{ 'contact.form.post_success' | t }}
-          </p>
-        {% endif %}
 
-        {{ form.errors | default_errors }}
-
-        {% endform %}
+        
+        
+        
       </div>
     </div>
   </div>
+  {% endform %}
+  <div class="row center-xs successMsg">
+    <div class="col-lg-6 col-md-8 col-sm-8 col-xs-10">
+      {% include 'icon_circle_check' %}
+      <h3>Thank you for contacting us! We'll be intouch soon.</h3>
+  </div>
+</div>
 </section>
+
+<style>
+  .successMsg {
+    opacity: 0;
+  }
+  
+/*   .successMsg.active {
+    opacity: 1;
+  } */
+</style>
+
+<script>
+  $('#contact_form').submit(function(event) {
+    var $form = $(this);
+    jQuery.ajax({
+      type: 'POST',
+      async: true,
+      url: '/reservations',
+      data: $form.serialize(),
+      beforeSend: function() {
+        $form.addClass('sending');
+      },
+      error: function(t) {
+        //console.log(t);
+      },
+      success: function(response) {
+        let success = $form[0].parentElement.parentElement.parentElement.parentElement;
+        let success_row = success.querySelector('.successMsg');
+        let success_children = success_row.childNodes[1];
+        
+        $form[0].classList.add('transitioning-out');
+        
+        let t1 = new TimelineMax();
+        t1.to($form, {duration: 0.4, y: -20, ease: "power0.ease", opacity: 0});
+        t1.to($form, {duration: 0.4, ease: "power0.ease", height: 0});
+        
+        gsap.to(success_row, {delay: 0.2, duration: 0.4, ease: "power0.ease", height: success_children.clientHeight,y: 0, opacity: 1,});
+      }
+    });
+    event.preventDefault();
+  });
+</script>

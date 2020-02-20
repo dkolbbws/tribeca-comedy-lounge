@@ -4,7 +4,14 @@
       <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-10 col-xs-offset-1 col-logo">
         {% include 'tcl-logo' %}
       </div>
-      <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6 col-xs-offset-1 s1">
+      
+      {% comment %} Contact & Reservations {% endcomment %} 
+	  {% if page.id == 50952470661 or page.id == 51049365637 %}
+    	  <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-6 col-xs-offset-1 s1">
+      {% else %}
+	      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-1 col-xs-6 col-xs-offset-1 s1">
+      {% endif %}
+            
         <p class="large">Get in Touch</p>
           {% if settings.contact_location_address != blank %}
             <p class="xs-small">{{ settings.contact_location_address }}</p>
@@ -46,17 +53,55 @@
           {% endif %}
         </ul>
       </div>
-      <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-2 col-md-offset-0 col-xs-6 col-xs-offset-1 s2">
-        <p class="large">Navigation</p>
-        <ul class="menu">
-          {% for link in linklists.footer.links %}
-            <li>
-              <a href="{{ link.href }}" class="inline-link-single white">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 show-on-tablet s2a">
+
+	 {% comment %} Contact & Reservations {% endcomment %} 
+     {% if page.id == 50952470661 or page.id == 51049365637 %}
+     	
+     {% else %}
+
+
+      	<div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-4 col-md-offset-0 col-xs-6 col-xs-offset-1 s2 footer-form-col">
+          <p class="large">Newsletter</p>
+          <p class="small">Receive all the updates, events and bonuses in your mailbox</p>
+
+
+          {% form 'contact' %}
+
+            <div class="form-wrapper">
+              {{ form.errors | default_errors }}
+              <div class="form-row single inline-submit">
+                <div class="wrap">
+                  <input type="text"
+                         name="contact[email]"
+                         id="ContactFormEmail"
+                         placeholder="Email" required>
+                  <label for="ContactFormEmail">Email <span class="color-red">*</span></label>
+                  <div class="bws-button-wrapper">
+
+                    <input type="submit" class="button" value="">
+                    <span class="hover-svgs">
+                      {% include 'icon-right-arrow-right-submit' %}
+                    </span>
+                </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          {% endform %}
+
+          <div class="row successMsg">
+              <div class="col-xs-10">
+                {% include 'icon_circle_check' %}
+                <p>Thank you for contacting us! We'll be in touch soon.</p>
+            </div>
+          </div>
+
+        </div>
+      {% endif %}
+
+      <div class="col-lg-3 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 show-on-tablet s2a">
       <p class="large">Privacy</p>
         <ul class="menu">
           {% for link in linklists.privacy.links %}
@@ -66,8 +111,14 @@
           {% endfor %}
         </ul>
       </div>
-      {% comment %} <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-6 col-xs-offset-1 s3"> {% endcomment %}
-      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-1 s3">
+            
+            {% comment %} Contact & Reservations {% endcomment %} 
+	  {% if page.id == 50952470661 or page.id == 51049365637 %}
+	      <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-1 s3">
+      {% else %}
+    	  <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-1 s3">
+      {% endif %}
+
         <p class="large">Tweets</p>
         <div class="elfsight-sapp-bfbcfa67-d976-45ca-8462-bf05fbc55d2c"></div>
       </div>
@@ -94,4 +145,49 @@
   </section>
 </footer>
 
+  <style>
+  .successMsg {
+    opacity: 0;
+  }
+  
+/*   .successMsg.active {
+    opacity: 1;
+  } */
+</style>
+
+<script>
+  $('#contact_form').submit(function(event) {
+    var $form = $(this);
+    jQuery.ajax({
+      type: 'POST',
+      async: true,
+      url: '/contact',
+      data: $form.serialize(),
+      beforeSend: function() {
+        $form.addClass('sending');
+      },
+      error: function(t) {
+        //console.log(t);
+      },
+      success: function(response) {
+        let success = $form[0].parentElement.parentElement.parentElement.parentElement;
+        let success_row = success.querySelector('.successMsg');
+        let success_children = success_row.childNodes[1];
+        console.log(success_children, $form,success_row, success);
+        console.log(success_children,success_children.clientHeight,  success_children.style, success_children.parentElement);
+        let item_height = success_children.clientHeight + 40;
+        
+        $form[0].classList.add('transitioning-out');
+        
+        let t1 = new TimelineMax();
+        t1.to($form, {duration: 0.4, y: -20, ease: "power0.ease", opacity: 0});
+        t1.to($form, {duration: 0.4, ease: "power0.ease", height: 0});
+        
+        gsap.to(success_row, {delay: 0.2, duration: 0.4, ease: "power0.ease", height: item_height,y: 0, opacity: 1,});
+
+      }
+    });
+    event.preventDefault();
+  });
+</script>
 

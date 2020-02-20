@@ -189,6 +189,14 @@ select {
   }
 }
 
+input[type="date"].input-filled {
+  color: $color-form-gray;
+}
+
+input[type="date"].input-filled:focus {
+  color: $color-white;
+}
+
 .form-row .inner-wrap {
   position: relative;
   min-height: 50px;
@@ -213,7 +221,7 @@ select {
     content: "";
     width: 12px;
     height: 6px;
-    background: url('~../assets/arrows/icon-select-down.svg') no-repeat center center;
+    background: url('~../assets/icon-select-down.svg') no-repeat center center;
     background-size: contain;
     right: 0;
     top: 0;

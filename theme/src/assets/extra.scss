@@ -1,0 +1,210 @@
+// Post Slate SCSS
+.shopify-section footer,
+/* main .shopify-section,
+main, */
+main section {
+ overflow-x: hidden; 
+}
+
+.cart-dd .flex2 .button-wrapper.adjust-form-ios {
+  margin-bottom: 114px;
+}
+
+#about-section-one .about-images-one img:nth-of-type(2) {
+  max-width: 300px;
+}
+
+
+#about-section-one .about-image-text {
+  left: 52.333%;
+  bottom: -10%;
+  max-width: 256.06px;
+  max-height: 256.06px;
+}
+
+#about-section-four img:first-of-type,
+#about-section-four img#left-image {
+  height: auto;
+}
+
+.comedian-list li .content p {
+  margin-bottom: 0;
+}
+
+.template-article .comedian-list .inner-wrapper {
+  text-align: center;
+}
+
+// Footer
+.footer-form-col .form-row.inline-submit .bws-button-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  min-width: 50px;
+  height: 100%;	
+  top: -10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+    -webkit-box-pack: flex-end;
+        -ms-flex-pack: flex-end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  
+  .hover-svgs,
+  svg {
+	pointer-events: none;
+  }
+  
+  input[type=submit] {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+section form.transitioning-out {
+  overflow: hidden;
+}
+
+.successMsg {
+/*   display: none; */
+/*   visibility: hidden; */
+/*   margin-bottom: 0; */
+/*   padding: 30px 0; */
+  height: 0;
+  overflow: hidden;
+  
+  [class^=col-] {
+    padding: 30px 0;
+/*     transform: translate(0, -20px); */
+  }
+  
+  p,
+  h3 {
+    margin: 20px 0 0;
+  }
+}
+
+.footer-form-col .successMsg {
+  [class^=col-] {
+  	padding-top: 0;
+  }
+  
+  p,
+  h3 {
+	color: #fff;
+  }
+}
+
+input:-internal-autofill-selected,
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: 1px solid #fff;
+  -webkit-text-fill-color: #fff;
+/*   -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset; */
+/*   color: #ffffff; */
+  transition: background-color 400s ease-in-out 0s;
+}
+
+input[type=date]:focus {
+/* input[type=date] { */
+	color: #fff;
+}	
+
+footer {
+ 	input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: 1px solid #fff;
+  -webkit-text-fill-color: #fff;
+/*   -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset; */
+  transition: background-color 400s ease-in-out 0s;
+    color: #ffffff;
+} 
+}
+
+/* footer .eapps-twitter-feed-posts-inner .eapps-twitter-feed-posts-item:first-of-type .eapps-twitter-feed-posts-item-inner {
+	padding-left: 0;
+} */
+
+
+@media all and (min-width: 1025px) {
+  footer {
+    .s3 {
+   		padding-left: 4.33%;
+    }
+  }
+  
+  body#contact footer,
+  body#reservations footer {
+    .s3 p.large {
+   	  padding-left: 16px;
+    }
+  }
+  
+  body footer .row:first-of-type [class^=col-]:not(:first-of-type) {
+    padding-left: 4.33%;
+  }
+  
+  body#contact footer .row:first-of-type [class^=col-]:not(:first-of-type),
+  body#reservations footer .row:first-of-type [class^=col-]:not(:first-of-type) {
+    padding-left: 0;
+  }
+}
+
+@media all and (max-width: 1024px) and (min-width: 769px) {
+  .template-article #comedians-related li {
+    margin-bottom: 20px;
+    
+    &:last-of-type {
+      margin-bottom: 0;	
+    }
+  }
+  
+  footer .eapps-twitter-feed-posts-item-inner {
+	padding-left: 0;
+  }
+  
+/*   body#contact footer, */
+  body footer {
+    .s3 p.large {
+		margin-bottom: 20px;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .cart-dd .col-form form .items {
+  	margin-bottom: 420px;
+  	padding-bottom: 0;
+  }
+  
+  footer .s2 {
+    display: block;
+    visibility: visible;
+    
+    .form-wrapper {
+      padding-left: 0;	
+      padding-right: 0;
+    }
+  }
+}

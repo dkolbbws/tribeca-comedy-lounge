@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/tribeca-comedy-lounge.myshopify.com/articles/configure/144426/edit
+{% endcomment %}
+{% if article.metafields.custom_fields["comedian_excerpt"] != blank %}
+  <div class="custom-field custom-field__comedian-excerpt custom-field__type--text">
+    <h3 class="custom-field--title">Comedian Excerpt</h3>
+    <div class="custom-field--value">
+      {{ article.metafields.custom_fields["comedian_excerpt"] }}
+    </div>
+  </div>
+{% endif %}

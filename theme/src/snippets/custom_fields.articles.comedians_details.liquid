@@ -1,0 +1,31 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/tribeca-comedy-lounge.myshopify.com/articles/configure/144423/edit
+{% endcomment %}
+{% if article.metafields.custom_fields["comedians_details"] != blank %}
+  <div class="custom-field custom-field__comedians-details custom-field__type--field-collection">
+    <h3 class="custom-field--title">Comedians Details</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign comedian_first_name_array = article.metafields.custom_fields["comedian_first_name"] | split: separator %}
+      {% assign comic_last_name_array = article.metafields.custom_fields["comic_last_name"] | split: separator %}
+      {% assign comedian_excerpt_array = article.metafields.custom_fields["comedian_excerpt"] | split: separator %}
+      {% assign fc_keys = article.metafields.custom_fields["comedians_details"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item-- fc-index--{{ index }}">
+          <div class="fc-field field__comedian-first-name">
+            {{ comedian_first_name_array[index] }}
+          </div>
+          <div class="fc-field field__comic-last-name">
+            {{ comic_last_name_array[index] }}
+          </div>
+          <div class="fc-field field__comedian-excerpt">
+            {{ comedian_excerpt_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
