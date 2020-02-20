@@ -581,6 +581,11 @@ textarea {
   }
 }
 
+.form-row.submit input[type="submit"] {
+  top: 0;
+  left: 0;
+}
+
 form:focus {
   outline: none;
 }
