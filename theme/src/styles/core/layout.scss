@@ -1265,6 +1265,8 @@ footer {
 }
 
 #about-section-one {
+  overflow: hidden;
+
   .row,
   [class^=col-] {
     position: relative;
