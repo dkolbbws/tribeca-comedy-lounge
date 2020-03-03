@@ -1088,7 +1088,7 @@ $(document).ready(function() {
 // }
 // xhr.send();
 
-if (document.getElementById('contact') != undefined || document.getElementById('reservations')) {
+if (document.getElementById('contact') != undefined || document.getElementById('reservations') || document.getElementById('funny-people')) {
   let inputs = document.querySelectorAll('.form-wrapper input');
   let textareas = document.querySelectorAll('.form-wrapper textarea');
   let selects = document.querySelectorAll('.form-wrapper select');
