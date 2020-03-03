@@ -47,7 +47,8 @@ function siblings_fade_in(items) {
   });
 }
 
-// Home map variables
+document.addEventListener('DOMContentLoaded', () => {
+  // Home map variables
 let home_map_pins = new Array();
 let home_map_bool = false;
 let home_map_object = {};
@@ -340,9 +341,14 @@ function initMap(mapId, pinlat, pinlong, zoomLevel) {
   // Map object for scope
   home_map_object = map;
 
+  let map_id = document.getElementById(map.__gm.Na.id);
   // Hide the map to add all of the pins - then hide them
-  map.__gm.Ma.style.transition = 'none';
-  map.__gm.Ma.style.opacity = 0;
+  // map.__gm.Na.style.transition = 'none';
+  // map.__gm.Na.style.opacity = 0;
+
+  map_id.style.transition = 'none';
+  map_id.style.opacity = 0;
+
 
   // Pin bounce on load
   function toggleBounce() {
@@ -574,12 +580,14 @@ if (document.body.classList.contains('template-index') || (document.body.classLi
       .then( () => {
         setTimeout( () => {
           // Shop the map
-          home_map_object.__gm.Ma.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
-          home_map_object.__gm.Ma.style.opacity = 1;
+          let map_id = document.getElementById(home_map_object.__gm.Na.id);
+          map_id.style.transition = '400ms all cubic-bezier(0.255, 0.195, 0.135, 0.99)';
+          map_id.style.opacity = 1;
         }, 600);
       })
   }, 800);
 }
+}) 
 
 let faq_item = document.querySelectorAll('.faq-list a');
 faq_item.forEach(item => {

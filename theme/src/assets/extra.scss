@@ -146,6 +146,19 @@ select:-webkit-autofill:focus {
 	padding-left: 0;
 } */
 
+/* Funny People page */
+
+#funnypeople-section-one {
+	.form-row {
+      width:100%;
+    }
+}
+#ContactFormHeadShot {
+  	padding-left: 90px;
+    padding-top: 10px;
+}
+/* End Funny people page */
+
 
 @media all and (min-width: 1025px) {
   footer {
